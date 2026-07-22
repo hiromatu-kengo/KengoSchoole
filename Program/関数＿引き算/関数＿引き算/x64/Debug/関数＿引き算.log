@@ -1,3 +1,0 @@
-﻿  main.c
-C:\Users\HiromatuKengo\Desktop\Program\関数＿引き算\main.c(33,4): warning C4244: '関数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  関数＿引き算.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\関数＿引き算\x64\Debug\関数＿引き算.exe

@@ -1,7 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="グラフィックを動かす.vcxproj" Id="01b77358-ac55-4c30-b265-294c69248433" />
-</Solution>

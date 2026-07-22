@@ -1,6 +1,0 @@
-﻿  main.c
-C:\Users\HiromatuKengo\Desktop\Program\プログラム問題\main.c(20,1): warning C4716: 'Race': 値を返さなければいけません
-C:\Users\HiromatuKengo\Desktop\Program\プログラム問題\main.c(7,1): warning C4716: 'SquareArea': 値を返さなければいけません
-C:\Users\HiromatuKengo\Desktop\Program\プログラム問題\main.c(39,1): warning C4716: 'NotMultiple': 値を返さなければいけません
-C:\Users\HiromatuKengo\Desktop\Program\プログラム問題\main.c(28,1): warning C4716: 'MuscleTraining': 値を返さなければいけません
-  プログラム問題.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\プログラム問題\x64\Debug\プログラム問題.exe

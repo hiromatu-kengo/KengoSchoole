@@ -1,7 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="定数マクロ.vcxproj" Id="b2d77e28-42ca-45f9-8a34-0bb9dca332d6" />
-</Solution>

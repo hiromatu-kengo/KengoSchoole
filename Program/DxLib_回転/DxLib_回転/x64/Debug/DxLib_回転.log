@@ -1,3 +1,0 @@
-﻿  SceneMain.cpp
-C:\Users\HiromatuKengo\Desktop\Program\DxLib_回転\SceneMain.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  DxLib_回転.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\DxLib_回転\x64\Debug\DxLib_回転.exe

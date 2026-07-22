@@ -1,7 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="ポインタを使って関数内で2つの変数の値を操作する.vcxproj" />
-</Solution>

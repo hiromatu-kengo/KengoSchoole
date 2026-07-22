@@ -1,7 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="hukusyu_if.vcxproj" Id="f82c510f-09a0-49a4-8f85-e8240e1a609c" />
-</Solution>
