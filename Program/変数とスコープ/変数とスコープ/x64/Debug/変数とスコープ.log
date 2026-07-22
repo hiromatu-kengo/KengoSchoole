@@ -1,0 +1,4 @@
+﻿  main.c
+C:\Users\HiromatuKengo\Desktop\Program\変数とスコープ\main.c(12,6): warning C4101: 'b': ローカル変数は 1 度も使われていません。
+C:\Users\HiromatuKengo\Desktop\Program\変数とスコープ\main.c(21,6): warning C4101: 'c': ローカル変数は 1 度も使われていません。
+  変数とスコープ.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\変数とスコープ\x64\Debug\変数とスコープ.exe

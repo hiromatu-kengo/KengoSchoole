@@ -1,0 +1,3 @@
+﻿  main.c
+C:\Users\HiromatuKengo\Desktop\Program\構造体\main.c(17,55): warning C4045: 'name': 指定された配列には、初期化子が多すぎます。
+  構造体.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\構造体\x64\Debug\構造体.exe

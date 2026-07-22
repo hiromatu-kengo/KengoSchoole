@@ -1,0 +1,7 @@
+﻿  main.c
+C:\Users\HiromatuKengo\Desktop\Program\for文残り\main.c(35,10): warning C4476: 'printf' : 形式指定子に不明な種類フィールド文字 'D' があります
+C:\Users\HiromatuKengo\Desktop\Program\for文残り\main.c(35,18): warning C4474: 'printf': 書式文字列に渡された引数の数が多すぎます
+      C:\Users\HiromatuKengo\Desktop\Program\for文残り\main.c(35,18):
+      プレースホルダーとそのパラメーターには 0 の可変個引数が必要ですが、1 が指定されています。
+  
+  for文残り.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\for文残り\x64\Debug\for文残り.exe

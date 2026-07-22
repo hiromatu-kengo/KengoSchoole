@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\hukusyuuSisokuenzan\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{584793BD-29BA-47E9-A3D1-64982029BE58}|hukusyuuSisokuzenzan.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\hukusyuuSisokuenzan\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{584793BD-29BA-47E9-A3D1-64982029BE58}|hukusyuuSisokuzenzan.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\hukusyuuSisokuenzan\\main.c",
+              "RelativeDocumentMoniker": "main.c",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\hukusyuuSisokuenzan\\main.c",
+              "RelativeToolTip": "main.c",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-04-22T01:42:31.947Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

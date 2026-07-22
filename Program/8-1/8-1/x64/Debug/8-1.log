@@ -1,0 +1,12 @@
+﻿  shootingGame_1.cpp
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(77,34): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(77,20): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(78,34): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(78,20): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(136,35): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(136,21): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(153,35): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(153,21): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(353,20): warning C4244: '*=': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\8-1\shootingGame_1.cpp(567,47): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  8-1.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\8-1\x64\Debug\8-1.exe

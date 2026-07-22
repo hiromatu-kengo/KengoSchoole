@@ -1,0 +1,6 @@
+﻿  main.cpp
+C:\Users\HiromatuKengo\Desktop\Program\9-1\main.cpp(40,23): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\9-1\main.cpp(41,23): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\9-1\main.cpp(47,15): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\9-1\main.cpp(48,15): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
+  9-1.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\9-1\x64\Debug\9-1.exe

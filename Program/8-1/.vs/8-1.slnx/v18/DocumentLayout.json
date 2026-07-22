@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\8-1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{54F53ABA-1DAF-467C-B28D-45FFA1678071}|8-1.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\8-1\\shootingGame_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54F53ABA-1DAF-467C-B28D-45FFA1678071}|8-1.vcxproj|solutionrelative:shootingGame_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54F53ABA-1DAF-467C-B28D-45FFA1678071}|8-1.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\8-1\\shootingGame_1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54F53ABA-1DAF-467C-B28D-45FFA1678071}|8-1.vcxproj|solutionrelative:shootingGame_1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "shootingGame_1.h",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\8-1\\shootingGame_1.h",
+              "RelativeDocumentMoniker": "shootingGame_1.h",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\8-1\\shootingGame_1.h",
+              "RelativeToolTip": "shootingGame_1.h",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACUAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-07-10T02:57:48.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "shootingGame_1.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\8-1\\shootingGame_1.cpp",
+              "RelativeDocumentMoniker": "shootingGame_1.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\8-1\\shootingGame_1.cpp",
+              "RelativeToolTip": "shootingGame_1.cpp",
+              "ViewState": "AgIAAB0CAAAAAAAAAAAiwDoCAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-10T02:57:06.894Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

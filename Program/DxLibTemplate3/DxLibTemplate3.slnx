@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DxLibTemplate3.vcxproj" Id="4d3d75df-48d7-434e-99a2-94a23afcf6f6" />
+</Solution>

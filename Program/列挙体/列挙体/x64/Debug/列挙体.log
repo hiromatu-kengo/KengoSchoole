@@ -1,0 +1,13 @@
+﻿  main.c
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(32,7): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(35,7): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(38,7): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(41,7): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(44,7): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(79,3): warning C4013: 関数 'DispPlayerptr' は定義されていません。int 型の値を返す外部関数と見なします。
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(72,4): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(73,4): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(74,4): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\main.c(75,4): warning C5286: 列挙型 'JobType' から列挙型 'jobType' への暗黙的な変換; 明示的なキャストを使用してこの警告を抑制します
+main.obj : error LNK2019: 未解決の外部シンボル DispPlayerptr が関数 main で参照されました
+C:\Users\HiromatuKengo\Desktop\Program\列挙体\x64\Debug\列挙体.exe : fatal error LNK1120: 1 件の未解決の外部参照

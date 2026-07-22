@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84A72405-AFBE-4D90-9E30-F7F26D8DD97A}|DxLib_\u4E09\u89D2\u95A2\u6570.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{84A72405-AFBE-4D90-9E30-F7F26D8DD97A}|DxLib_\u4E09\u89D2\u95A2\u6570.vcxproj|solutionrelative:SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84A72405-AFBE-4D90-9E30-F7F26D8DD97A}|DxLib_\u4E09\u89D2\u95A2\u6570.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\Object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{84A72405-AFBE-4D90-9E30-F7F26D8DD97A}|DxLib_\u4E09\u89D2\u95A2\u6570.vcxproj|solutionrelative:Object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84A72405-AFBE-4D90-9E30-F7F26D8DD97A}|DxLib_\u4E09\u89D2\u95A2\u6570.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{84A72405-AFBE-4D90-9E30-F7F26D8DD97A}|DxLib_\u4E09\u89D2\u95A2\u6570.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SceneMain.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\SceneMain.cpp",
+              "RelativeDocumentMoniker": "SceneMain.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\SceneMain.cpp",
+              "RelativeToolTip": "SceneMain.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-08T02:56:54.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-08T02:56:51.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Object.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\Object.cpp",
+              "RelativeDocumentMoniker": "Object.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u4E09\u89D2\u95A2\u6570\\Object.cpp",
+              "RelativeToolTip": "Object.cpp",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-08T02:53:08.538Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

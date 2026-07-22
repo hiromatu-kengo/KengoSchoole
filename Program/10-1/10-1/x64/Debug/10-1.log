@@ -1,0 +1,5 @@
+﻿  main3D.cpp
+C:\Users\HiromatuKengo\Desktop\Program\10-1\main3D.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatuKengo\Desktop\Program\10-1\main3D.cpp(8,19): error C2001: 文字列リテラル内の改行
+C:\Users\HiromatuKengo\Desktop\Program\10-1\main3D.cpp(9,5): error C2146: 構文エラー: ')' が、識別子 'SetGraphMode' の前に必要です。
+C:\Users\HiromatuKengo\Desktop\Program\10-1\main3D.cpp(9,5): error C2146: 構文エラー: ';' が、識別子 'SetGraphMode' の前に必要です。

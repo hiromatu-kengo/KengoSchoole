@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\\u30DD\u30A4\u30F3\u30BF\u3092\u4F7F\u3063\u3066\u95A2\u6570\u5185\u30672\u3064\u306E\u5909\u6570\u306E\u5024\u3092\u64CD\u4F5C\u3059\u308B\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C61A1D30-8927-48C5-9079-EDA9C5A21984}|\u30DD\u30A4\u30F3\u30BF\u3092\u4F7F\u3063\u3066\u95A2\u6570\u5185\u30672\u3064\u306E\u5909\u6570\u306E\u5024\u3092\u64CD\u4F5C\u3059\u308B.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\\u30DD\u30A4\u30F3\u30BF\u3092\u4F7F\u3063\u3066\u95A2\u6570\u5185\u30672\u3064\u306E\u5909\u6570\u306E\u5024\u3092\u64CD\u4F5C\u3059\u308B\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C61A1D30-8927-48C5-9079-EDA9C5A21984}|\u30DD\u30A4\u30F3\u30BF\u3092\u4F7F\u3063\u3066\u95A2\u6570\u5185\u30672\u3064\u306E\u5909\u6570\u306E\u5024\u3092\u64CD\u4F5C\u3059\u308B.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\\u30DD\u30A4\u30F3\u30BF\u3092\u4F7F\u3063\u3066\u95A2\u6570\u5185\u30672\u3064\u306E\u5909\u6570\u306E\u5024\u3092\u64CD\u4F5C\u3059\u308B\\main.c",
+              "RelativeDocumentMoniker": "main.c",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\\u30DD\u30A4\u30F3\u30BF\u3092\u4F7F\u3063\u3066\u95A2\u6570\u5185\u30672\u3064\u306E\u5909\u6570\u306E\u5024\u3092\u64CD\u4F5C\u3059\u308B\\main.c",
+              "RelativeToolTip": "main.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-06-09T05:22:04.429Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

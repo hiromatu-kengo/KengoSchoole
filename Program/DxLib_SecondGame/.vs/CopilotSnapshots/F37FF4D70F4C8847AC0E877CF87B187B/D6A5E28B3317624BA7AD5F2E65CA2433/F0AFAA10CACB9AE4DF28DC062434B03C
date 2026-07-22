@@ -1,0 +1,127 @@
+﻿#include "Enemy.h"
+#include"Dxlib.h"
+#include"Game.h"
+
+namespace
+{
+	//フェードにかかるフレーム数
+	constexpr int kFadeFrame = 30;
+	//のこぎりの位置
+	constexpr int kStartUpY = Game::kScreenHeight - 240;
+	constexpr int kStartDownY = Game::kScreenHeight - 120 + 32;
+	//のこぎりの速度
+	constexpr int kSpeed = 8.0f;
+	//のこぎりの回転速度
+	constexpr double kRotSpeed = 0.2;
+	//大きさ
+	constexpr int kWidth = 38;
+	constexpr int kHeight = 38;
+	//当たり判定
+	constexpr int kColRadius = 16.0f;
+	//上からのこぎりが登場する確率(%)
+	constexpr int kUpRate = 20;
+
+}
+
+Enemy::Enemy() :
+	m_graphHandle(-1),
+	m_fadeFrame(0),
+	m_angle(0.0),
+	m_appearCount(0)
+{
+}
+
+Enemy::~Enemy()
+{
+}
+
+void Enemy::Init()
+{
+	m_appearCount = 0;
+	//初期位置
+	Setup();
+
+	m_angle = 0.0;
+}
+
+void Enemy::End()
+{
+}
+
+void Enemy::Update()
+{
+	m_angle -= kRotSpeed;
+
+	m_pos.x += m_vec.x;
+	m_pos.y += m_vec.y;
+
+	//画面買いに出たのこぎりは左右どちらかから再登場する
+
+	//右に移動しているのこぎりが画面右端から出てきた
+	if ((m_vec.x > 0.0f)//右に移動している
+		&& (m_pos.x > Game::kScreenWidth + kWidth / 2))
+	{
+		Setup();
+	}
+	//左に移動しているのこぎりが画面左端から出てきた
+	if ((m_vec.x < 0.0f)//右に移動している
+		&& (m_pos.x < 0.0f - kWidth / 2))
+	{
+		Setup();
+	}
+}
+
+void Enemy::Draw()
+{
+	DrawRotaGraph(m_pos.x, m_pos.y, 1.0, m_angle, m_graphHandle, true);
+#ifdef _DEBUG
+	//当たり判定のデバック表示
+	DrawCircle(GetColCenter().x, GetColCenter().y, GetColRadius(), GetColor(255, 0, 0), false);
+#endif // 
+}
+
+Vec2 Enemy::GetColCenter() const
+{
+	return m_pos;
+}
+
+float Enemy::GetColRadius() const
+{
+	return kColRadius;
+}
+
+void Enemy::Setup()
+{
+	// 1 / 2の確率で右、もしくは左から出てくる
+
+		//0課1をランダムに生成して、
+		//0の場合は左から1の場合は右から登場
+	if (GetRand(1))
+	{
+		//GetRand()の結果が0でない場合こちらかが実行される
+		//右から
+		m_pos.x = Game::kScreenWidth + kWidth / 2;
+		m_vec.x = -kSpeed;		//左方向に移動する
+	}
+	else
+	{
+		//GetRand()の結果が0の場合はこちらが実行される
+		//左から
+		m_pos.x = 0 - kWidth / 2;
+		m_vec.x = +kSpeed;		//右方向に移動する
+	}
+	
+	//GetRand(99)で０～９９までのランダムな数を生成
+	//20%の確率で何かをしたい場合、0,1,2,3.....18,19のいずれかが出たら何かする
+	if (GetRand(99) < kUpRate)
+	{
+		m_pos.y = kStartUpY;
+	}
+	else
+	{
+		m_pos.y = kStartDownY;
+	}
+	m_vec.y = 0.0f;
+	//登場回数を増やす
+	m_appearCount++;
+}

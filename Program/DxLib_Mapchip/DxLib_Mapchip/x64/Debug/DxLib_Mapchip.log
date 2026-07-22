@@ -1,0 +1,6 @@
+﻿  Bg.cpp
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Mapchip\Bg.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Mapchip\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Bg.cpp' をコンパイルしています)
+  
+  DxLib_Mapchip.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\DxLib_Mapchip\x64\Debug\DxLib_Mapchip.exe

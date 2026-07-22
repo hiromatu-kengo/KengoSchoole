@@ -1,0 +1,11 @@
+﻿  main.cpp
+  player.cpp
+C:\Users\HiromatuKengo\Desktop\Program\DxLibでクラスを使う\player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\HiromatuKengo\Desktop\Program\DxLibでクラスを使う\player.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatuKengo\Desktop\Program\DxLibでクラスを使う\player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'player.cpp' をコンパイルしています)
+  
+  コードを生成中...
+  DxLibでクラスを使う.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\DxLibでクラスを使う\x64\Debug\DxLibでクラスを使う.exe

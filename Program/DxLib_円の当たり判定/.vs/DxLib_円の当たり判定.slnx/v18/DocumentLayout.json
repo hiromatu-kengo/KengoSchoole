@@ -1,0 +1,175 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|solutionrelative:SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|solutionrelative:Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\SceneMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|solutionrelative:SceneMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07291AFE-0FAF-412B-8050-67CA7CDF3A39}|DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A.vcxproj|solutionrelative:Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Enemy.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Enemy.cpp",
+              "RelativeDocumentMoniker": "Enemy.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Enemy.cpp",
+              "RelativeToolTip": "Enemy.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-01T02:48:00.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SceneMain.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\SceneMain.cpp",
+              "RelativeDocumentMoniker": "SceneMain.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\SceneMain.cpp",
+              "RelativeToolTip": "SceneMain.cpp",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAADAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-01T01:55:22.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Player.cpp",
+              "RelativeDocumentMoniker": "Player.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Player.cpp",
+              "RelativeToolTip": "Player.cpp",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAADwAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-01T01:39:17.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-01T01:37:06.788Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "2812bf11-6222-4081-8e1a-e470180f7d2a",
+        "Display": 0,
+        "X": 143,
+        "Y": 70,
+        "Width": 598,
+        "Height": 725,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Player.h",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Player.h",
+              "RelativeDocumentMoniker": "Player.h",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Player.h",
+              "RelativeToolTip": "Player.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-07-01T01:39:05.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Enemy.h",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Enemy.h",
+              "RelativeDocumentMoniker": "Enemy.h",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Enemy.h",
+              "RelativeToolTip": "Enemy.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-07-01T02:47:35.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Game.h",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Game.h",
+              "RelativeDocumentMoniker": "Game.h",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\Game.h",
+              "RelativeToolTip": "Game.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-07-01T01:58:32.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SceneMain.h",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\SceneMain.h",
+              "RelativeDocumentMoniker": "SceneMain.h",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\DxLib_\u5186\u306E\u5F53\u305F\u308A\u5224\u5B9A\\SceneMain.h",
+              "RelativeToolTip": "SceneMain.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-07-01T01:52:29.893Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

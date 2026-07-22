@@ -1,0 +1,33 @@
+﻿  SceneMain.cpp
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\SceneMain.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\SceneMain.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Shot.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Vec2.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+  Shot.cpp
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Shot.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Shot.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Shot.cpp' をコンパイルしています)
+  
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Vec2.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Shot.cpp' をコンパイルしています)
+  
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Shot.cpp(40,30): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Shot.cpp(40,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  main.cpp
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\SceneMain.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Shot.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\Vec2.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+  コードを生成中...
+  DxLib_Vec2便利に.vcxproj -> C:\Users\HiromatuKengo\Desktop\Program\DxLib_Vec2便利に\x64\Debug\DxLib_Vec2便利に.exe

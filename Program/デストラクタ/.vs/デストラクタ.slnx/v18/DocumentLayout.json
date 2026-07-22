@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\\u30C7\u30B9\u30C8\u30E9\u30AF\u30BF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{52EEF82A-AB30-4209-9CF0-9A007357C5F3}|\u30C7\u30B9\u30C8\u30E9\u30AF\u30BF.vcxproj|C:\\Users\\HiromatuKengo\\Desktop\\Program\\\u30C7\u30B9\u30C8\u30E9\u30AF\u30BF\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{52EEF82A-AB30-4209-9CF0-9A007357C5F3}|\u30C7\u30B9\u30C8\u30E9\u30AF\u30BF.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\\u30C7\u30B9\u30C8\u30E9\u30AF\u30BF\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\HiromatuKengo\\Desktop\\Program\\\u30C7\u30B9\u30C8\u30E9\u30AF\u30BF\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-06-18T02:42:50.554Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
