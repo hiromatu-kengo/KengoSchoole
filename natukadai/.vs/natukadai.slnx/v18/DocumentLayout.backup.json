@@ -1,25 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\PC_User\\source\\repos\\natukadai\\",
+  "WorkspaceRootPath": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\source\\repos\\Natukadai\\natukadai\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|solutionrelative:natukadai\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Boss.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|solutionrelative:natukadai\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Boss.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|solutionrelative:natukadai\\Boss.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Gauge.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Gauge.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|solutionrelative:natukadai\\Gauge.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|solutionrelative:natukadai\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{97846FA6-9795-4FB3-9922-C60C3314719F}|natukadai\\natukadai.vcxproj|solutionrelative:natukadai\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -30,28 +34,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "game.cpp",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\game.cpp",
+              "RelativeDocumentMoniker": "natukadai\\game.cpp",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\game.cpp*",
+              "RelativeToolTip": "natukadai\\game.cpp*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-30T08:16:39.351Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "game.h",
-              "DocumentMoniker": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\game.h",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\game.h",
               "RelativeDocumentMoniker": "natukadai\\game.h",
-              "ToolTip": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\game.h",
-              "RelativeToolTip": "natukadai\\game.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\game.h*",
+              "RelativeToolTip": "natukadai\\game.h*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-07-27T14:21:30.87Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Boss.h",
-              "DocumentMoniker": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Boss.h",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Boss.h",
               "RelativeDocumentMoniker": "natukadai\\Boss.h",
-              "ToolTip": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Boss.h",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Boss.h",
               "RelativeToolTip": "natukadai\\Boss.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -59,11 +76,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Gauge.h",
-              "DocumentMoniker": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Gauge.h",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Gauge.h",
               "RelativeDocumentMoniker": "natukadai\\Gauge.h",
-              "ToolTip": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Gauge.h",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Gauge.h",
               "RelativeToolTip": "natukadai\\Gauge.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -71,11 +88,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Player.h",
-              "DocumentMoniker": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Player.h",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Player.h",
               "RelativeDocumentMoniker": "natukadai\\Player.h",
-              "ToolTip": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\Player.h",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\Player.h",
               "RelativeToolTip": "natukadai\\Player.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -83,11 +100,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\main.cpp",
               "RelativeDocumentMoniker": "natukadai\\main.cpp",
-              "ToolTip": "C:\\Users\\PC_User\\source\\repos\\natukadai\\natukadai\\main.cpp",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\natukadai\\main.cpp",
               "RelativeToolTip": "natukadai\\main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
