@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="ZANSHIN.vcxproj" />
+  <Project Path="ZANSHIN.vcxproj" Id="44243026-f6d2-4ae8-ab7a-ed1b2e814fc0" />
 </Solution>

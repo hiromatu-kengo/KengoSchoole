@@ -34,6 +34,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//画面の書き換えを待つ
 		ScreenFlip();
 
+		//escキーを押したらゲームを強制終了
+		if (CheckHitKey(KEY_INPUT_ESCAPE))	break;
+
 		//画面のリフレッシュレートにかかわらず1/60経過するまで待つ
 		while (GetNowHiPerformanceCount() - start < 16667)
 		{
