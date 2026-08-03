@@ -1,7 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="natukadai/natukadai.vcxproj" Id="97846fa6-9795-4fb3-9922-c60c3314719f" />
-</Solution>
