@@ -7,6 +7,7 @@ public:
 	SceneMain();
 	~SceneMain();
 	void Init();
+	void End();
 	void Update();
 	void Draw();
 	void Release();
@@ -16,7 +17,7 @@ private:
 	int m_playerIdleHandle;
 
 
-	Player player_;
+	Player m_player;
 
 };
 
