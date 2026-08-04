@@ -12,9 +12,11 @@ SceneMain::~SceneMain()
 
 void SceneMain::Init()
 {//シーン内で使用するリソースのロード
-	m_playerIdleHandle = LoadGraph("image/player/IDLE.png");
+	m_playerIdleHandle = LoadGraph("image/player/idle.png");
 
 	m_player.SetIdleGraph(m_playerIdleHandle);
+	// プレイヤーの初期配置を設定
+	m_player.Init();
 }
 
 void SceneMain::End()

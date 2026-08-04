@@ -14,5 +14,10 @@ public:
 private:
 	//使用するグラフィックハンドル
 	int m_idleGraph;
+	// 画面上の位置とスプライトサイズ
+	int m_x;
+	int m_y;
+	int m_width;
+	int m_height;
 };
 
