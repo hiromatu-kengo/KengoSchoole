@@ -1,6 +1,15 @@
-﻿  SceneMain.cpp
+﻿  Player.cpp
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+  SceneMain.cpp
 C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
 C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
   
+  main.cpp
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+  コードを生成中...
   ZANSHIN.vcxproj -> C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\x64\Debug\ZANSHIN.exe

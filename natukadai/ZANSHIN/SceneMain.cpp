@@ -1,5 +1,6 @@
 #include "SceneMain.h"
 #include"DxLib.h"
+#include <Windows.h>
 
 SceneMain::SceneMain():
 	m_playerIdleHandle(-1)
@@ -11,22 +12,49 @@ SceneMain::~SceneMain()
 }
 
 void SceneMain::Init()
-{//シーン内で使用するリソースのロード
-	m_playerIdleHandle = LoadGraph("image/player/idle.png");
+{
+	//シーン内で使用するリソースのロード
+	// LoadDivGraph の戻り値はエラーコードではなく、配列にハンドルが格納されるので
+	// 戻り値を使わず配列の中身をチェックする
+	LoadDivGraph("image/player/idle.png", 10, 10, 1, 96, 96, m_playerGHandle);
 
-	m_player.SetIdleGraph(m_playerIdleHandle);
+	// 読み込んだ配列を Player に渡す（内部配列へコピー）
+	m_player.SetIdleGraphs(m_playerGHandle, 10);
 	// プレイヤーの初期配置を設定
 	m_player.Init();
+
+	// 画像読み込みチェック（デバッグ用）
+	bool anyInvalid = false;
+	for (int i = 0; i < 10; ++i)
+	{
+		if (m_playerGHandle[i] < 0)
+		{
+			anyInvalid = true;
+			break;
+		}
+	}
+	if (anyInvalid)
+	{
+		MessageBoxA(nullptr, "LoadDivGraph failed or some frames missing. Check path/size.", "Error", MB_OK);
+	}
 }
 
 void SceneMain::End()
 {
 	//シーンで使用したリソースをメモリから削除
-	DeleteGraph(m_playerIdleHandle);
+	for (int i = 0; i < 10; ++i)
+	{
+		if (m_playerGHandle[i] >= 0)
+		{
+			DeleteGraph(m_playerGHandle[i]);
+		}
+	}
 }
 
 void SceneMain::Update()
 {
+	// プレイヤー更新
+	m_player.Update();
 }
 
 void SceneMain::Draw()

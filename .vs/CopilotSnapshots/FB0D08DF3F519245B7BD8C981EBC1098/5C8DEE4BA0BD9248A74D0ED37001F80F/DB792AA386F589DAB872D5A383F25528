@@ -1,0 +1,41 @@
+﻿#include "SceneMain.h"
+#include"DxLib.h"
+
+SceneMain::SceneMain():
+	m_playerIdleHandle(-1)
+{
+}
+
+SceneMain::~SceneMain()
+{
+}
+
+void SceneMain::Init()
+{
+	//シーン内で使用するリソースのロード
+	m_playerIdleHandle = LoadDivGraph("image/player/idle.png", 10, 1, 10, 96, 96,m_playerGHandle);
+
+	m_player.SetIdleGraph(m_playerIdleHandle);
+	// プレイヤーの初期配置を設定
+	m_player.Init();
+}
+
+void SceneMain::End()
+{
+	//シーンで使用したリソースをメモリから削除
+	DeleteGraph(m_playerIdleHandle);
+}
+
+void SceneMain::Update()
+{
+}
+
+void SceneMain::Draw()
+{
+	m_player.Draw();
+
+}
+
+void SceneMain::Release()
+{
+}

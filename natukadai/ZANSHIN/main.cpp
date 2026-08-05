@@ -1,5 +1,6 @@
 ﻿#include "DxLib.h"
-#include"Game.h"
+#include "Game.h"
+#include "SceneMain.h"
 
 
 // プログラムは WinMain から始まります
@@ -20,7 +21,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	}
 
 	SetDrawScreen(DX_SCREEN_BACK);
-	
+
+	// シーン初期化
+	SceneMain scene;
+	scene.Init();
+
 	while (ProcessMessage() == 0)
 	{
 		//現在のフレーム開始時刻を取得
@@ -29,8 +34,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//画面をクリア
 		ClearDrawScreen();
 		
-		//ゲームの処理
-		
+		// ゲームの処理
+		scene.Update();
+
+		// 描画
+		scene.Draw();
+
 		//画面の書き換えを待つ
 		ScreenFlip();
 

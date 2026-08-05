@@ -11,7 +11,15 @@ public:
 
 	//使用するグラフィックハンドルの設定
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
+	// SceneMain の配列を Player 内部にコピーする
+	void SetIdleGraphs(const int* handles, int count);
 private:
+	//使用するグラフィックハンドル
+	int m_playerGHandle[10];
+	// 配列の有効要素数
+	int m_graphCount = 0;
+	//表示する番号
+	int m_frameIndex = 0;
 	//使用するグラフィックハンドル
 	int m_idleGraph;
 	// 画面上の位置とスプライトサイズ
@@ -19,5 +27,8 @@ private:
 	int m_y;
 	int m_width;
 	int m_height;
+	// アニメ用タイマー
+	int m_lastFrameTime = 0; // GetNowCount の ms
+	int m_frameInterval = 100; // フレーム切替間隔(ms)
 };
 

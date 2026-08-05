@@ -1,0 +1,102 @@
+﻿#include "Player.h"
+#include "DxLib.h"
+#include "Game.h"
+#include <cstring>
+
+namespace
+{
+    // Left half center offsets
+    constexpr int kScreenX = Game::kScreenWidth / 4;
+    constexpr int kScreenY = Game::kScreenHeight / 2;
+}
+
+Player::Player() :
+    m_frameIndex(0),
+    m_idleGraph(-1),
+    m_graphCount(0),
+    m_x(0),
+    m_y(0),
+    m_width(0),
+    m_height(0),
+    m_lastFrameTime(0),
+    m_frameInterval(100)
+{
+    // initialize handles array to -1
+    for (int i = 0; i < 10; ++i) m_playerGHandle[i] = -1;
+}
+
+Player::~Player()
+{
+}
+
+void Player::SetIdleGraphs(const int* handles, int count)
+{
+    int n = count;
+    if (n > 10) n = 10;
+    for (int i = 0; i < n; ++i)
+    {
+        m_playerGHandle[i] = handles[i];
+    }
+    // mark remaining as invalid
+    for (int i = n; i < 10; ++i) m_playerGHandle[i] = -1;
+    m_graphCount = n;
+    if (m_graphCount > 0 && m_idleGraph < 0)
+    {
+        m_idleGraph = m_playerGHandle[0];
+    }
+}
+
+void Player::Init()
+{
+    // If frames array exists use its first frame for size, otherwise use single handle
+    if (m_graphCount > 0 && m_playerGHandle[0] >= 0)
+    {
+        GetGraphSize(m_playerGHandle[0], &m_width, &m_height);
+    }
+    else if (m_idleGraph >= 0)
+    {
+        GetGraphSize(m_idleGraph, &m_width, &m_height);
+    }
+    else
+    {
+        m_width = 0;
+        m_height = 0;
+    }
+
+    // center on left half
+    m_x = (kScreenX) - (m_width / 2);
+    m_y = (kScreenY) - (m_height / 2);
+
+    // initialize animation timer
+    m_lastFrameTime = GetNowCount();
+}
+
+void Player::Update()
+{
+    // advance frame based on time
+    if (m_graphCount > 0)
+    {
+        int now = GetNowCount();
+        if (now - m_lastFrameTime >= m_frameInterval)
+        {
+            m_frameIndex = (m_frameIndex + 1) % m_graphCount;
+            m_lastFrameTime = now;
+        }
+    }
+}
+
+void Player::Draw()
+{
+    if (m_graphCount > 0 && m_playerGHandle[m_frameIndex % m_graphCount] >= 0)
+    {
+        DrawGraph(m_x, m_y, m_playerGHandle[m_frameIndex % m_graphCount], TRUE);
+    }
+    else if (m_idleGraph >= 0)
+    {
+        DrawGraph(m_x, m_y, m_idleGraph, TRUE);
+    }
+}
+
+void Player::Release()
+{
+}

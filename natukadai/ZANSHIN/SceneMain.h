@@ -15,6 +15,7 @@ public:
 private:
 	//シーンで使用するリソースハンドル
 	int m_playerIdleHandle;
+	int m_playerGHandle[10];
 
 
 	Player m_player;
