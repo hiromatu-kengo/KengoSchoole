@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "SceneMain.cpp",
               "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.cpp",
               "RelativeToolTip": "SceneMain.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-08-03T02:25:58.661Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-08-03T02:15:56.074Z",
               "EditorCaption": ""
@@ -58,7 +58,7 @@
               "RelativeDocumentMoniker": "Player.cpp",
               "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-08-03T02:31:43.919Z",
               "EditorCaption": ""

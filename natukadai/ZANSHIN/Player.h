@@ -30,5 +30,6 @@ private:
 	// アニメ用タイマー
 	int m_lastFrameTime = 0; // GetNowCount の ms
 	int m_frameInterval = 100; // フレーム切替間隔(ms)
+	int m_jumpPower = 20; // ジャンプの強さ
 };
 

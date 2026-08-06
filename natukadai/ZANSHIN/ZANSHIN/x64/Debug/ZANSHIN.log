@@ -1,4 +1,5 @@
 ﻿  Player.cpp
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
 C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Player.cpp' をコンパイルしています)
   

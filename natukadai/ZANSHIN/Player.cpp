@@ -8,6 +8,9 @@ namespace
     // Left half center offsets
     constexpr int kScreenX = Game::kScreenWidth / 4;
     constexpr int kScreenY = Game::kScreenHeight / 2;
+	constexpr int kMoveSpeed = 5; // 移動速度
+	constexpr int kMaxFrames = 10; // 最大フレーム数
+	constexpr int kGravity = 2; // 重力加速度
 }
 
 Player::Player() :
@@ -32,13 +35,13 @@ Player::~Player()
 void Player::SetIdleGraphs(const int* handles, int count)
 {
     int n = count;
-    if (n > 10) n = 10;
+    if (n > kMaxFrames) n = kMaxFrames;
     for (int i = 0; i < n; ++i)
     {
         m_playerGHandle[i] = handles[i];
     }
     // mark remaining as invalid
-    for (int i = n; i < 10; ++i) m_playerGHandle[i] = -1;
+    for (int i = n; i < kMaxFrames; ++i) m_playerGHandle[i] = -1;
     m_graphCount = n;
     if (m_graphCount > 0 && m_idleGraph < 0)
     {
@@ -81,6 +84,32 @@ void Player::Update()
         {
             m_frameIndex = (m_frameIndex + 1) % m_graphCount;
             m_lastFrameTime = now;
+        }
+    }
+	if (CheckHitKey(KEY_INPUT_D))
+	{
+		m_x += kMoveSpeed; // 右移動
+	}
+	if (CheckHitKey(KEY_INPUT_A))
+	{
+		m_x -= kMoveSpeed; // 左移動
+	}
+
+    if(CheckHitKey(KEY_INPUT_SPACE))
+    {
+        while (1)
+        {
+			m_jumpPower = 20; // ジャンプ力を設定
+			m_y -= m_jumpPower; // ジャンプ
+			if (m_y <= (kScreenY)-(m_height / 2))
+			{
+				m_y = (kScreenY)-(m_height / 2); // ジャンプの上限を設定
+				m_jumpPower = 0; // ジャンプ力を減少させる
+			}
+            else
+            {
+				m_y += kGravity; // 重力で落下
+            }
         }
     }
 }
