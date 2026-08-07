@@ -1,0 +1,36 @@
+﻿#pragma once
+class Player
+{
+public:
+	Player();
+	~Player();
+	void Init();
+	void Update();
+	void Draw();
+	void Release();
+
+	//使用するグラフィックハンドルの設定
+	void SetIdleGraph(int handle) { m_idleGraph = handle; }
+private:
+	//使用するグラフィックハンドル
+	int m_playerGHandle[10];
+
+	int m_animFrame;
+	bool m_isFlip; // 左右反転フラグ
+
+	// 配列の有効要素数
+	int m_graphCount = 0;
+	//表示する番号
+	int m_frameIndex = 0;
+	//使用するグラフィックハンドル
+	int m_idleGraph;
+	// 画面上の位置とスプライトサイズ
+	int m_x;
+	int m_y;
+	int m_width;
+	int m_height;
+	// ジャンプ/物理
+	int m_vy = 0; // 垂直速度（px/frame）
+	bool m_isOnGround = true;
+};
+

@@ -5,31 +5,36 @@ public:
 	Player();
 	~Player();
 	void Init();
+	void End();
 	void Update();
 	void Draw();
 	void Release();
 
 	//使用するグラフィックハンドルの設定
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
-	// SceneMain の配列を Player 内部にコピーする
-	void SetIdleGraphs(const int* handles, int count);
+	void SetRunGraph(int handle) { m_runGraph = handle; }
 private:
 	//使用するグラフィックハンドル
 	int m_playerGHandle[10];
+
+	int m_animFrame;
+	bool m_isFlip; // 左右反転フラグ
+
 	// 配列の有効要素数
 	int m_graphCount = 0;
 	//表示する番号
 	int m_frameIndex = 0;
 	//使用するグラフィックハンドル
 	int m_idleGraph;
+	int m_runGraph;
 	// 画面上の位置とスプライトサイズ
 	int m_x;
 	int m_y;
 	int m_width;
 	int m_height;
-	// アニメ用タイマー
-	int m_lastFrameTime = 0; // GetNowCount の ms
-	int m_frameInterval = 100; // フレーム切替間隔(ms)
-	int m_jumpPower = 20; // ジャンプの強さ
+	// ジャンプ/物理
+	int m_vy = 0; // 垂直速度（px/frame）
+	bool m_isOnGround = true;
+	bool m_isMoving = false; // 移動中かどうかのフラグ
 };
 

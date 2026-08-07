@@ -1,0 +1,106 @@
+﻿#include "Player.h"
+#include "DxLib.h"
+#include "Game.h"
+#include <cstring>
+
+namespace
+{
+	constexpr int kWidth = 64;	//1コマの幅
+	constexpr int kHeight = 64;	//1コマの高さ
+    //アニメーションの関連の定義
+    constexpr int kIdleAnimNum = 11;	//待機アニメーションのコマ数
+
+    constexpr int kSingleAnimFrame = 4;	//アニメ1コマに書けるフレーム数
+
+    //アニメーション1ループにかかるフレーム数
+    constexpr int kIdleAnimTotalFrame = kIdleAnimNum * kSingleAnimFrame;
+
+	constexpr int kMoveSpeed = 5; // 移動速度
+	constexpr int kMaxFrames = 10; // 最大フレーム数
+	constexpr int kGravity = 2; // 重力加速度
+	constexpr int kJumpPower = 20; // ジャンプ初速
+	constexpr int kGroundY = Game::kScreenHeight / 2; // 地面のY座標（仮定）
+    constexpr float kStartX = 200;
+    constexpr float kStartY = Game::kScreenHeight / 2 - kHeight / 2;
+}
+
+Player::Player() :
+    m_frameIndex(0),
+    m_animFrame(0),
+    m_idleGraph(-1),
+    m_graphCount(0),
+    m_x(0),
+    m_y(0),
+    m_width(0),
+    m_height(0),
+    m_isFlip(false)
+{
+    // initialize handles array to -1
+    for (int i = 0; i < 10; ++i) m_playerGHandle[i] = -1;
+}
+
+Player::~Player()
+{
+}
+
+void Player::Init()
+{
+    m_x = kStartX;
+    m_y = kStartY;
+
+    m_animFrame = 0;
+}
+
+void Player::Update()
+{
+    //アニメーションを進める
+    m_animFrame++;
+	if (CheckHitKey(KEY_INPUT_D))
+	{
+		m_x += kMoveSpeed; // 右移動
+		m_isFlip = false; // 右向き
+	}
+	if (CheckHitKey(KEY_INPUT_A))
+	{
+		m_x -= kMoveSpeed; // 左移動
+		m_isFlip = true; // 左向き 
+	}
+
+    // ジャンプ開始（地面にいるときスペースでジャンプ）
+    if (CheckHitKey(KEY_INPUT_SPACE))
+    {
+        if (m_isOnGround)
+        {
+            m_vy = -kJumpPower; // 初速（上方向に負）
+            m_isOnGround = false;
+        }
+    }
+
+    // 重力と垂直移動の適用
+    if (!m_isOnGround)
+    {
+        m_vy += kGravity; // 下向きに加速
+        m_y += m_vy;
+        int groundY = kGroundY;
+        if (m_y >= groundY)
+        {
+            m_y = groundY;
+            m_vy = 0;
+            m_isOnGround = true;
+        }
+    }
+}
+
+void Player::Draw()
+{
+    //現在のフレーム数から表示したいコマ番号を計算で求める
+    int animNo = (m_animFrame % kIdleAnimTotalFrame) / kSingleAnimFrame;
+    DrawRectGraph(m_x, m_y,
+        animNo * kWidth, 0, kWidth, kHeight,
+        m_idleGraph, true,
+        m_isFlip);	//左右反転フラグ
+}
+
+void Player::Release()
+{
+}
