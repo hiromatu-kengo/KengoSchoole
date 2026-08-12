@@ -13,7 +13,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetGraphMode(Game::kScreenWidth, Game::kScreenHeight, Game::kScreenDepth);
 
 	//ウインドウのタイトル表示の変更
-	SetMainWindowText("DxLibTemlate");
+SetMainWindowText("ZANSHIN");
 
 	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
 	{
@@ -22,9 +22,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	SetDrawScreen(DX_SCREEN_BACK);
 
+	// 現在のシーンを示す変数を定義
+	SceneType currentScene = SceneType::Main;//最初はテスト用にMainシーンから開始する
+
 	// シーン初期化
-	SceneMain scene;
-	scene.Init();
+	SceneMain sceneMain;
+	sceneMain.Init();//必要に応じて呼び出す
+
+	// ゲームの処理
 
 	while (ProcessMessage() == 0)
 	{
@@ -33,12 +38,28 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		//画面をクリア
 		ClearDrawScreen();
-		
-		// ゲームの処理
-		scene.Update();
 
-		// 描画
-		scene.Draw();
+
+		switch (currentScene)
+		{
+		case SceneType::Title:
+			// sceneTitle.Update();
+			// sceneTitle.Draw();
+			break;
+
+		case SceneType::Main:
+			sceneMain.Update();
+			// 描画
+			sceneMain.Draw();
+			break;
+
+		case SceneType::Result:
+			// sceneResult.Update();
+			// sceneResult.Draw();
+			break;
+		}
+
+		currentScene = sceneMain.Update(); // 返り値でシーンを更新
 
 		//画面の書き換えを待つ
 		ScreenFlip();

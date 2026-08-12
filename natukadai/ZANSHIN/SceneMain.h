@@ -8,7 +8,7 @@ public:
 	~SceneMain();
 	void Init();
 	void End();
-	void Update();
+	SceneType Update();
 	void Draw();
 	void Release();
 

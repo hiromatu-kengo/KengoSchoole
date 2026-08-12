@@ -44,10 +44,16 @@ void SceneMain::End()
 	DeleteGraph(m_playerRunHandle);
 }
 
-void SceneMain::Update()
+SceneType SceneMain::Update()
 {
 	// プレイヤー更新
 	m_player.Update();
+	
+	if (CheckHitKey(KEY_INPUT_R))// Rキーでリザルトシーンに遷移(仮)
+	{
+		return SceneType::Result;
+	}
+	return SceneType::Main;//通常時は自分のシーンを維持
 }
 
 void SceneMain::Draw()

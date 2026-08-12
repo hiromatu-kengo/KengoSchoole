@@ -6,3 +6,10 @@ namespace Game
 	constexpr int kScreenHeight = 1080;
 	constexpr int kScreenDepth = 32;
 }
+
+enum class SceneType
+{
+	Title,
+	Main,
+	Result
+};
