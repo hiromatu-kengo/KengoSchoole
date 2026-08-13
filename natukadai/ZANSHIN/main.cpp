@@ -1,6 +1,8 @@
 ﻿#include "DxLib.h"
 #include "Game.h"
+#include "SceneTitle.h"
 #include "SceneMain.h"
+#include "SceneResult.h"
 
 
 // プログラムは WinMain から始まります
@@ -22,12 +24,16 @@ SetMainWindowText("ZANSHIN");
 
 	SetDrawScreen(DX_SCREEN_BACK);
 
-	// 現在のシーンを示す変数を定義
-	SceneType currentScene = SceneType::Main;//最初はテスト用にMainシーンから開始する
+	SceneTitle sceneTitle;
+	SceneMain sceneMain;
+	SceneResult sceneResult;
+
+	// 現在のシーン・ひとつ前のシーンを示す変数を定義
+	SceneType currentScene = SceneType::Title;
+	SceneType nextScene = SceneType::Title;
 
 	// シーン初期化
-	SceneMain sceneMain;
-	sceneMain.Init();//必要に応じて呼び出す
+	sceneTitle.Init();
 
 	// ゲームの処理
 
@@ -43,23 +49,33 @@ SetMainWindowText("ZANSHIN");
 		switch (currentScene)
 		{
 		case SceneType::Title:
-			// sceneTitle.Update();
-			// sceneTitle.Draw();
+			nextScene = sceneTitle.Update();
+			sceneTitle.Draw();
 			break;
 
 		case SceneType::Main:
-			sceneMain.Update();
-			// 描画
+			nextScene = sceneMain.Update();
 			sceneMain.Draw();
 			break;
 
 		case SceneType::Result:
-			// sceneResult.Update();
-			// sceneResult.Draw();
+			nextScene = sceneResult.Update();
+			sceneResult.Draw();
 			break;
 		}
 
-		currentScene = sceneMain.Update(); // 返り値でシーンを更新
+		if (nextScene != currentScene)
+		{
+			//シーンの終了処理
+			if (currentScene == SceneType::Main)sceneMain.End();
+
+			//シーンの初期化
+			currentScene = nextScene;
+
+			if (currentScene == SceneType::Title) sceneTitle.Init();
+			if (currentScene == SceneType::Main) sceneMain.Init();		
+			if (currentScene == SceneType::Result) sceneResult.Init();
+		}
 
 		//画面の書き換えを待つ
 		ScreenFlip();

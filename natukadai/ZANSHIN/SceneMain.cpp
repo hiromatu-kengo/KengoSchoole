@@ -14,6 +14,7 @@ namespace
 SceneMain::SceneMain():
 	m_playerIdleHandle(-1),
 	m_playerRunHandle(-1),
+	m_playerAttackHandle(-1),
 	m_player()
 {
 }
@@ -28,10 +29,12 @@ void SceneMain::Init()
 	// 戻り値を使わず配列の中身をチェックする
 	m_playerIdleHandle = LoadGraph("image/player/idle.png");
 	m_playerRunHandle = LoadGraph("image/player/run.png");
+	m_playerAttackHandle = LoadGraph("image/player/ATTACK 1.png");
 
 	// 読み込んだ配列を Player に渡す（内部配列へコピー）
 	m_player.SetIdleGraph(m_playerIdleHandle);
 	m_player.SetRunGraph(m_playerRunHandle);
+	m_player.SetAttackGraph(m_playerAttackHandle);
 	// プレイヤーの初期配置を設定
 	m_player.Init();
 
@@ -42,6 +45,7 @@ void SceneMain::End()
 {
 	DeleteGraph(m_playerIdleHandle);
 	DeleteGraph(m_playerRunHandle);
+	DeleteGraph(m_playerAttackHandle);
 }
 
 SceneType SceneMain::Update()
@@ -49,7 +53,7 @@ SceneType SceneMain::Update()
 	// プレイヤー更新
 	m_player.Update();
 	
-	if (CheckHitKey(KEY_INPUT_R))// Rキーでリザルトシーンに遷移(仮)
+	if (CheckHitKey(KEY_INPUT_X))// Xキーでリザルトシーンに遷移(仮)
 	{
 		return SceneType::Result;
 	}

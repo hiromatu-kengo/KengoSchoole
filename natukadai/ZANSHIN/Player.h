@@ -1,4 +1,12 @@
 #pragma once
+
+enum class PlayerState
+{
+	Normal, // 通常
+	Parry,	// パリィ
+	Guard,	// ガード
+	Attack	// 攻撃
+};
 class Player
 {
 public:
@@ -13,6 +21,7 @@ public:
 	//使用するグラフィックハンドルの設定
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
 	void SetRunGraph(int handle) { m_runGraph = handle; }
+	void SetAttackGraph(int handle) { m_attackGraph = handle; }
 private:
 	//使用するグラフィックハンドル
 	int m_playerGHandle[10];
@@ -27,6 +36,7 @@ private:
 	//使用するグラフィックハンドル
 	int m_idleGraph;
 	int m_runGraph;
+	int m_attackGraph;
 	// 画面上の位置とスプライトサイズ
 	int m_x;
 	int m_y;
@@ -36,5 +46,11 @@ private:
 	int m_vy = 0; // 垂直速度（px/frame）
 	bool m_isOnGround = true;
 	bool m_isMoving = false; // 移動中かどうかのフラグ
+
+	int m_rightClickFrame;	// 右クリックのフレーム数
+	int m_attackFrame;		// 攻撃のフレーム数
+	
+
+	PlayerState m_state;// プレイヤーの状態
 };
 

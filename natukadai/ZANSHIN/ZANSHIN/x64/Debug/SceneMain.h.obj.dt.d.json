@@ -4,6 +4,7 @@
         "Source": "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\scenemain.h",
         "ProvidedModule": "",
         "Includes": [
+            "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\game.h",
             "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\player.h"
         ],
         "ImportedModules": [],

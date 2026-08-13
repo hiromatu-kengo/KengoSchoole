@@ -1,4 +1,5 @@
 #pragma once
+#include "Game.h"
 #include "Player.h"
 
 class SceneMain
@@ -16,6 +17,7 @@ private:
 	//シーンで使用するリソースハンドル
 	int m_playerIdleHandle;
 	int m_playerRunHandle;
+	int m_playerAttackHandle;
 
 
 	Player m_player;

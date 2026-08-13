@@ -5,41 +5,49 @@
 
 namespace
 {
-	constexpr int kWidth = 96;	                                        //1コマの幅
-	constexpr int kHeight = 96;                         	            //1コマの高さ
-    //アニメーションの関連の定義
-    constexpr int kIdleAnimNum = 10;	                                //待機アニメーションのコマ数
+	constexpr int kWidth = 96;	                                            //1コマの幅
+	constexpr int kHeight = 96;                         	                //1コマの高さ
+	//アニメーションの関連の定義
+	constexpr int kIdleAnimNum = 10;	                                    //待機アニメーションのコマ数
 	constexpr int kRunAnimNum = 16;	                                        //走るアニメーションのコマ数
+	constexpr int kAttackAnimNum = 7;	                                    //攻撃アニメーションのコマ数
 
-    constexpr int kSingleAnimFrame = 4;	                                //アニメ1コマに書けるフレーム数
+	constexpr int kSingleAnimFrame = 4;	                                    //アニメ1コマに書けるフレーム数
 
-    //アニメーション1ループにかかるフレーム数
-	constexpr int kIdleAnimTotalFrame = kIdleAnimNum * kSingleAnimFrame;//待機アニメーションの1ループにかかるフレーム数
-	constexpr int kRunAnimTotalFrame = kRunAnimNum * kSingleAnimFrame;  //走るアニメーションの1ループにかかるフレーム数
-	constexpr int kMoveSpeed = 10;                                       // 移動速度
-	constexpr int kMaxFrames = 10;                                      // 最大フレーム数
-	constexpr int kGravity = 2;                                         // 重力加速度
-	constexpr int kJumpPower = 40;                                      // ジャンプ初速
-	constexpr int kGroundY = Game::kScreenHeight / 2 - kHeight / 2;     // 地面のY座標（仮定）
-	constexpr float kStartX = 200;                                      // プレイヤーの初期X座標
-	constexpr float kStartY = Game::kScreenHeight / 2 - kHeight / 2;    // プレイヤーの初期Y座標
+	//アニメーション1ループにかかるフレーム数
+	constexpr int kIdleAnimTotalFrame = kIdleAnimNum * kSingleAnimFrame;    //待機アニメーションの1ループにかかるフレーム数
+	constexpr int kRunAnimTotalFrame = kRunAnimNum * kSingleAnimFrame;      //走るアニメーションの1ループにかかるフレーム数
+	constexpr int kAttackAnimTotalFrame = kAttackAnimNum * kSingleAnimFrame; //攻撃アニメーションの1ループにかかるフレーム数
+
+	constexpr int kMoveSpeed = 10;                                          // 移動速度
+	constexpr int kMaxFrames = 10;                                          // 最大フレーム数
+	constexpr int kGravity = 2;                                             // 重力加速度
+	constexpr int kJumpPower = 40;                                          // ジャンプ初速
+	constexpr int kGroundY = Game::kScreenHeight / 2 - kHeight / 2;         // 地面のY座標（仮定）
+	constexpr float kStartX = 200;                                          // プレイヤーの初期X座標
+	constexpr float kStartY = Game::kScreenHeight / 2 - kHeight / 2;        // プレイヤーの初期Y座標
+	constexpr int kParryMaxFrame = 10;                                      // パリィ状態の最大フレーム数
 }
 
 Player::Player() :
-    m_frameIndex(0),
-    m_animFrame(0),
-    m_idleGraph(-1),
+	m_frameIndex(0),
+	m_animFrame(0),
+	m_idleGraph(-1),
 	m_runGraph(-1),
-    m_graphCount(0),
-    m_x(0),
-    m_y(0),
-    m_width(0),
-    m_height(0),
-    m_isFlip(false),
-    m_isMoving(false)
+	m_attackGraph(-1),
+	m_graphCount(0),
+	m_x(0),
+	m_y(0),
+	m_width(0),
+	m_height(0),
+	m_rightClickFrame(0),
+	m_attackFrame(0),
+	m_isFlip(false),
+	m_isMoving(false),
+	m_state(PlayerState::Normal)
 {
-    // initialize handles array to -1
-    for (int i = 0; i < 10; ++i) m_playerGHandle[i] = -1;
+	// initialize handles array to -1
+	for (int i = 0; i < 10; ++i) m_playerGHandle[i] = -1;
 }
 
 Player::~Player()
@@ -48,79 +56,159 @@ Player::~Player()
 
 void Player::Init()
 {
-    m_x = kStartX;
-    m_y = kStartY;
+	m_x = kStartX;
+	m_y = kStartY;
+	m_animFrame = 0;
 
-    m_animFrame = 0;
+	//シーン切り替えなどにリセット
+	m_rightClickFrame = 0;  // 右クリックフレーム数をリセット
+	m_attackFrame = 0;      // 攻撃フレーム数をリセット
+	m_state = PlayerState::Normal;
 }
 
 void Player::End()
 {
 	DeleteGraph(m_idleGraph);
-    DeleteGraph(m_runGraph);
+	DeleteGraph(m_runGraph);
+	DeleteGraph(m_attackGraph);
 }
 
 void Player::Update()
 {
-    //アニメーションを進める
-    m_animFrame++;
-	m_isMoving = false; // 移動中フラグをリセット
-	if (CheckHitKey(KEY_INPUT_D))
+	//アニメーションを進める
+	m_animFrame++;
+
+	// 攻撃状態の処理
+	if (m_state == PlayerState::Attack)
 	{
-		m_x += kMoveSpeed; // 右移動
-		m_isFlip = false; // 右向き
-		m_isMoving = true; // 移動中フラグをセット
+		m_attackFrame++; // 攻撃中は攻撃フレームをカウント
+
+		if (m_attackFrame >= kAttackAnimTotalFrame)
+		{
+			m_state = PlayerState::Normal;
+			m_attackFrame = 0;
+		}
 	}
-	if (CheckHitKey(KEY_INPUT_A))
+	else// パリィ・ガード・通常状態の処理
 	{
-		m_x -= kMoveSpeed; // 左移動
-		m_isFlip = true; // 左向き 
-		m_isMoving = true; // 移動中フラグをセット
+		if (GetMouseInput() & MOUSE_INPUT_LEFT)
+		{
+			m_state = PlayerState::Attack; // 攻撃中に左クリックが押された場合、攻撃状態を維持
+			m_attackFrame = 0;          // 攻撃中に左クリックが押された場合、攻撃フレームをリセット
+		}
+		else
+		{
+			if (GetMouseInput() & MOUSE_INPUT_RIGHT)
+			{
+				m_rightClickFrame++;                // 右クリックが押されている場合、フレーム数をカウント
+			}
+			else
+			{
+				m_rightClickFrame = 0;              // 右クリックが離された場合、フレーム数をリセット
+			}
+
+			if (m_rightClickFrame > 0 && m_rightClickFrame <= kParryMaxFrame)
+			{
+				m_state = PlayerState::Parry;       // パリィ状態に遷移
+
+			}
+			else if (m_rightClickFrame > kParryMaxFrame)
+			{
+				m_state = PlayerState::Guard;       // ガード状態に遷移
+			}
+			else
+			{
+				m_state = PlayerState::Normal;      // 通常状態に戻す
+			}
+		}
 	}
 
-    // ジャンプ開始（地面にいるときスペースでジャンプ）
-    if (CheckHitKey(KEY_INPUT_SPACE))
-    {
-        if (m_isOnGround)
-        {
-            m_vy = -kJumpPower; // 初速（上方向に負）
-            m_isOnGround = false;
-        }
-    }
+	m_isMoving = false;                     // 移動中フラグをリセット
 
-    // 重力と垂直移動の適用
-    if (!m_isOnGround)
-    {
-        m_vy += kGravity; // 下向きに加速
-        m_y += m_vy;
-        int groundY = kGroundY;
-        if (m_y >= groundY)
-        {
-            m_y = groundY;
-            m_vy = 0;
-            m_isOnGround = true;
-        }
-    }
+	// 左右移動の処理（通常状態のみ）
+	if (m_state == PlayerState::Normal)
+	{
+		if (CheckHitKey(KEY_INPUT_D))
+		{
+			m_x += kMoveSpeed;                  // 右移動
+			m_isFlip = false;                   // 右向き
+			m_isMoving = true;                  // 移動中フラグをセット
+		}
+		if (CheckHitKey(KEY_INPUT_A))
+		{
+			m_x -= kMoveSpeed;                  // 左移動
+			m_isFlip = true;                    // 左向き 
+			m_isMoving = true;                  // 移動中フラグをセット
+		}
+		// ジャンプ開始（地面にいるときスペースでジャンプ）
+		if (CheckHitKey(KEY_INPUT_SPACE) && m_isOnGround)
+		{
+			m_vy = -kJumpPower;             // 初速（上方向に負）
+			m_isOnGround = false;
+		}
+	}
+
+	// 重力と垂直移動の適用
+	if (!m_isOnGround)
+	{
+		m_vy += kGravity;                   // 下向きに加速
+		m_y += m_vy;                        // 垂直位置を更新
+		int groundY = kGroundY;             // 地面のY座標を定義
+		if (m_y >= groundY)                 // 地面に到達した場合
+		{
+			m_y = groundY;                  // 地面の位置に修正
+			m_vy = 0;                       // 垂直速度をリセット
+			m_isOnGround = true;            // 地面にいる状態に戻す
+		}
+	}
 }
 
 void Player::Draw()
 {
-    //移動中かどうかでアニメーションを変更する
-    int tempTotalFrame = kIdleAnimTotalFrame;
-    int tempHanndle = m_idleGraph;
-    if (m_isMoving)
-    {
-        tempTotalFrame = kRunAnimTotalFrame;
-        tempHanndle = m_runGraph;
-    }
-    //現在のフレーム数から表示したいコマ番号を計算で求める
-    int animNo = (m_animFrame % tempTotalFrame) / kSingleAnimFrame;
+
+	if (m_state == PlayerState::Parry)
+	{
+		DrawString((int)m_x, (int)m_y - 20, "Parry", GetColor(255, 255, 0));
+	}
+	else if (m_state == PlayerState::Guard)
+	{
+		DrawString((int)m_x, (int)m_y - 20, "Guard", GetColor(255, 0, 0));
+	}
+	else if (m_state == PlayerState::Attack)
+	{
+		DrawString((int)m_x, (int)m_y - 20, "Attack", GetColor(0, 255, 0));
+	}
+	else
+	{
+		DrawString((int)m_x, (int)m_y - 20, "Idle", GetColor(255, 255, 255));
+	}
+
+	//移動中かどうかでアニメーションを変更する
+	int tempTotalFrame = kIdleAnimTotalFrame;
+	int tempHanndle = m_idleGraph;
+	int currentFrame = m_animFrame;//現在のフレーム数を取得
+
+	// 攻撃中は攻撃アニメーションを優先して表示する
+	if (m_state == PlayerState::Attack)
+	{
+		tempTotalFrame = kAttackAnimTotalFrame;
+		tempHanndle = m_attackGraph;
+		currentFrame = m_attackFrame; // 攻撃中は攻撃フレームを使用
+	}
+	else if (m_isMoving)// 移動中の場合は走るアニメーションを使用
+	{
+		tempTotalFrame = kRunAnimTotalFrame;
+		tempHanndle = m_runGraph;
+	}
+
+	//現在のフレーム数から表示したいコマ番号を計算で求める
+	int animNo = (currentFrame % tempTotalFrame) / kSingleAnimFrame;
 	DrawRectRotaGraph(m_x, m_y,                 //描画位置
 		animNo * kWidth, 0,                     //描画元の矩形の左上座標
 		kWidth, kHeight,                        //描画元の矩形の幅と高さ
 		double(4.0), 0.0,                       //拡大率と回転角度
 		tempHanndle, true,                      //描画するグラフィックハンドル
-        m_isFlip);	                            //左右反転フラグ
+		m_isFlip);	                            //左右反転フラグ
 }
 
 void Player::Release()
