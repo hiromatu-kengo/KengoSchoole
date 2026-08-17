@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "DxLib.h"
 #include "Game.h"
-#include <cstring>
+#include "cstring"
 
 namespace
 {

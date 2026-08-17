@@ -1,6 +1,7 @@
 #pragma once
 #include "Game.h"
 #include "Player.h"
+#include "Enemy.h"
 
 class SceneMain
 {
@@ -19,8 +20,13 @@ private:
 	int m_playerRunHandle;
 	int m_playerAttackHandle;
 
+	int m_enemyIdleHandle;
+	int m_enemyRunHandle;
+	int m_enemyAttackHandle;
+
 
 	Player m_player;
+	Enemy m_enemy;
 
 };
 

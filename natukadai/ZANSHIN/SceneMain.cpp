@@ -1,6 +1,6 @@
 #include "SceneMain.h"
 #include"DxLib.h"
-#include <Windows.h>
+#include "Windows.h"
 #include "Game.h"
 
 namespace
@@ -11,11 +11,15 @@ namespace
 	constexpr int kPlayerFrameCount = 10;
 }
 
-SceneMain::SceneMain():
+SceneMain::SceneMain() :
 	m_playerIdleHandle(-1),
 	m_playerRunHandle(-1),
 	m_playerAttackHandle(-1),
-	m_player()
+	m_enemyIdleHandle(-1),
+	m_enemyRunHandle(-1),
+	m_enemyAttackHandle(-1),
+	m_player(),
+	m_enemy()
 {
 }
 
@@ -31,12 +35,22 @@ void SceneMain::Init()
 	m_playerRunHandle = LoadGraph("image/player/run.png");
 	m_playerAttackHandle = LoadGraph("image/player/ATTACK 1.png");
 
+	m_enemyIdleHandle = LoadGraph("image/enemy/Idle.png");
+	m_enemyRunHandle = LoadGraph("image/enemy/Walk.png");
+	m_enemyAttackHandle = LoadGraph("image/enemy/Atk.png");
+
 	// 読み込んだ配列を Player に渡す（内部配列へコピー）
 	m_player.SetIdleGraph(m_playerIdleHandle);
 	m_player.SetRunGraph(m_playerRunHandle);
 	m_player.SetAttackGraph(m_playerAttackHandle);
-	// プレイヤーの初期配置を設定
+
+	m_enemy.SetIdleGraph(m_enemyIdleHandle);
+	m_enemy.SetRunGraph(m_enemyRunHandle);
+	m_enemy.SetAttackGraph(m_enemyAttackHandle);
+
+	// 初期配置を設定
 	m_player.Init();
+	m_enemy.Init();
 
 	// 画像読み込みチェック（デバッグ用）
 }
@@ -46,13 +60,18 @@ void SceneMain::End()
 	DeleteGraph(m_playerIdleHandle);
 	DeleteGraph(m_playerRunHandle);
 	DeleteGraph(m_playerAttackHandle);
+
+	DeleteGraph(m_enemyIdleHandle);
+	DeleteGraph(m_enemyRunHandle);
+	DeleteGraph(m_enemyAttackHandle);
 }
 
 SceneType SceneMain::Update()
 {
 	// プレイヤー更新
 	m_player.Update();
-	
+	m_enemy.Update();
+
 	if (CheckHitKey(KEY_INPUT_X))// Xキーでリザルトシーンに遷移(仮)
 	{
 		return SceneType::Result;
@@ -63,6 +82,7 @@ SceneType SceneMain::Update()
 void SceneMain::Draw()
 {
 	m_player.Draw();
+	m_enemy.Draw();
 
 }
 
