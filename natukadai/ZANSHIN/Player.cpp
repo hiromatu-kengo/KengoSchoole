@@ -44,7 +44,8 @@ Player::Player() :
 	m_attackFrame(0),
 	m_isFlip(false),
 	m_isMoving(false),
-	m_state(PlayerState::Normal)
+	m_state(PlayerState::Normal),
+	m_attackHitbox{ 0, 0, 0, 0, false }
 {
 	// initialize handles array to -1
 	for (int i = 0; i < 10; ++i) m_playerGHandle[i] = -1;
@@ -77,11 +78,31 @@ void Player::Update()
 {
 	//アニメーションを進める
 	m_animFrame++;
+	m_attackHitbox.isActive = false; // 攻撃判定をデフォルトで無効にする
 
 	// 攻撃状態の処理
 	if (m_state == PlayerState::Attack)
 	{
 		m_attackFrame++; // 攻撃中は攻撃フレームをカウント
+
+		if (m_attackFrame >= 0 && m_attackFrame < kAttackAnimTotalFrame)
+		{
+			// 攻撃判定を有効にする
+			m_attackHitbox.isActive = true;
+			m_attackHitbox.x = m_isFlip ? m_x - 50 : m_x + 50; // 左右反転に応じて攻撃判定の位置を調整
+			m_attackHitbox.y = m_y;
+			m_attackHitbox.width = 50.0f; // 攻撃判定の幅
+			m_attackHitbox.height = 50.0f; // 攻撃判定の高さ
+
+			if (m_isFlip)
+			{
+				m_attackHitbox.x -= m_attackHitbox.width; // 左向きの場合、攻撃判定のX座標を左にずらす
+			}
+			else
+			{
+				m_attackHitbox.x += m_attackHitbox.width; // 右向きの場合、攻撃判定のX座標を右にずらす
+			}
+		}
 
 		if (m_attackFrame >= kAttackAnimTotalFrame)
 		{

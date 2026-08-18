@@ -22,6 +22,8 @@ public:
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
 	void SetRunGraph(int handle) { m_runGraph = handle; }
 	void SetAttackGraph(int handle) { m_attackGraph = handle; }
+
+	AttackHitbox GetAttackHitbox()const { return m_attackHitbox;}
 private:
 	//使用するグラフィックハンドル
 	int m_playerGHandle[10];
@@ -49,6 +51,8 @@ private:
 
 	int m_rightClickFrame;	// 右クリックのフレーム数
 	int m_attackFrame;		// 攻撃のフレーム数
+
+	AttackHitbox m_attackHitbox; // 攻撃判定用のヒットボックス
 	
 
 	PlayerState m_state;// プレイヤーの状態

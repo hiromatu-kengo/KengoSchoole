@@ -5,4 +5,54 @@ C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.h(
   
 C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(55,8): warning C4244: '=': 'const float' から 'int' への変換です。データが失われる可能性があります。
 C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(56,8): warning C4244: '=': 'const float' から 'int' への変換です。データが失われる可能性があります。
-  ZANSHIN.vcxproj -> C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\x64\Debug\ZANSHIN.exe
+  Player.cpp
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(26,15): error C3646: 'GetAttackHitbox': 不明なオーバーライド指定子です
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(26,30): error C2059: 構文エラー: '('
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(26,38): error C2334: '{' の前に予期しないトークンがありました。関数の本体は無視されます
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(55,15): error C3646: 'm_attackHitbox': 不明なオーバーライド指定子です
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(55,2): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(48,2): error C2614: 'Player': イニシャライズ リスト内のクラス 'm_attackHitbox' が基底クラスでもメンバーでもありません。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(60,8): warning C4244: '=': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(61,8): warning C4244: '=': 'const float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(81,2): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(91,4): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(92,4): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(93,4): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(94,4): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(95,4): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(99,5): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(99,25): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(103,5): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(103,25): error C2065: 'm_attackHitbox': 定義されていない識別子です。
+  SceneMain.cpp
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+  SceneResult.cpp
+  SceneTitle.cpp
+  main.cpp
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+  コードを生成中...
