@@ -1,16 +1,17 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\hiromatsukengo\\documents\\github\\kengoschoole\\natukadai\\zanshin\\scenemain.cpp",
+        "Source": "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\scenemain.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\users\\hiromatsukengo\\documents\\github\\kengoschoole\\natukadai\\zanshin\\scenemain.h",
-            "c:\\users\\hiromatsukengo\\documents\\github\\kengoschoole\\natukadai\\zanshin\\game.h",
-            "c:\\users\\hiromatsukengo\\documents\\github\\kengoschoole\\natukadai\\zanshin\\player.h",
-            "c:\\users\\hiromatsukengo\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxlib.h",
-            "c:\\users\\hiromatsukengo\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxcompileconfig.h",
-            "c:\\users\\hiromatsukengo\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxdatatype.h",
-            "c:\\users\\hiromatsukengo\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxcompileconfig.h",
+            "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\scenemain.h",
+            "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\game.h",
+            "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\player.h",
+            "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\enemy.h",
+            "c:\\users\\pc_user\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxlib.h",
+            "c:\\users\\pc_user\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxcompileconfig.h",
+            "c:\\users\\pc_user\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxdatatype.h",
+            "c:\\users\\pc_user\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxcompileconfig.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\stdio.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime.h",
@@ -19,8 +20,8 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vadefs.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt_wstdio.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt_stdio_config.h",
-            "c:\\users\\hiromatsukengo\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxdatatypewin.h",
-            "c:\\users\\hiromatsukengo\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxcompileconfig.h",
+            "c:\\users\\pc_user\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxdatatypewin.h",
+            "c:\\users\\pc_user\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxcompileconfig.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\windows.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winapifamily.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winpackagefamily.h",
@@ -262,7 +263,7 @@
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\pshpack1.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\poppack.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\dpa_dsa.h",
-            "c:\\users\\hiromatsukengo\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxfunctionwin.h"
+            "c:\\users\\pc_user\\downloads\\dxlib_vc3_24f\\dxlib_vc\\プロジェクトに追加すべきファイル_vc用\\dxfunctionwin.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

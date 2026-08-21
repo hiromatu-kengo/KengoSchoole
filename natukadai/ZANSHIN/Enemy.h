@@ -1,4 +1,6 @@
 #pragma once
+#include"DxLib.h"
+#include"Game.h"
 
 class Enemy
 {
@@ -9,6 +11,12 @@ public:
 	void End();
 	void Update();
 	void Draw();
+
+	//被ダメージ処理
+	void OnDamage(int damage);
+
+	//敵の被弾判定を取得する
+	EnemyHitbox GetHitbox() const { return m_hitbox; }
 
 	//使用するグラフィックハンドルの設定
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
@@ -37,4 +45,9 @@ private:
 	int m_vy = 0; // 垂直速度（px/frame）
 	bool m_isOnGround = true;
 	bool m_isMoving = false; // 移動中かどうかのフラグ
+
+	//ステータスとヒットボックス
+	int m_hp;
+	bool m_isDead;
+	EnemyHitbox m_hitbox;
 };

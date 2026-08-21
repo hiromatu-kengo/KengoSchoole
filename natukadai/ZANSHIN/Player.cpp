@@ -230,6 +230,17 @@ void Player::Draw()
 		double(4.0), 0.0,                       //拡大率と回転角度
 		tempHanndle, true,                      //描画するグラフィックハンドル
 		m_isFlip);	                            //左右反転フラグ
+
+	if (m_attackHitbox.isActive)
+	{
+		// 攻撃判定のヒットボックスを描画（デバッグ用）
+		int left = (int)(m_attackHitbox.x - m_attackHitbox.width / 2);
+		int top = (int)(m_attackHitbox.y - m_attackHitbox.height / 2);
+		int right = (int)(m_attackHitbox.x + m_attackHitbox.width / 2);
+		int bottom = (int)(m_attackHitbox.y + m_attackHitbox.height / 2);
+		// DrawBox関数を使用してヒットボックスを描画
+		DrawBox(left, top, right, bottom, GetColor(255, 0, 0), true);
+	}
 }
 
 void Player::Release()

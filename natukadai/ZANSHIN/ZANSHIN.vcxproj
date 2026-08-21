@@ -70,6 +70,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>C:\Users\PC_User\Downloads\DxLib_VC3_24f\DxLib_VC\プロジェクトに追加すべきファイル_VC用</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>C:\Users\PC_User\Downloads\DxLib_VC3_24f\DxLib_VC\プロジェクトに追加すべきファイル_VC用</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>C:\Users\PC_User\Downloads\DxLib_VC3_24f\DxLib_VC\プロジェクトに追加すべきファイル_VC用</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>C:\Users\PC_User\Downloads\DxLib_VC3_24f\DxLib_VC\プロジェクトに追加すべきファイル_VC用</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -117,7 +129,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\HiromatsuKengo\Downloads\DxLib_VC3_24f\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\PC_User\Downloads\DxLib_VC3_24f\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -138,7 +150,7 @@
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\HiromatsuKengo\Downloads\DxLib_VC3_24f\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\PC_User\Downloads\DxLib_VC3_24f\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

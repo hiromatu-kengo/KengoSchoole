@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "DxLib.h"
 #include "Game.h"
+#include <cmath>
 
 namespace
 {
@@ -85,7 +86,6 @@ void Enemy::Update()
 			m_isOnGround = true;            // 地面にいる状態に戻す
 		}
 	}
-
 }
 
 void Enemy::Draw()
