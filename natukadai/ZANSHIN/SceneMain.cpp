@@ -72,6 +72,11 @@ SceneType SceneMain::Update()
 	m_player.Update();
 	m_enemy.Update();
 
+	if (IsOverlap(m_player.GetAttackHitbox(), m_enemy.GetHitbox()))
+	{
+		m_enemy.OnDamage(10);//１回あたりで１０ダメージ
+	}
+
 	if (CheckHitKey(KEY_INPUT_X))// Xキーでリザルトシーンに遷移(仮)
 	{
 		return SceneType::Result;

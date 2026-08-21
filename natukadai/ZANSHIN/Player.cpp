@@ -89,19 +89,25 @@ void Player::Update()
 		{
 			// 攻撃判定を有効にする
 			m_attackHitbox.isActive = true;
-			m_attackHitbox.x = m_isFlip ? m_x - 50 : m_x + 50; // 左右反転に応じて攻撃判定の位置を調整
-			m_attackHitbox.y = m_y;
-			m_attackHitbox.width = 50.0f; // 攻撃判定の幅
-			m_attackHitbox.height = 50.0f; // 攻撃判定の高さ
-
+			// 攻撃判定のサイズ
+			float atkW = 50.0f;
+			float atkH = 30.0f;
+			// 表示サイズから垂直オフセット（中心より下）を計算。m_height が未設定の場合は推定値を使う
+			float displayHeight = (m_height > 0) ? static_cast<float>(m_height) : static_cast<float>(kHeight * 4);
+			float displayWidth = (m_width > 0) ? static_cast<float>(m_width) : static_cast<float>(kWidth * 4);
+			float verticalOffset = displayHeight * 0.25f; // 中心より下寄せ
+			float horizontalOffset = displayWidth * 0.4; // 前方に配置
 			if (m_isFlip)
 			{
-				m_attackHitbox.x -= m_attackHitbox.width; // 左向きの場合、攻撃判定のX座標を左にずらす
+				m_attackHitbox.x = static_cast<int>(m_x - horizontalOffset);
 			}
 			else
 			{
-				m_attackHitbox.x += m_attackHitbox.width; // 右向きの場合、攻撃判定のX座標を右にずらす
+				m_attackHitbox.x = static_cast<int>(m_x + horizontalOffset);
 			}
+			m_attackHitbox.y = static_cast<int>(m_y + verticalOffset);
+			m_attackHitbox.width = atkW;
+			m_attackHitbox.height = atkH;
 		}
 
 		if (m_attackFrame >= kAttackAnimTotalFrame)

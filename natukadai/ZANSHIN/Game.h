@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <cmath>
 namespace Game
 {
 	//画面情報
@@ -33,10 +34,10 @@ enum class SceneType
 	Main,
 	Result
 };
-bool IsOverlap(const AttackHitbox& a, const EnemyHitbox& b)
+inline bool IsOverlap(const AttackHitbox& a, const EnemyHitbox& b)
 {
-	if (!a.isActive)return false; // 攻撃判定がOFFなら不成立
+	if (!a.isActive) return false; // 攻撃判定がOFFなら不成立
 
-	return(abs(a.x - b.x) < (a.width + b.width) / 2) &&
-		(abs(a.y - b.y) < (a.height + b.height) / 2);
+	return (std::abs(a.x - b.x) < (a.width + b.width) / 2) &&
+		(std::abs(a.y - b.y) < (a.height + b.height) / 2);
 }

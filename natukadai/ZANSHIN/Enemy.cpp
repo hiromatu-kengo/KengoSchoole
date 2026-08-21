@@ -19,6 +19,7 @@ namespace
 	constexpr int kRunAnimTotalFrame = kRunAnimNum * kSingleAnimFrame;      //走るアニメーションの1ループにかかるフレーム数
 	constexpr int kAttackAnimTotalFrame = kAttackAnimNum * kSingleAnimFrame; //攻撃アニメーションの1ループにかかるフレーム数
 
+	constexpr int kScale = 3;
 	constexpr int kMoveSpeed = 10;                                          // 移動速度
 	constexpr int kMaxFrames = 10;                                          // 最大フレーム数
 	constexpr int kGravity = 2;                                             // 重力加速度
@@ -43,8 +44,10 @@ Enemy::Enemy():
 	m_height(0),
 	m_vy(0),
 	m_isOnGround(true),
-	m_isMoving(false)
+	m_isMoving(false),
+	m_hp(100)
 {
+	m_hitbox = { 0,0,0,0,false };
 }
 
 Enemy::~Enemy()
@@ -55,8 +58,16 @@ void Enemy::Init()
 {
 	m_x = kStartX;
 	m_y = kStartY;
-	m_width = kWidth;
-	m_height = kHeight;
+	// 表示サイズはスプライト1コマのサイズにスケールを掛けた値
+	m_width = kWidth * kScale;
+	m_height = kHeight * kScale;
+	m_hp = 100;
+	m_isDead = false;
+
+	//ヒットボックスの初期化（敵の表示サイズに合わせる）
+	m_hitbox.width = 80.0f;
+	m_hitbox.height = 120.0f;
+	m_hitbox.isActive = true;
 }
 
 void Enemy::End()
@@ -68,9 +79,10 @@ void Enemy::End()
 
 void Enemy::Update()
 {
+	if (m_isDead)return;
+
 	//アニメーションを進める
 	m_animFrame++;
-
 	m_isMoving = false; // 移動中かどうかのフラグをリセット
 
 	// 重力と垂直移動の適用
@@ -86,10 +98,29 @@ void Enemy::Update()
 			m_isOnGround = true;            // 地面にいる状態に戻す
 		}
 	}
+
+	//毎フレーム敵の位置に合わせてヒットボックスの位置を更新
+	m_hitbox.x = m_x;
+	m_hitbox.y = m_y -10.0f;
+}
+
+void Enemy::OnDamage(int damage)
+{
+	if (m_isDead)return;
+
+	m_hp -= damage;
+	if (m_hp <= 0)
+	{
+		m_hp = 0;
+		m_isDead = true;
+		m_hitbox.isActive = false; // 死亡時は判定を消す
+	}
 }
 
 void Enemy::Draw()
 {
+	if (m_isDead)return;//死亡時は描画しない
+
 	//移動中かどうかでアニメーションを変更する
 	int tempTotalFrame = kIdleAnimTotalFrame;
 	int tempHanndle = m_idleGraph;
@@ -100,7 +131,18 @@ void Enemy::Draw()
 	DrawRectRotaGraph(m_x, m_y,                 //描画位置
 		animNo * kWidth, 0,                     //描画元の矩形の左上座標
 		kWidth, kHeight,                        //描画元の矩形の幅と高さ
-		double(3.0), 0.0,                       //拡大率と回転角度
+		double(kScale), 0.0,                    //拡大率と回転角度
 		tempHanndle, true,                      //描画するグラフィックハンドル
 		m_isFlip);	                            //左右反転フラグ
+
+	//デバッグ描画：敵の暗い判定を赤枠で表示
+	if (m_hitbox.isActive)
+	{
+		int left = (int)(m_hitbox.x - m_hitbox.width / 2);
+		int top = (int)(m_hitbox.y - m_hitbox.height / 2);
+		int right = (int)(m_hitbox.x + m_hitbox.width / 2);
+		int bottom = (int)(m_hitbox.y + m_hitbox.height / 2);
+
+		DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE);
+	}
 }
