@@ -91,12 +91,14 @@ void Player::Update()
 			m_attackHitbox.isActive = true;
 			// 攻撃判定のサイズ
 			float atkW = 50.0f;
-			float atkH = 30.0f;
+			float atkH = 60.0f;
 			// 表示サイズから垂直オフセット（中心より下）を計算。m_height が未設定の場合は推定値を使う
 			float displayHeight = (m_height > 0) ? static_cast<float>(m_height) : static_cast<float>(kHeight * 4);
 			float displayWidth = (m_width > 0) ? static_cast<float>(m_width) : static_cast<float>(kWidth * 4);
+			//攻撃の判定の位置を変えたいなら↓の数値を変える
 			float verticalOffset = displayHeight * 0.25f; // 中心より下寄せ
 			float horizontalOffset = displayWidth * 0.4; // 前方に配置
+
 			if (m_isFlip)
 			{
 				m_attackHitbox.x = static_cast<int>(m_x - horizontalOffset);
