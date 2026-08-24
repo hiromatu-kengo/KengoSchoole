@@ -7,11 +7,12 @@ namespace
 {
 	constexpr int kWidth = 128;	                                            //1コマの幅
 	constexpr int kHeight = 128;                         	                //1コマの高さ
+	constexpr int kScale = 3;
+
 	//アニメーションの関連の定義
 	constexpr int kIdleAnimNum = 6;	                                    //待機アニメーションのコマ数
 	constexpr int kRunAnimNum = 8;	                                        //走るアニメーションのコマ数
 	constexpr int kAttackAnimNum = 24;	                                    //攻撃アニメーションのコマ数
-
 	constexpr int kSingleAnimFrame = 4;	                                    //アニメ1コマに書けるフレーム数
 
 	//アニメーション1ループにかかるフレーム数
@@ -19,8 +20,7 @@ namespace
 	constexpr int kRunAnimTotalFrame = kRunAnimNum * kSingleAnimFrame;      //走るアニメーションの1ループにかかるフレーム数
 	constexpr int kAttackAnimTotalFrame = kAttackAnimNum * kSingleAnimFrame; //攻撃アニメーションの1ループにかかるフレーム数
 
-	constexpr int kScale = 3;
-	constexpr int kMoveSpeed = 10;                                          // 移動速度
+	constexpr int kMoveSpeed = 4;                                          // 移動速度
 	constexpr int kMaxFrames = 10;                                          // 最大フレーム数
 	constexpr int kGravity = 2;                                             // 重力加速度
 	constexpr int kJumpPower = 40;                                          // ジャンプ初速
@@ -28,6 +28,13 @@ namespace
 	constexpr float kStartX = 1000;                                         // 敵の初期X座標
 	constexpr float kStartY = Game::kScreenHeight / 2 + kHeight / 2 - 30;		// 敵の初期Y座標
 	constexpr int kParryMaxFrame = 10;                                      // パリィ状態の最大フレーム数
+
+	//AI設定値
+	constexpr float kAttackRange = 150.0f;									//攻撃に移る距離
+	constexpr int kAttackWaitTime = 60;										//攻撃後の隙
+	constexpr int kMaxPostureValue = 100;									//最大体幹値
+
+
 }
 
 Enemy::Enemy():
@@ -45,9 +52,18 @@ Enemy::Enemy():
 	m_vy(0),
 	m_isOnGround(true),
 	m_isMoving(false),
-	m_hp(100)
+	m_hp(100),
+	m_posture(0),
+	m_maxPosture(kMaxPostureValue),
+	m_stock(2),
+	m_isDead(false),
+	m_state(EnemyState::Idle),
+	m_stateFrame(0),
+	m_comboCount(0),
+	m_maxCombo(1)
 {
 	m_hitbox = { 0,0,0,0,false };
+	m_attackHitbox = { 0,0,0,0,false };
 }
 
 Enemy::~Enemy()
@@ -64,6 +80,9 @@ void Enemy::Init()
 	m_hp = 100;
 	m_isDead = false;
 
+	m_state = EnemyState::Idle;
+	m_stateFrame = 0;
+
 	//ヒットボックスの初期化（敵の表示サイズに合わせる）
 	m_hitbox.width = 80.0f;
 	m_hitbox.height = 120.0f;
@@ -77,12 +96,13 @@ void Enemy::End()
 	DeleteGraph(m_attackGraph);
 }
 
-void Enemy::Update()
+void Enemy::Update(float playerX,float playerY,bool isPlayerAttacking)
 {
 	if (m_isDead)return;
 
 	//アニメーションを進める
 	m_animFrame++;
+	m_stateFrame++;
 	m_isMoving = false; // 移動中かどうかのフラグをリセット
 
 	// 重力と垂直移動の適用
@@ -104,7 +124,7 @@ void Enemy::Update()
 	m_hitbox.y = m_y -10.0f;
 }
 
-void Enemy::OnDamage(int damage)
+void Enemy::OnDamage(int damage,int postureDamage)
 {
 	if (m_isDead)return;
 
