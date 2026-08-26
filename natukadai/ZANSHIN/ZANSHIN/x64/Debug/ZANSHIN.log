@@ -1,11 +1,26 @@
-﻿  Player.cpp
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Player.cpp' をコンパイルしています)
+﻿  Enemy.cpp
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
   
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(60,8): warning C4244: '=': 'const float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(61,8): warning C4244: '=': 'const float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(99,27): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(109,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(110,28): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
+  
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(28,30): warning C4244: 'return': 'const int' から 'float' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
+  
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(29,30): warning C4244: 'return': 'const int' から 'float' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
+  
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(87,19): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(88,20): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(151,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(152,28): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(154,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(155,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(213,10): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(220,15): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(221,19): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(307,25): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(307,20): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   ZANSHIN.vcxproj -> C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\x64\Debug\ZANSHIN.exe

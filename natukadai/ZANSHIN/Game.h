@@ -8,24 +8,13 @@ namespace Game
 	constexpr int kScreenDepth = 32;
 }
 
-//攻撃用判定
-struct AttackHitbox
+struct Hitbox
 {
 	int x;			// X座標
 	int y;			// Y座標
 	int width;		// 幅
 	int height;		// 高さ
 	bool isActive;	// 有効かどうか
-};
-
-struct EnemyHitbox
-{
-	int x;			// X座標
-	int y;			// Y座標
-	int width;		// 幅
-	int height;		// 高さ
-	bool isActive;	// 有効かどうか
-	
 };
 
 enum class SceneType
@@ -34,10 +23,11 @@ enum class SceneType
 	Main,
 	Result
 };
-inline bool IsOverlap(const AttackHitbox& a, const EnemyHitbox& b)
+// Hitbox 型同士の判定関数
+inline bool IsOverlap(const Hitbox& a, const Hitbox& b)
 {
-	if (!a.isActive) return false; // 攻撃判定がOFFなら不成立
+	if (!a.isActive || !b.isActive) return false;
 
-	return (std::abs(a.x - b.x) < (a.width + b.width) / 2) &&
-		(std::abs(a.y - b.y) < (a.height + b.height) / 2);
+	return (std::abs(a.x - b.x) < (a.width + b.width) / 2.0f) &&
+		(std::abs(a.y - b.y) < (a.height + b.height) / 2.0f);
 }

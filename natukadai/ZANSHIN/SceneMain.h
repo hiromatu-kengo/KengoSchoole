@@ -28,5 +28,7 @@ private:
 	Player m_player;
 	Enemy m_enemy;
 
+	//1回の振りで1度だけヒットさせるためのフラグ
+	bool m_playerHasHit;
 };
 

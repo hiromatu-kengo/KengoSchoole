@@ -8,6 +8,7 @@ enum class PlayerState
 	Guard,	// ガード
 	Attack	// 攻撃
 };
+
 class Player
 {
 public:
@@ -24,7 +25,16 @@ public:
 	void SetRunGraph(int handle) { m_runGraph = handle; }
 	void SetAttackGraph(int handle) { m_attackGraph = handle; }
 
-	AttackHitbox GetAttackHitbox()const { return m_attackHitbox;}
+	float GetX() const { return m_x; }
+	float GetY() const { return m_y; }
+	PlayerState GetState() const { return m_state; }
+	Hitbox GetAttackHitbox() const { return m_attackHitbox; }
+	// プレイヤーが攻撃中かどうかを返す
+	bool IsAttacking() const { return m_state == PlayerState::Attack; }
+
+	// パリィ中・ガード中の判定も必要に応じて追加できます
+	bool IsParrying() const { return m_state == PlayerState::Parry; }
+	bool IsGuarding() const { return m_state == PlayerState::Guard; }
 private:
 	//使用するグラフィックハンドル
 	int m_playerGHandle[10];
@@ -53,9 +63,8 @@ private:
 	int m_rightClickFrame;	// 右クリックのフレーム数
 	int m_attackFrame;		// 攻撃のフレーム数
 
-	AttackHitbox m_attackHitbox; // 攻撃判定用のヒットボックス
+	Hitbox m_attackHitbox; // 攻撃判定用のヒットボックス
 	
-
 	PlayerState m_state;// プレイヤーの状態
 };
 

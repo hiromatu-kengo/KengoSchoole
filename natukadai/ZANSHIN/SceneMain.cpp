@@ -19,7 +19,8 @@ SceneMain::SceneMain() :
 	m_enemyRunHandle(-1),
 	m_enemyAttackHandle(-1),
 	m_player(),
-	m_enemy()
+	m_enemy(),
+	m_playerHasHit(false)
 {
 }
 
@@ -51,6 +52,7 @@ void SceneMain::Init()
 	// 初期配置を設定
 	m_player.Init();
 	m_enemy.Init();
+	m_playerHasHit = false;
 
 	// 画像読み込みチェック（デバッグ用）
 }
@@ -70,13 +72,20 @@ SceneType SceneMain::Update()
 {
 	// プレイヤー更新
 	m_player.Update();
-	m_enemy.Update();
+	m_enemy.Update(m_player.GetX(),m_player.GetY(),m_player.IsAttacking());
 
-	if (IsOverlap(m_player.GetAttackHitbox(), m_enemy.GetHitbox()))
+	// 攻撃中でなければヒット済みフラグを解除
+	if (!m_player.IsAttacking())
 	{
-		m_enemy.OnDamage(10);//１回あたりで１０ダメージ
+		m_playerHasHit = false;
 	}
 
+	// ヒット判定（1回の攻撃で1回のみダメージ処理）
+	if (!m_playerHasHit && IsOverlap(m_player.GetAttackHitbox(), m_enemy.GetHitbox()))
+	{
+		m_enemy.OnDamage(10, 20); // HPダメージ:10, 体幹ダメージ:20
+		m_playerHasHit = true;
+	}
 	if (CheckHitKey(KEY_INPUT_X))// Xキーでリザルトシーンに遷移(仮)
 	{
 		return SceneType::Result;

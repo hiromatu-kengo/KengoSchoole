@@ -1,13 +1,14 @@
 #pragma once
 #include"DxLib.h"
 #include"Game.h"
+#include"Player.h"
 
 enum class EnemyState
 {
 	Idle,		//待機
 	Run,		//移動
 	Attack,		//攻撃中
-	Guard,		//攻撃後の隙（硬直）
+	AttackWait,		//攻撃後の隙（硬直）
 	Guard,		//ガード中
 	Stun,		//タイ燗崩れ
 	Dead		//死亡
@@ -28,8 +29,8 @@ public:
 	void OnParried();
 
 	//敵の被弾判定を取得する
-	EnemyHitbox GetHitbox() const { return m_hitbox; }
-	AttackHitbox GetAttackHitbox() const { return m_attackHitbox; }
+	Hitbox GetHitbox() const { return m_hitbox; }
+	Hitbox GetAttackHitbox() const { return m_attackHitbox; }
 
 	//使用するグラフィックハンドルの設定
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
@@ -49,7 +50,7 @@ private:
 	int m_width;
 	int m_height;
 	float m_vy;
-	bool m_isOnGround;
+	bool m_isOnGround = true;
 
 	//ステータス・パラメータ
 	int m_hp;		// HP
@@ -69,12 +70,9 @@ private:
 	//表示する番号
 	int m_frameIndex = 0;
 
-	// ジャンプ/物理
-	int m_vy = 0; // 垂直速度（px/frame）
-	bool m_isOnGround = true;
 	bool m_isMoving = false; // 移動中かどうかのフラグ
 
 	//当たり判定
-	EnemyHitbox m_hitbox;			//被弾判定
-	AttackHitbox m_attackHitbox;	//攻撃判定
+	Hitbox m_hitbox;			//被弾判定
+	Hitbox m_attackHitbox;	//攻撃判定
 };
