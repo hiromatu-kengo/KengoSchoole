@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Bg.h"
 
 class SceneMain
 {
@@ -24,7 +25,12 @@ private:
 	int m_enemyRunHandle;
 	int m_enemyAttackHandle;
 
+	int m_bgHandle1;
+	int m_bgHandle2;
+	int m_bgHandle3;
+	int m_bgHandle4;
 
+	
 	Player m_player;
 	Enemy m_enemy;
 

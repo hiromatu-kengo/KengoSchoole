@@ -24,9 +24,9 @@ namespace
 	constexpr int kMaxFrames = 10;                                          // 最大フレーム数
 	constexpr int kGravity = 2;                                             // 重力加速度
 	constexpr int kJumpPower = 40;                                          // ジャンプ初速
-	constexpr int kGroundY = Game::kScreenHeight / 2 + kHeight / 2 - 30;		    // 地面のY座標（仮定）
+	constexpr int kGroundY = Game::kScreenHeight / 2 + kHeight;				// 地面のY座標（仮定）
 	constexpr float kStartX = 1000;                                         // 敵の初期X座標
-	constexpr float kStartY = Game::kScreenHeight / 2 + kHeight / 2 - 30;		// 敵の初期Y座標
+	constexpr float kStartY = Game::kScreenHeight / 2 + kHeight;			// 敵の初期Y座標
 	constexpr int kParryMaxFrame = 10;                                      // パリィ状態の最大フレーム数
 
 	//AI設定値
