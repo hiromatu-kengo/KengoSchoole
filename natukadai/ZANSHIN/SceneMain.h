@@ -29,7 +29,9 @@ private:
 	int m_bgHandle2;
 	int m_bgHandle3;
 	int m_bgHandle4;
-
+	int m_earthHandle;
+	int m_toriiHandle;
+	int m_bambooHandle;
 	
 	Player m_player;
 	Enemy m_enemy;

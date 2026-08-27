@@ -3,8 +3,8 @@
 namespace Game
 {
 	//画面情報
-	constexpr int kScreenWidth = 1280;
-	constexpr int kScreenHeight = 720;
+	constexpr int kScreenWidth =1920;
+	constexpr int kScreenHeight = 1060;
 	constexpr int kScreenDepth = 32;
 }
 

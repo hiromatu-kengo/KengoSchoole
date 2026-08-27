@@ -23,6 +23,9 @@ SceneMain::SceneMain() :
 	m_bgHandle2(-1),
 	m_bgHandle3(-1),
 	m_bgHandle4(-1),
+	m_earthHandle(-1),
+	m_toriiHandle(-1),
+	m_bambooHandle(-1),
 	m_player(),
 	m_enemy(),
 	m_playerHasHit(false)
@@ -49,6 +52,9 @@ void SceneMain::Init()
 	m_bgHandle2 = LoadGraph("image/bg/2.png");
 	m_bgHandle3 = LoadGraph("image/bg/3.png");
 	m_bgHandle4 = LoadGraph("image/bg/4.png");
+	m_earthHandle = LoadGraph("image/bg/earth.png");
+	m_toriiHandle = LoadGraph("image/bg/torii.png");
+	m_bambooHandle = LoadGraph("image/bg/bamboo.png");
 
 
 	// 読み込んだ配列を Player に渡す（内部配列へコピー）
@@ -82,6 +88,9 @@ void SceneMain::End()
 	DeleteGraph(m_bgHandle2);
 	DeleteGraph(m_bgHandle3);
 	DeleteGraph(m_bgHandle4);
+	DeleteGraph(m_earthHandle);
+	DeleteGraph(m_toriiHandle);
+	DeleteGraph(m_bambooHandle);
 }
 
 SceneType SceneMain::Update()
@@ -111,29 +120,72 @@ SceneType SceneMain::Update()
 
 void SceneMain::Draw()
 {
-	DrawRectRotaGraph(Game::kScreenWidth / 2, Game::kScreenHeight / 2,		//描画位置
+	//背景
+	DrawRectRotaGraph(Game::kScreenWidth / 2+ Game::kScreenWidth / 4, Game::kScreenHeight / 2.7,		//描画位置
 		0, 0,																//描画元の矩形の左上座標
 		320, 180,															//描画元の矩形の幅と高さ
 		double(kScale), 0.0,														//拡大率と回転角度
 		m_bgHandle4, true,													//描画するグラフィックハンドル
 		false);																//左右反転フラグ
-	DrawRectRotaGraph(Game::kScreenWidth / 2, Game::kScreenHeight / 2,		//描画位置
+	DrawRectRotaGraph(Game::kScreenWidth / 2+ Game::kScreenWidth / 4, Game::kScreenHeight / 2.7,		//描画位置
 		0, 0,																//描画元の矩形の左上座標
 		320, 180,															//描画元の矩形の幅と高さ
 		double(kScale), 0.0,														//拡大率と回転角度
 		m_bgHandle3, true,													//描画するグラフィックハンドル
 		false);																//左右反転フラグ
-	DrawRectRotaGraph(Game::kScreenWidth / 2, Game::kScreenHeight / 2,		//描画位置
+	DrawRectRotaGraph(Game::kScreenWidth / 2+ Game::kScreenWidth / 4, Game::kScreenHeight / 2.7,		//描画位置
 		0, 0,																//描画元の矩形の左上座標
 		320, 180,															//描画元の矩形の幅と高さ
 		double(kScale), 0.0,														//拡大率と回転角度
 		m_bgHandle2, true,													//描画するグラフィックハンドル
 		false);																//左右反転フラグ
-	DrawRectRotaGraph(Game::kScreenWidth / 2, Game::kScreenHeight / 2,		//描画位置
+	DrawRectRotaGraph(Game::kScreenWidth / 2+ Game::kScreenWidth / 4, Game::kScreenHeight / 2.7,		//描画位置
 		0, 0,																//描画元の矩形の左上座標
 		320, 180,															//描画元の矩形の幅と高さ
 		double(kScale), 0.0,														//拡大率と回転角度
 		m_bgHandle1, true,													//描画するグラフィックハンドル
+		false);																//左右反転フラグ
+	DrawRectRotaGraph(Game::kScreenWidth / 4, Game::kScreenHeight / 2.7,		//描画位置
+		0, 0,																//描画元の矩形の左上座標
+		320, 180,															//描画元の矩形の幅と高さ
+		double(kScale), 0.0,														//拡大率と回転角度
+		m_bgHandle4, true,													//描画するグラフィックハンドル
+		false);																//左右反転フラグ
+	DrawRectRotaGraph(Game::kScreenWidth / 4, Game::kScreenHeight / 2.7,		//描画位置
+		0, 0,																//描画元の矩形の左上座標
+		320, 180,															//描画元の矩形の幅と高さ
+		double(kScale), 0.0,														//拡大率と回転角度
+		m_bgHandle3, true,													//描画するグラフィックハンドル
+		false);																//左右反転フラグ
+	DrawRectRotaGraph(Game::kScreenWidth / 4, Game::kScreenHeight / 2.7,		//描画位置
+		0, 0,																//描画元の矩形の左上座標
+		320, 180,															//描画元の矩形の幅と高さ
+		double(kScale), 0.0,														//拡大率と回転角度
+		m_bgHandle2, true,													//描画するグラフィックハンドル
+		false);																//左右反転フラグ
+	DrawRectRotaGraph(Game::kScreenWidth / 4, Game::kScreenHeight / 2.7,		//描画位置
+		0, 0,																//描画元の矩形の左上座標
+		320, 180,															//描画元の矩形の幅と高さ
+		double(kScale), 0.0,														//拡大率と回転角度
+		m_bgHandle1, true,													//描画するグラフィックハンドル
+		false);																//左右反転フラグ
+	
+
+	
+	
+	//背景装飾
+	DrawRectRotaGraph(Game::kScreenWidth / 2, Game::kScreenHeight / 3,		//描画位置
+		0, 0,																//描画元の矩形の左上座標
+		132, 120,															//描画元の矩形の幅と高さ
+		double(kScale * 1.2), 0.0,														//拡大率と回転角度
+		m_bambooHandle, true,													//描画するグラフィックハンドル
+		false);																//左右反転フラグ
+
+	DrawRectRotaGraph(Game::kScreenWidth / 2, Game::kScreenHeight / 2,		//描画位置
+		0, 0,																//描画元の矩形の左上座標
+		79, 70,															//描画元の矩形の幅と高さ
+		double(kScale), 0.0,														//拡大率と回転角度
+		m_toriiHandle, true,													//描画するグラフィックハンドル
 		false);																//左右反転フラグ
 
 	m_player.Draw();
