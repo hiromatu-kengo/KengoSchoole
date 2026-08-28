@@ -25,8 +25,8 @@ public:
 	void SetRunGraph(int handle) { m_runGraph = handle; }
 	void SetAttackGraph(int handle) { m_attackGraph = handle; }
 
-	float GetX() const { return m_x; }
-	float GetY() const { return m_y; }
+	int GetX() const { return m_x; }
+	int GetY() const { return m_y; }
 	PlayerState GetState() const { return m_state; }
 	Hitbox GetAttackHitbox() const { return m_attackHitbox; }
 	// プレイヤーが攻撃中かどうかを返す
@@ -62,6 +62,8 @@ private:
 
 	int m_rightClickFrame;	// 右クリックのフレーム数
 	int m_attackFrame;		// 攻撃のフレーム数
+
+	bool m_isLeftClickPrev = false; // 毎フレームのひっだりクリック状態
 
 	Hitbox m_attackHitbox; // 攻撃判定用のヒットボックス
 	

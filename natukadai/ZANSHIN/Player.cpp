@@ -64,6 +64,7 @@ void Player::Init()
 	//シーン切り替えなどにリセット
 	m_rightClickFrame = 0;  // 右クリックフレーム数をリセット
 	m_attackFrame = 0;      // 攻撃フレーム数をリセット
+	m_isLeftClickPrev = false;//リセット
 	m_state = PlayerState::Normal;
 }
 
@@ -79,6 +80,16 @@ void Player::Update()
 	//アニメーションを進める
 	m_animFrame++;
 	m_attackHitbox.isActive = false; // 攻撃判定をデフォルトで無効にする
+
+	// --- マウス入力を取得 ---
+	int mouseInput = GetMouseInput();
+	bool isLeftClickCurrent = (mouseInput & MOUSE_INPUT_LEFT) != 0;
+
+	// 「今押された瞬間」かどうかを判定 (トリガー検出)
+	bool isLeftClickTrigger = isLeftClickCurrent && !m_isLeftClickPrev;
+
+	// 前フレームの状態を更新
+	m_isLeftClickPrev = isLeftClickCurrent;
 
 	// 攻撃状態の処理
 	if (m_state == PlayerState::Attack)
@@ -120,10 +131,11 @@ void Player::Update()
 	}
 	else// パリィ・ガード・通常状態の処理
 	{
-		if (GetMouseInput() & MOUSE_INPUT_LEFT)
+		// 左クリックが「押された瞬間」のみ攻撃へ遷移
+		if (isLeftClickTrigger)
 		{
-			m_state = PlayerState::Attack; // 攻撃中に左クリックが押された場合、攻撃状態を維持
-			m_attackFrame = 0;          // 攻撃中に左クリックが押された場合、攻撃フレームをリセット
+			m_state = PlayerState::Attack;
+			m_attackFrame = 0;
 		}
 		else
 		{

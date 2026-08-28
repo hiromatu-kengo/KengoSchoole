@@ -25,13 +25,7 @@ private:
 	int m_enemyRunHandle;
 	int m_enemyAttackHandle;
 
-	int m_bgHandle1;
-	int m_bgHandle2;
-	int m_bgHandle3;
-	int m_bgHandle4;
-	int m_earthHandle;
-	int m_toriiHandle;
-	int m_bambooHandle;
+	Bg m_bg;
 	
 	Player m_player;
 	Enemy m_enemy;

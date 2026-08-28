@@ -1,10 +1,10 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\hiromatsukengo\\documents\\github\\kengoschoole\\natukadai\\zanshin\\bg.cpp",
+        "Source": "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\bg.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\users\\hiromatsukengo\\documents\\github\\kengoschoole\\natukadai\\zanshin\\bg.h"
+            "c:\\users\\pc_user\\documents\\github\\kengoschoole\\natukadai\\zanshin\\bg.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
