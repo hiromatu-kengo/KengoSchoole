@@ -1,7 +1,8 @@
 #include "Player.h"
 #include "DxLib.h"
 #include "Game.h"
-#include "cstring"
+#include <cmath>
+#include <cstdlib>
 
 namespace
 {
@@ -57,8 +58,8 @@ Player::~Player()
 
 void Player::Init()
 {
-	m_x = kStartX;
-	m_y = kStartY;
+	m_x = static_cast<int>(kStartX);
+	m_y = static_cast<int>(kStartY);
 	m_animFrame = 0;
 
 	//シーン切り替えなどにリセット
@@ -66,6 +67,18 @@ void Player::Init()
 	m_attackFrame = 0;      // 攻撃フレーム数をリセット
 	m_isLeftClickPrev = false;//リセット
 	m_state = PlayerState::Normal;
+
+	// ステータス初期化
+	m_hp = 100;
+	m_maxHp = 100;
+	m_posture = 0;
+	m_maxPosture = 100;
+
+	m_shakeFrame = 0;
+	m_shakeIntensity = 0;
+	m_parryEffectFrame = 0;
+	m_hitStopFrame = 0;
+	m_slashEffectFrame = 0;
 }
 
 void Player::End()
@@ -75,11 +88,103 @@ void Player::End()
 	DeleteGraph(m_attackGraph);
 }
 
+void Player::OnDamage(int damage, int postureDamage)
+{
+	// ガード時は体幹ダメージのみ受け流す
+	if (m_state == PlayerState::Guard)
+	{
+		m_posture += postureDamage;
+		// ガードの削り手応え演出：軽めの振動とノックバック
+		m_shakeFrame = 5;
+		m_shakeIntensity = 4;
+		m_x += m_isFlip ? 10 : -10; // 後ろへ押し戻される
+	}
+	else
+	{
+		m_hp -= damage;
+		m_posture += postureDamage;
+		if (m_hp < 0) m_hp = 0;
+
+		// 被弾時の強い手応え演出
+		m_shakeFrame = 12;
+		m_shakeIntensity = 10;
+		m_hitStopFrame = 3; // 被弾ヒットストップ
+	}
+
+	// 体幹ゲージ上限到達時の姿勢崩れ処理（必要に応じて追加可能）
+	if (m_posture >= m_maxPosture)
+	{
+		m_posture = m_maxPosture;
+	}
+}
+
+// パリィ成功時に呼び出す関数
+void Player::OnParrySuccess(float hitX, float hitY)
+{
+	// 1. 激しい画面振動
+	m_shakeFrame = 15;
+	m_shakeIntensity = 14;
+
+	// 2. 視覚的エフェクト（火花＆光彩リング）の設定
+	m_parryEffectFrame = 18;
+	m_parryEffectMaxFrame = 18;
+	m_parryEffectX = static_cast<int>(hitX);
+	m_parryEffectY = static_cast<int>(hitY);
+
+	// 3. ヒットストップ（時間一瞬停止）
+	m_hitStopFrame = 4;
+
+	// 4. プレイヤーのノックバック（パリィの反動でわずかに距離が空く）
+	m_x += m_isFlip ? 15 : -15;
+}
+
+// 攻撃ヒット時の演出処理
+void Player::OnHitSuccess(float hitX, float hitY)
+{
+	m_shakeFrame = 8;
+	m_shakeIntensity = 6;
+	m_hitStopFrame = 7; // 刀が手ごたえで引っかかるヒットストップ
+
+	m_slashEffectFrame = 10;
+	m_slashEffectX = static_cast<int>(hitX);
+	m_slashEffectY = static_cast<int>(hitY);
+}
+
 void Player::Update()
 {
+	// ヒットストップ処理：時間停止中は動きをストップ
+	if (m_hitStopFrame > 0)
+	{
+		m_hitStopFrame--;
+		return;
+	}
+
 	//アニメーションを進める
 	m_animFrame++;
 	m_attackHitbox.isActive = false; // 攻撃判定をデフォルトで無効にする
+
+	// パリィの振動・演出時間の減衰
+	if (m_shakeFrame > 0)
+	{
+		m_shakeFrame--;
+		int range = m_shakeIntensity * 2 + 1;
+		m_shakeOffsetX = (rand() % range) - m_shakeIntensity;
+		m_shakeOffsetY = (rand() % range) - m_shakeIntensity;
+	}
+	else
+	{
+		m_shakeOffsetX = 0;
+		m_shakeOffsetY = 0;
+	}
+
+	if (m_parryEffectFrame > 0) m_parryEffectFrame--;
+	if (m_slashEffectFrame > 0) m_slashEffectFrame--;
+
+	// 体幹の自然回復（非戦闘時・非ガード時）
+	if (m_state == PlayerState::Normal && m_posture > 0)
+	{
+		m_posture--;
+	}
 
 	// --- マウス入力を取得 ---
 	int mouseInput = GetMouseInput();
@@ -207,59 +312,94 @@ void Player::Update()
 void Player::Draw()
 {
 
-	if (m_state == PlayerState::Parry)
-	{
-		DrawString((int)m_x, (int)m_y - 20, "Parry", GetColor(255, 255, 0));
-	}
-	else if (m_state == PlayerState::Guard)
-	{
-		DrawString((int)m_x, (int)m_y - 20, "Guard", GetColor(255, 0, 0));
-	}
-	else if (m_state == PlayerState::Attack)
-	{
-		DrawString((int)m_x, (int)m_y - 20, "Attack", GetColor(0, 255, 0));
-	}
-	else
-	{
-		DrawString((int)m_x, (int)m_y - 20, "Idle", GetColor(255, 255, 255));
-	}
+	// カメラシェイク適用位置
+	int drawX = m_x + m_shakeOffsetX;
+	int drawY = m_y + m_shakeOffsetY;
 
-	//移動中かどうかでアニメーションを変更する
 	int tempTotalFrame = kIdleAnimTotalFrame;
 	int tempHanndle = m_idleGraph;
-	int currentFrame = m_animFrame;//現在のフレーム数を取得
+	int currentFrame = m_animFrame;
 
-	// 攻撃中は攻撃アニメーションを優先して表示する
 	if (m_state == PlayerState::Attack)
 	{
 		tempTotalFrame = kAttackAnimTotalFrame;
 		tempHanndle = m_attackGraph;
-		currentFrame = m_attackFrame; // 攻撃中は攻撃フレームを使用
+		currentFrame = m_attackFrame;
 	}
-	else if (m_isMoving)// 移動中の場合は走るアニメーションを使用
+	else if (m_isMoving)
 	{
 		tempTotalFrame = kRunAnimTotalFrame;
 		tempHanndle = m_runGraph;
 	}
 
-	//現在のフレーム数から表示したいコマ番号を計算で求める
 	int animNo = (currentFrame % tempTotalFrame) / kSingleAnimFrame;
-	DrawRectRotaGraph(m_x, m_y,                 //描画位置
-		animNo * kWidth, 0,                     //描画元の矩形の左上座標
-		kWidth, kHeight,                        //描画元の矩形の幅と高さ
-		double(4.0), 0.0,                       //拡大率と回転角度
-		tempHanndle, true,                      //描画するグラフィックハンドル
-		m_isFlip);	                            //左右反転フラグ
+	DrawRectRotaGraph(drawX, drawY,
+		animNo * kWidth, 0,
+		kWidth, kHeight,
+		double(4.0), 0.0,
+		tempHanndle, true,
+		m_isFlip);
+
+	// 強化版パリィエフェクト（閃光・火花・衝撃波リング）
+	if (m_parryEffectFrame > 0)
+	{
+		int progress = m_parryEffectMaxFrame - m_parryEffectFrame;
+
+		// 拡散する白い中心閃光
+		DrawCircle(m_parryEffectX, m_parryEffectY, 15 + progress * 2, GetColor(255, 255, 230), TRUE);
+
+		// 拡大する衝撃波リング
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 200);
+		DrawCircle(m_parryEffectX, m_parryEffectY, 10 + progress * 5, GetColor(255, 180, 50), FALSE);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+		// 飛散する火花（高密度 12 本）
+		for (int i = 0; i < 12; ++i)
+		{
+			double angle = i * (3.14159265 * 2.0 / 12.0);
+			int startDist = progress * 3;
+			int endDist = 20 + progress * 6;
+
+			int sx = m_parryEffectX + static_cast<int>(cos(angle) * startDist);
+			int sy = m_parryEffectY + static_cast<int>(sin(angle) * startDist);
+			int ex = m_parryEffectX + static_cast<int>(cos(angle) * endDist);
+			int ey = m_parryEffectY + static_cast<int>(sin(angle) * endDist);
+
+			DrawLine(sx, sy, ex, ey, GetColor(255, 230, 100), 3);
+		}
+	}
+
+	// 攻撃ヒットエフェクト（赤黄色い刀傷スラッシュライン）
+	if (m_slashEffectFrame > 0)
+	{
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 220);
+		DrawLine(m_slashEffectX - 25, m_slashEffectY - 25, m_slashEffectX + 25, m_slashEffectY + 25, GetColor(255, 50, 50), 5);
+		DrawLine(m_slashEffectX - 15, m_slashEffectY - 15, m_slashEffectX + 15, m_slashEffectY + 15, GetColor(255, 255, 200), 3);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	}
+
+	// UI描画：HPバー & 体幹ゲージ
+	int barX = drawX - 40;
+	int barY = drawY - 80;
+
+	DxLib::DrawBox(barX, barY, barX + 80, barY + 6, GetColor(50, 50, 50), TRUE);
+	int currentHpWidth = static_cast<int>(80.0f * (static_cast<float>(m_hp) / m_maxHp));
+	DxLib::DrawBox(barX, barY, barX + currentHpWidth, barY + 6, GetColor(0, 230, 100), TRUE);
+
+	DxLib::DrawBox(barX, barY + 8, barX + 80, barY + 12, GetColor(50, 50, 50), TRUE);
+	int currentPostureWidth = static_cast<int>(80.0f * (static_cast<float>(m_posture) / m_maxPosture));
+	DxLib::DrawBox(barX, barY + 8, barX + currentPostureWidth, barY + 12, GetColor(255, 140, 0), TRUE);
+
+	// デバッグ表示
+	if (m_state == PlayerState::Parry) DrawString(drawX, drawY - 100, "Parry!", GetColor(255, 255, 0));
 
 	if (m_attackHitbox.isActive)
 	{
-		// 攻撃判定のヒットボックスを描画（デバッグ用）
-		int left = (int)(m_attackHitbox.x - m_attackHitbox.width / 2);
-		int top = (int)(m_attackHitbox.y - m_attackHitbox.height / 2);
-		int right = (int)(m_attackHitbox.x + m_attackHitbox.width / 2);
-		int bottom = (int)(m_attackHitbox.y + m_attackHitbox.height / 2);
-		// DrawBox関数を使用してヒットボックスを描画
-		DrawBox(left, top, right, bottom, GetColor(255, 0, 0), true);
+		int left = static_cast<int>(m_attackHitbox.x - m_attackHitbox.width / 2);
+		int top = static_cast<int>(m_attackHitbox.y - m_attackHitbox.height / 2);
+		int right = static_cast<int>(m_attackHitbox.x + m_attackHitbox.width / 2);
+		int bottom = static_cast<int>(m_attackHitbox.y + m_attackHitbox.height / 2);
+		DxLib::DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE);
 	}
 }
 

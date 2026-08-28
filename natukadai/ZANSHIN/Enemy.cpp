@@ -33,7 +33,7 @@ namespace
 	constexpr float kAttackRange = 150.0f;									//攻撃に移る距離
 	constexpr int kAttackWaitTime = 60;										//攻撃後の隙
 	constexpr int kMaxPostureValue = 100;									//最大体幹値
-
+	constexpr int kSignTime = 30;											//攻撃前の溜め時間（30フレーム＝0.5秒）
 
 }
 
@@ -96,9 +96,16 @@ void Enemy::End()
 	DeleteGraph(m_attackGraph);
 }
 
-void Enemy::Update(float playerX, float playerY, bool isPlayerAttacking)
+void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlayerAttacking)
 {
 	if (m_isDead)return;
+
+	// ヒットストップ中は敵の動きやアニメーションを静止させる
+	if (m_hitStopFrame > 0)
+	{
+		m_hitStopFrame--;
+		return;
+	}
 
 	//アニメーションを進める
 	m_animFrame++;
@@ -110,10 +117,32 @@ void Enemy::Update(float playerX, float playerY, bool isPlayerAttacking)
 	float distanceX = playerX - m_x;
 	float absDistanceX = std::abs(distanceX);
 
-	//プレイヤーの方向を向く（移動待機中のみ）
-	if (m_state == EnemyState::Idle || m_state == EnemyState::Run)
+	// ノックバック（ダメージを受けた時の押し出し）の適用
+	if (std::abs(m_knockbackVx) > 0.1f)
 	{
-		m_isFlip = (distanceX < 0);//プレイヤーが右にいれば右向き
+		m_x += m_knockbackVx;
+		m_knockbackVx *= 0.8f; // 摩擦で減衰
+	}
+	else
+	{
+		m_knockbackVx = 0.0f;
+		// プレイヤーとの通常押し戻し処理（体当たり貫通を防止）
+		float minDistance = (m_hitbox.width / 2.0f) + (playerWidth / 2.0f);
+		if (absDistanceX < minDistance)
+		{
+			float pushOffset = minDistance - absDistanceX;
+			if (distanceX > 0) m_x -= pushOffset;
+			else               m_x += pushOffset;
+		}
+	}
+
+	// エフェクトフレーム減衰
+	if (m_damageEffectFrame > 0) m_damageEffectFrame--;
+
+	// 向きの更新（移動・待機・溜め中）
+	if (m_state == EnemyState::Idle || m_state == EnemyState::Run || m_state == EnemyState::AttackSign)
+	{
+		m_isFlip = (distanceX < 0);
 	}
 
 	//＊AIステートマシン
@@ -143,24 +172,41 @@ void Enemy::Update(float playerX, float playerY, bool isPlayerAttacking)
 		}
 		break;
 
+	case EnemyState::AttackSign:
+		//0.5秒間「攻撃くるぞ！」という溜め時間を作ってから振り下ろす
+		if (m_stateFrame >= kSignTime)
+		{
+			m_state = EnemyState::Attack;
+			m_stateFrame = 0;
+		}
+		break;
+
 	case EnemyState::Attack:
-		//不利アロ氏アニメーションの特定フレームで判定発生
+		//アニメーションの特定フレームで判定発生
 		if (m_stateFrame >= 10 && m_stateFrame <= 16)
 		{
 			m_attackHitbox.isActive = true;
 			m_attackHitbox.width = 80.0f;
 			m_attackHitbox.height = 60.0f;
-			float direction = (playerX > m_x) ? 1.0f : -1.0f;
-			m_attackHitbox.x = m_x + (60.0f * direction);
-			m_attackHitbox.y = m_y - 10.0f;
+			// 向きに合わせて攻撃判定を前に出す
+			float direction = m_isFlip ? -1.0f : 1.0f;
+			m_attackHitbox.x = m_x + (70.0f * direction);
+			m_attackHitbox.y = m_y - 20.0f;
+		}
+		else
+		{
+			m_attackHitbox.isActive = false;
 		}
 
 		//１回分の攻撃っモーション終了
 		if (m_stateFrame >= kAttackAnimTotalFrame)
 		{
+			m_attackHitbox.isActive = false;
 			m_comboCount++;
 			if (m_comboCount < m_maxCombo && absDistanceX <= kAttackRange + 30.0f)
 			{
+				// 連撃：次の攻撃も溜めから開始
+				m_state = EnemyState::AttackSign;
 				//連撃継続：もう一度攻撃ステートをリセットして実行
 				m_stateFrame = 0;
 			}
@@ -205,14 +251,13 @@ void Enemy::Update(float playerX, float playerY, bool isPlayerAttacking)
 	// 重力と垂直移動の適用
 	if (!m_isOnGround)
 	{
-		m_vy += kGravity;                   // 下向きに加速
-		m_y += m_vy;                        // 垂直位置を更新
-		int groundY = kGroundY;             // 地面のY座標を定義
-		if (m_y >= groundY)                 // 地面に到達した場合
+		m_vy += kGravity;
+		m_y += m_vy;
+		if (m_y >= kGroundY)
 		{
-			m_y = groundY;                  // 地面の位置に修正
-			m_vy = 0;                       // 垂直速度をリセット
-			m_isOnGround = true;            // 地面にいる状態に戻す
+			m_y = static_cast<float>(kGroundY);
+			m_vy = 0;
+			m_isOnGround = true;
 		}
 	}
 
@@ -226,51 +271,54 @@ void Enemy::OnDamage(int damage, int postureDamage)
 {
 	if (m_isDead)return;
 
-	//ガード判定
-	if (m_state == EnemyState::Idle || m_state == EnemyState::Run)
+	// 斬撃がヒットした時の重厚感（ヒットストップ 8フレーム ＋ 斬撃エフェクト発動）
+	m_hitStopFrame = 3;
+	m_damageEffectFrame = 12;
+
+	// 被弾時ののけ反りノックバック（プレイヤーの位置と反対方向に少し吹き飛ぶ）
+	m_knockbackVx = m_isFlip ? 6.0f : -6.0f;
+
+	// スタン（体幹崩れ）中に攻撃を受けた場合：忍殺（トドメ）処理
+	if (m_state == EnemyState::Stun)
 	{
-		m_state = EnemyState::Guard;
-		m_stateFrame = 0;
-		m_posture += postureDamage / 5;//ガードして体幹ゲージを削る
+		m_stock--;
+		m_posture = 0;
+
+		if (m_stock <= 0)
+		{
+			m_isDead = true;
+			m_state = EnemyState::Dead;
+			m_hitbox.isActive = false;
+			m_attackHitbox.isActive = false;
+		}
+		else
+		{
+			m_state = EnemyState::Idle;
+			m_stateFrame = 0;
+		}
 		return;
 	}
 
 	m_hp -= damage;
 	m_posture += postureDamage;//体幹ゲージ増加
 
-	//体幹オーバーチェック
+	// 体幹オーバーチェック
 	if (m_posture >= m_maxPosture)
 	{
 		m_posture = m_maxPosture;
-
-		//体幹上限達成時：体幹崩れへ
 		m_state = EnemyState::Stun;
 		m_stateFrame = 0;
-
-		//体幹崩れ中さらに攻撃を受けると残機を失う
-		if (m_state == EnemyState::Stun && damage > 0)
-		{
-			m_stock--;
-			m_posture = 0;
-			if (m_stock <= 0)
-			{
-				m_isDead = true;
-				m_hitbox.isActive = false; // 死亡時は判定を消す
-			}
-		}
-		else
-		{
-			m_state = EnemyState::Stun;
-			m_stateFrame = 0;
-		}
 	}
 }
 
 //パリィされた時の処理
 void Enemy::OnParried()
 {
+	// 弾かれた時も少しヒットストップをかけて手応えを出す
+	m_hitStopFrame = 6;
 	//パリィされたら強制的に大きな体幹ダメージ＋硬直
 	m_posture += 30;
+	m_attackHitbox.isActive = false; // 弾かれたら即座に判定消滅
 	m_state = EnemyState::AttackWait;//攻撃強制中断
 	m_stateFrame = -30;//通常より長い隙をつくる
 
@@ -296,10 +344,14 @@ void Enemy::Draw()
 		tempTotalFrame = kRunAnimTotalFrame;
 		tempHandle = m_runGraph;
 	}
-	else if (m_state == EnemyState::Attack)
+	else if (m_state == EnemyState::Attack || m_state == EnemyState::AttackSign)
 	{
 		tempTotalFrame = kAttackAnimTotalFrame;
 		tempHandle = m_attackGraph;
+		if (m_state == EnemyState::Attack)
+		{
+			currentFrame = m_stateFrame;
+		}
 	}
 
 	//現在のフレーム数から表示したいコマ番号を計算で求める
@@ -311,9 +363,38 @@ void Enemy::Draw()
 		tempHandle, true,                      //描画するグラフィックハンドル
 		m_isFlip);	                            //左右反転フラグ
 
+	// 敵が斬られた瞬間のスラッシュエフェクト（閃光）
+	if (m_damageEffectFrame > 0)
+	{
+		int p = 12 - m_damageEffectFrame;
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 220);
+		DrawCircle(static_cast<int>(m_x), static_cast<int>(m_y) - 30, 15 + p * 3, GetColor(255, 200, 50), FALSE);
+		DrawLine(static_cast<int>(m_x) - 30, static_cast<int>(m_y) - 50, static_cast<int>(m_x) + 30, static_cast<int>(m_y), GetColor(255, 255, 255), 4);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	}
+
+	// 攻撃前兆エフェクト
+	if (m_state == EnemyState::AttackSign)
+	{
+		DrawCircle(static_cast<int>(m_x), static_cast<int>(m_y) - 120, 15, GetColor(255, 50, 50), TRUE);
+		DrawString(static_cast<int>(m_x) - 10, static_cast<int>(m_y) - 128, "危!", GetColor(255, 255, 255));
+	}
+
+	// 攻撃判定描画
+	if (m_attackHitbox.isActive)
+	{
+		int left = static_cast<int>(m_attackHitbox.x - m_attackHitbox.width / 2);
+		int top = static_cast<int>(m_attackHitbox.y - m_attackHitbox.height / 2);
+		int right = static_cast<int>(m_attackHitbox.x + m_attackHitbox.width / 2);
+		int bottom = static_cast<int>(m_attackHitbox.y + m_attackHitbox.height / 2);
+
+		DrawBox(left, top, right, bottom, GetColor(255, 255, 0), FALSE);
+	}
+
 	// デバッグ描画：状態テキスト表示
 	const char* stateStr = "Idle";
 	if (m_state == EnemyState::Run) stateStr = "Run";
+	if (m_state == EnemyState::AttackSign) stateStr = "SIGN!";
 	if (m_state == EnemyState::Attack) stateStr = "Attack";
 	if (m_state == EnemyState::AttackWait) stateStr = "AttackWait";
 	if (m_state == EnemyState::Guard) stateStr = "Guard";

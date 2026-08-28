@@ -35,6 +35,22 @@ public:
 	// パリィ中・ガード中の判定も必要に応じて追加できます
 	bool IsParrying() const { return m_state == PlayerState::Parry; }
 	bool IsGuarding() const { return m_state == PlayerState::Guard; }
+	// ダメージ＆体幹獲得処理
+	void OnDamage(int damage, int postureDamage);
+
+	// パリィ成功時に敵クラス等から呼び出す処理
+	void OnParrySuccess(float hitX, float hitY);
+	// 攻撃を当てた時のヒットストップ発動関数
+	void OnHitSuccess(float hitX, float hitY);
+
+	// ステータスゲッター
+	int GetHp() const { return m_hp; }
+	int GetMaxHp() const { return m_maxHp; }
+	int GetPosture() const { return m_posture; }
+	int GetMaxPosture() const { return m_maxPosture; }
+
+	// ヒットストップ中か判定
+	bool IsHitStopped() const { return m_hitStopFrame > 0; }
 private:
 	//使用するグラフィックハンドル
 	int m_playerGHandle[10];
@@ -68,5 +84,30 @@ private:
 	Hitbox m_attackHitbox; // 攻撃判定用のヒットボックス
 	
 	PlayerState m_state;// プレイヤーの状態
+
+	// 追加：HP & 忍耐（体幹）ゲージ
+	int m_hp = 100;
+	int m_maxHp = 100;
+	int m_posture = 0;
+	int m_maxPosture = 100;
+
+	// 演出関連パラメータ
+	int m_shakeFrame = 0;
+	int m_shakeIntensity = 0;
+	int m_shakeOffsetX = 0;
+	int m_shakeOffsetY = 0;
+
+	int m_parryEffectFrame = 0;
+	int m_parryEffectMaxFrame = 15;
+	int m_parryEffectX = 0;
+	int m_parryEffectY = 0;
+
+	// 追加：ヒットストップ関連
+	int m_hitStopFrame = 0;
+
+	// 追加：斬撃ヒットエフェクト
+	int m_slashEffectFrame = 0;
+	int m_slashEffectX = 0;
+	int m_slashEffectY = 0;
 };
 

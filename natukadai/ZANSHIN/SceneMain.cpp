@@ -76,20 +76,74 @@ SceneType SceneMain::Update()
 {
 	// プレイヤー更新
 	m_player.Update();
-	m_enemy.Update(m_player.GetX(), m_player.GetY(), m_player.IsAttacking());
+	// ★ プレイヤーがヒットストップ中（時が止まっている状態）は敵の動作更新を止める
+	if (!m_player.IsHitStopped())
+	{
+		m_enemy.Update(m_player.GetX(), m_player.GetY(), 80.0f, m_player.IsAttacking());
+	}
 
-	// 攻撃中でなければヒット済みフラグを解除
+	// =========================================================
+	// 1. プレイヤーの攻撃 -> 敵へのヒット判定（ヒットストップ演出付き）
+	// =========================================================
+	if (!m_playerHasHit && IsOverlap(m_player.GetAttackHitbox(), m_enemy.GetHitbox()))
+	{
+		float hitX = static_cast<float>(m_enemy.GetX());
+		float hitY = static_cast<float>(m_enemy.GetY() - 20.0f);
+
+		// ★ ヒットストップ＆斬撃エフェクト呼び出し
+		m_player.OnHitSuccess(hitX, hitY);
+
+		m_enemy.OnDamage(10, 20);
+		m_playerHasHit = true;
+	}
+
 	if (!m_player.IsAttacking())
 	{
 		m_playerHasHit = false;
 	}
 
-	// ヒット判定（1回の攻撃で1回のみダメージ処理）
-	if (!m_playerHasHit && IsOverlap(m_player.GetAttackHitbox(), m_enemy.GetHitbox()))
+	// =========================================================
+	// 2. 敵の攻撃 -> プレイヤーへのヒット判定（パリィ・ガード・被弾）
+	// =========================================================
+	Hitbox enemyAtkBox = m_enemy.GetAttackHitbox();
+
+	if (enemyAtkBox.isActive)
 	{
-		m_enemy.OnDamage(10, 20); // HPダメージ:10, 体幹ダメージ:20
-		m_playerHasHit = true;
+		Hitbox playerBox;
+		playerBox.x = m_player.GetX();
+		playerBox.y = m_player.GetY();
+		playerBox.width = 40.0f;
+		playerBox.height = 80.0f;
+		playerBox.isActive = true;
+
+		if (IsOverlap(enemyAtkBox, playerBox))
+		{
+			// A. パリィ成功！
+			if (m_player.IsParrying())
+			{
+				float hitX = (m_player.GetX() + enemyAtkBox.x) / 2.0f;
+				float hitY = (m_player.GetY() + enemyAtkBox.y) / 2.0f;
+
+				// ★ パリィ時の画面揺れ＋ヒットストップ＋光彩エフェクト発動
+				m_player.OnParrySuccess(hitX, hitY);
+				m_enemy.OnParried();
+			}
+			// B. ガード成功
+			else if (m_player.IsGuarding())
+			{
+				m_player.OnDamage(0, 15);
+			}
+			// C. 被弾（ノーガード）
+			else
+			{
+				m_player.OnDamage(20, 30);
+			}
+
+			// 多段ヒット防止のため判定クリア
+			m_enemy.ClearAttackHitbox();
+		}
 	}
+
 	if (CheckHitKey(KEY_INPUT_X))// Xキーでリザルトシーンに遷移(仮)
 	{
 		return SceneType::Result;

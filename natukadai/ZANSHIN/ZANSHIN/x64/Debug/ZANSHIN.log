@@ -3,9 +3,7 @@ C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(1,1)
 C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Player.cpp' をコンパイルしています)
   
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(60,8): warning C4244: '=': 'const float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(61,8): warning C4244: '=': 'const float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(111,27): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(122,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(123,28): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(216,27): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(227,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(228,28): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
   ZANSHIN.vcxproj -> C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\x64\Debug\ZANSHIN.exe

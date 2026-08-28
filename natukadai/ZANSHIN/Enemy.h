@@ -7,6 +7,7 @@ enum class EnemyState
 {
 	Idle,		//待機
 	Run,		//移動
+	AttackSign, //攻撃の前兆（溜め動作）
 	Attack,		//攻撃中
 	AttackWait,		//攻撃後の隙（硬直）
 	Guard,		//ガード中
@@ -21,21 +22,33 @@ public:
 	~Enemy();
 	void Init();
 	void End();
-	void Update(float playerX,float playerY,bool isPlayerAttacking);//プレイヤー情報を受け取る
+	void Update(float playerX, float playerY, float playerWidth, bool isPlayerAttacking);//プレイヤー情報を受け取る
 	void Draw();
 
-	//被ダメージ処理 体幹ダメージ
-	void OnDamage(int damage,int postureDamage);
-	void OnParried();
-
-	//敵の被弾判定を取得する
-	Hitbox GetHitbox() const { return m_hitbox; }
-	Hitbox GetAttackHitbox() const { return m_attackHitbox; }
+	
+	
 
 	//使用するグラフィックハンドルの設定
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
 	void SetRunGraph(int handle) { m_runGraph = handle; }
 	void SetAttackGraph(int handle) { m_attackGraph = handle; }
+
+	//敵の被弾判定を取得する
+	Hitbox GetHitbox() const { return m_hitbox; }
+	Hitbox GetAttackHitbox() const { return m_attackHitbox; }
+	bool IsDead() const { return m_isDead; }
+
+	// 位置座標のゲッター
+	float GetX() const { return m_x; }
+	float GetY() const { return m_y; }
+
+	// 弾かれた（パリィされた）時の処理
+	void OnParried();
+	// ダメージと体幹（忍耐）ダメージを受ける処理
+	void OnDamage(int damage, int postureDamage);
+	// 攻撃判定クリア用（多段ヒット防止）
+	void ClearAttackHitbox() { m_attackHitbox.isActive = false; }
+
 private:
 	//アニメーション・グラフィック
 	int m_animFrame;
@@ -71,6 +84,11 @@ private:
 	int m_frameIndex = 0;
 
 	bool m_isMoving = false; // 移動中かどうかのフラグ
+
+	// 被弾時の演出用パラメータ
+	int m_hitStopFrame = 0;       // ヒットストップ中フレーム
+	int m_damageEffectFrame = 0;  // 斬撃エフェクトの表示フレーム
+	float m_knockbackVx = 0.0f;   // ノックバックの横方向移動速度
 
 	//当たり判定
 	Hitbox m_hitbox;			//被弾判定
