@@ -69,8 +69,8 @@ void Player::Init()
 	m_state = PlayerState::Normal;
 
 	// ステータス初期化
-	m_hp = 100;
-	m_maxHp = 100;
+	m_hp = 1000;
+	m_maxHp = 1000;
 	m_posture = 0;
 	m_maxPosture = 100;
 
@@ -339,6 +339,41 @@ void Player::Draw()
 		double(4.0), 0.0,
 		tempHanndle, true,
 		m_isFlip);
+
+	// =========================================================
+	// ガード / パリィ 状態の視覚的フィードバック（位置の低く調整）
+	// =========================================================
+	if (m_state == PlayerState::Parry)
+	{
+		// 【パリィ受付中】：プレイヤーの前方に強い黄色の閃光オーラを表示
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 180);
+		float offsetX = m_isFlip ? -40.0f : 40.0f;
+
+		// 位置を調整
+		int effectY = drawY + 80;
+
+		// 黄金の円形オーラと放射状のライン
+		DrawCircle(drawX + static_cast<int>(offsetX), effectY, 45, GetColor(255, 220, 50), TRUE);
+		DrawCircle(drawX + static_cast<int>(offsetX), effectY, 55, GetColor(255, 255, 200), FALSE);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+		// 「PARRY READY」文字表示の位置も少し下げる (drawY - 110 -> drawY - 90)
+		DrawString(drawX - 40, drawY - 90, "PARRY READY", GetColor(255, 220, 0));
+	}
+	else if (m_state == PlayerState::Guard)
+	{
+		// 【ガード中】：体の前方に青い防御シールドの壁を表示
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 160);
+		int shieldX = drawX + (m_isFlip ? -45 : 45);
+
+		// 位置を低く調整 (drawY - 60 / + 40 -> drawY - 20 / + 60)
+		DrawBox(shieldX - 5, drawY - 20, shieldX + 5, drawY + 60, GetColor(100, 180, 255), TRUE);
+		DrawCircle(shieldX, drawY + 20, 50, GetColor(150, 220, 255), FALSE);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+		// 「GUARD」文字表示の位置も少し下げる (drawY - 110 -> drawY - 90)
+		DrawString(drawX - 25, drawY - 90, "GUARD", GetColor(100, 200, 255));
+	}
 
 	// 強化版パリィエフェクト（閃光・火花・衝撃波リング）
 	if (m_parryEffectFrame > 0)

@@ -183,14 +183,14 @@ void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlaye
 
 	case EnemyState::Attack:
 		//アニメーションの特定フレームで判定発生
-		if (m_stateFrame >= 10 && m_stateFrame <= 16)
+		if (m_stateFrame >= 20 && m_stateFrame <= 26)
 		{
 			m_attackHitbox.isActive = true;
-			m_attackHitbox.width = 80.0f;
-			m_attackHitbox.height = 60.0f;
+			m_attackHitbox.width = 100.0f;
+			m_attackHitbox.height = 100.0f;
 			// 向きに合わせて攻撃判定を前に出す
 			float direction = m_isFlip ? -1.0f : 1.0f;
-			m_attackHitbox.x = m_x + (70.0f * direction);
+			m_attackHitbox.x = m_x + (100.0f * direction);
 			m_attackHitbox.y = m_y - 20.0f;
 		}
 		else
@@ -373,11 +373,30 @@ void Enemy::Draw()
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 
-	// 攻撃前兆エフェクト
+	// 攻撃前兆エフェクト（赤色の警告閃光＆円形リング）
 	if (m_state == EnemyState::AttackSign)
 	{
-		DrawCircle(static_cast<int>(m_x), static_cast<int>(m_y) - 120, 15, GetColor(255, 50, 50), TRUE);
-		DrawString(static_cast<int>(m_x) - 10, static_cast<int>(m_y) - 128, "危!", GetColor(255, 255, 255));
+		int signY = static_cast<int>(m_y) - 100;
+		int signX = static_cast<int>(m_x);
+
+		// 加算合成で危険信号の赤オーラを発光させる
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 180);
+
+		// 時間経過（m_stateFrame）に合わせて円が広がる予兆エフェクト
+		int ringRadius = 10 + (m_stateFrame * 2); // 段階的に拡大
+		DrawCircle(signX, signY, ringRadius, GetColor(255, 30, 30), FALSE); // 拡散リング
+		DrawCircle(signX, signY, 20, GetColor(255, 80, 0), TRUE);           // 中心発光
+
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+		// 『危険！』の赤文字を表示
+		DrawString(signX - 16, signY - 8, "DANGER!", GetColor(255, 255, 255));
+
+		// 武器の位置へ向けて赤い予兆ラインを引く（攻撃の軌道を可視化）
+		float attackDir = m_isFlip ? -1.0f : 1.0f;
+		int lineStartX = signX;
+		int lineEndX = static_cast<int>(m_x + (80.0f * attackDir));
+		DrawLine(lineStartX, signY, lineEndX, signY + 40, GetColor(255, 50, 50), 3);
 	}
 
 	// 攻撃判定描画
