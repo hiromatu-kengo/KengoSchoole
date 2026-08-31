@@ -6,7 +6,8 @@ enum class PlayerState
 	Normal, // 通常
 	Parry,	// パリィ
 	Guard,	// ガード
-	Attack	// 攻撃
+	Attack,	// 攻撃
+	Stun	// 姿勢崩れ
 };
 
 class Player
@@ -24,6 +25,10 @@ public:
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
 	void SetRunGraph(int handle) { m_runGraph = handle; }
 	void SetAttackGraph(int handle) { m_attackGraph = handle; }
+	void SetPostureUIHandle(const int handles[6])
+	{
+		for (int i = 0; i < 6; ++i)m_postureUiGraph[i] = handles[i];
+	}
 
 	int GetX() const { return m_x; }
 	int GetY() const { return m_y; }
@@ -54,6 +59,7 @@ public:
 private:
 	//使用するグラフィックハンドル
 	int m_playerGHandle[10];
+	int m_postureUiGraph[6] = { -1, -1, -1, -1, -1, -1 };
 
 	int m_animFrame;
 	bool m_isFlip; // 左右反転フラグ
@@ -90,6 +96,7 @@ private:
 	int m_maxHp = 100;
 	int m_posture = 0;
 	int m_maxPosture = 100;
+	int m_stunFrame = 0; // スタン残り時間
 
 	// 演出関連パラメータ
 	int m_shakeFrame = 0;

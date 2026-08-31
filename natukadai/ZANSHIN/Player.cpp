@@ -67,6 +67,7 @@ void Player::Init()
 	m_attackFrame = 0;      // 攻撃フレーム数をリセット
 	m_isLeftClickPrev = false;//リセット
 	m_state = PlayerState::Normal;
+	m_stunFrame = 0; // リセット処理を追加
 
 	// ステータス初期化
 	m_hp = 1000;
@@ -102,7 +103,7 @@ void Player::OnDamage(int damage, int postureDamage)
 	else
 	{
 		m_hp -= damage;
-		m_posture += postureDamage;
+		m_posture += postureDamage / 3;
 		if (m_hp < 0) m_hp = 0;
 
 		// 被弾時の強い手応え演出
@@ -115,6 +116,12 @@ void Player::OnDamage(int damage, int postureDamage)
 	if (m_posture >= m_maxPosture)
 	{
 		m_posture = m_maxPosture;
+		m_state = PlayerState::Stun;
+		m_stunFrame = 120; // 約2秒間（60FPS想定）行動不能
+
+		// 被弾以上の大きなノックバックと画面揺れ演出
+		m_shakeFrame = 20;
+		m_shakeIntensity = 15;
 	}
 }
 
@@ -180,10 +187,26 @@ void Player::Update()
 	if (m_parryEffectFrame > 0) m_parryEffectFrame--;
 	if (m_slashEffectFrame > 0) m_slashEffectFrame--;
 
+	// 姿勢崩れ（Stun）状態の処理
+	if (m_state == PlayerState::Stun)
+	{
+		m_stunFrame--;
+		if (m_stunFrame <= 0)
+		{
+			m_state = PlayerState::Normal;
+			m_posture = 0; // 復帰時に体幹ゲージをリセット
+		}
+		return; // スタン中は移動・攻撃・ガード入力をすべてスキップ
+	}
+
 	// 体幹の自然回復（非戦闘時・非ガード時）
 	if (m_state == PlayerState::Normal && m_posture > 0)
 	{
-		m_posture--;
+		// 4フレームに1ポイントだけ回復（1秒間に15回復：全回復まで約6.6秒）
+		if (m_animFrame % 4 == 0)
+		{
+			m_posture--;
+		}
 	}
 
 	// --- マウス入力を取得 ---
@@ -375,6 +398,20 @@ void Player::Draw()
 		DrawString(drawX - 25, drawY - 90, "GUARD", GetColor(100, 200, 255));
 	}
 
+	if (m_state == PlayerState::Stun)
+	{
+		// 頭上に赤い警告を表示
+		DrawString(drawX - 35, drawY - 100, "STUNNED!!", GetColor(255, 50, 50));
+
+		// プレイヤーを赤く明滅させる演出
+		if ((m_animFrame / 4) % 2 == 0)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ADD, 100);
+			DrawCircle(drawX, drawY, 40, GetColor(255, 0, 0), TRUE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
+	}
+
 	// 強化版パリィエフェクト（閃光・火花・衝撃波リング）
 	if (m_parryEffectFrame > 0)
 	{
@@ -421,9 +458,28 @@ void Player::Draw()
 	int currentHpWidth = static_cast<int>(80.0f * (static_cast<float>(m_hp) / m_maxHp));
 	DxLib::DrawBox(barX, barY, barX + currentHpWidth, barY + 6, GetColor(0, 230, 100), TRUE);
 
-	DxLib::DrawBox(barX, barY + 8, barX + 80, barY + 12, GetColor(50, 50, 50), TRUE);
-	int currentPostureWidth = static_cast<int>(80.0f * (static_cast<float>(m_posture) / m_maxPosture));
-	DxLib::DrawBox(barX, barY + 8, barX + currentPostureWidth, barY + 12, GetColor(255, 140, 0), TRUE);
+	if (m_postureUiGraph[0] != -1)
+	{
+		// 体幹の溜まり具合（0.0f ～ 1.0f）
+		float ratio = static_cast<float>(m_posture) / static_cast<float>(m_maxPosture);
+
+		// 割合に応じて 0 (100%/満タン) ～ 5 (0%/空) のインデックスを選択
+		int uiIndex = 5 - static_cast<int>(ratio * 5.0f);
+		if (uiIndex < 0) uiIndex = 0;
+		if (uiIndex > 5) uiIndex = 5;
+
+		// 画面下部の中央付近に拡大表示（scale: 3.0倍）
+		int uiX = Game::kScreenWidth / 4;
+		int uiY = Game::kScreenHeight - 50; // 画面下部の表示位置
+
+		// 横倍率と縦倍率を個別指定
+		double xScale = 20.0; // 横方向の拡大倍率（数値を大きくすると横に伸びます）
+		double yScale = 4.0;  // 縦方向の拡大倍率
+
+		// DrawRotaGraph3(x, y, cx, cy, ExtX, ExtY, Angle, GrHandle, TransFlag)
+		// cx=0, cy=0 で画像の中心を回転・拡大軸に指定
+		DrawRotaGraph3(uiX, uiY, 0, 0, xScale, yScale, 0.0, m_postureUiGraph[uiIndex], TRUE);
+	}
 
 	// デバッグ表示
 	if (m_state == PlayerState::Parry) DrawString(drawX, drawY - 100, "Parry!", GetColor(255, 255, 0));

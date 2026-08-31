@@ -48,6 +48,8 @@ public:
 	void OnDamage(int damage, int postureDamage);
 	// 攻撃判定クリア用（多段ヒット防止）
 	void ClearAttackHitbox() { m_attackHitbox.isActive = false; }
+	// 忍殺可能な状態かを取得
+	bool IsExecutionTarget() const { return m_state == EnemyState::Stun && !m_isDead; }
 
 private:
 	//アニメーション・グラフィック

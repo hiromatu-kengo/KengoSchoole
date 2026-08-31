@@ -25,6 +25,8 @@ private:
 	int m_enemyRunHandle;
 	int m_enemyAttackHandle;
 
+	int m_postureUiHandle[6];
+
 	Bg m_bg;
 	
 	Player m_player;

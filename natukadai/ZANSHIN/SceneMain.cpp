@@ -31,6 +31,18 @@ SceneMain::~SceneMain()
 
 void SceneMain::Init()
 {
+	// 画像を縦6分割で読み込み（幅・高さは画像の解像度に合わせて自動取得、または指定）
+	// 画像全体サイズに併せて 1コマあたりのサイズを指定してください（例：幅64px, 高さ12pxの場合）
+	int imgW = 0, imgH = 0;
+	int tempGraph = LoadGraph("image/UI/ph.png"); // 一旦読み込んでサイズ取得
+	GetGraphSize(tempGraph, &imgW, &imgH);
+	DeleteGraph(tempGraph);
+
+	int singleH = imgH / 6; // 6段分割
+	LoadDivGraph("image/ui/ph.png", 6, 1, 6, imgW, singleH, m_postureUiHandle);
+
+	
+
 	//シーン内で使用するリソースのロード
 	// 戻り値を使わず配列の中身をチェックする
 	m_playerIdleHandle = LoadGraph("image/player/idle.png");
@@ -47,6 +59,9 @@ void SceneMain::Init()
 	m_player.SetIdleGraph(m_playerIdleHandle);
 	m_player.SetRunGraph(m_playerRunHandle);
 	m_player.SetAttackGraph(m_playerAttackHandle);
+
+	// Playerにハンドルを渡す
+	m_player.SetPostureUIHandle(m_postureUiHandle);
 
 	m_enemy.SetIdleGraph(m_enemyIdleHandle);
 	m_enemy.SetRunGraph(m_enemyRunHandle);
@@ -65,6 +80,10 @@ void SceneMain::End()
 	DeleteGraph(m_playerIdleHandle);
 	DeleteGraph(m_playerRunHandle);
 	DeleteGraph(m_playerAttackHandle);
+	for (int i = 0; i < 6; ++i)
+	{
+		DeleteGraph(m_postureUiHandle[i]);
+	}
 
 	DeleteGraph(m_enemyIdleHandle);
 	DeleteGraph(m_enemyRunHandle);

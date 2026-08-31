@@ -145,6 +145,16 @@ void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlaye
 		m_isFlip = (distanceX < 0);
 	}
 
+	// 体幹の自然減衰（通常・追従・攻撃待ち時に徐々に減る）
+	if ((m_state == EnemyState::Idle || m_state == EnemyState::Run || m_state == EnemyState::AttackWait) && m_posture > 0)
+	{
+		// 6フレームに1ポイントだけ回復（1秒間に10回復：ボスらしく少し重ための全回復ペース）
+		if (m_animFrame % 6 == 0)
+		{
+			m_posture--;
+		}
+	}
+
 	//＊AIステートマシン
 	switch (m_state)
 	{
@@ -397,6 +407,22 @@ void Enemy::Draw()
 		int lineStartX = signX;
 		int lineEndX = static_cast<int>(m_x + (80.0f * attackDir));
 		DrawLine(lineStartX, signY, lineEndX, signY + 40, GetColor(255, 50, 50), 3);
+	}
+
+	// 忍殺（EXECUTE）マーカーの視覚表示
+	if (m_state == EnemyState::Stun)
+	{
+		int redDotX = static_cast<int>(m_x);
+		int redDotY = static_cast<int>(m_y) - 80;
+
+		// 赤く発光する忍殺ターゲットアイコン
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 200);
+		DrawCircle(redDotX, redDotY, 18, GetColor(255, 0, 0), TRUE);
+		DrawCircle(redDotX, redDotY, 25, GetColor(255, 255, 255), FALSE);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+		// テキスト表示
+		DrawString(redDotX - 28, redDotY - 45, "NIN SATSU", GetColor(255, 50, 50));
 	}
 
 	// 攻撃判定描画
