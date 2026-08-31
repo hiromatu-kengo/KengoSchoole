@@ -32,6 +32,7 @@ public:
 	void SetIdleGraph(int handle) { m_idleGraph = handle; }
 	void SetRunGraph(int handle) { m_runGraph = handle; }
 	void SetAttackGraph(int handle) { m_attackGraph = handle; }
+	void SetDeathGraph(int handle) { m_deathGraph = handle; } // 死亡アニメーション画像設定
 	void SetPostureUIHandle(const int handles[6])
 	{
 		for (int i = 0; i < 6; ++i)
@@ -43,6 +44,9 @@ public:
 	//敵の被弾判定を取得する
 	Hitbox GetHitbox() const { return m_hitbox; }
 	Hitbox GetAttackHitbox() const { return m_attackHitbox; }
+
+	// 死亡アニメーション＋暗転演出まで完了したか取得
+	bool IsDeadFinished() const { return m_isDeadFinished; }
 	bool IsDead() const { return m_isDead; }
 
 	// 位置座標のゲッター
@@ -65,6 +69,7 @@ private:
 	int m_idleGraph;
 	int m_runGraph;
 	int m_attackGraph;
+	int m_deathGraph; // 死亡用画像ハンドル
 
 	//座標・移動
 	float m_x;
@@ -80,6 +85,7 @@ private:
 	int m_maxPosture;//最大体感値
 	int m_stock;	// 残機
 	bool m_isDead;
+	bool m_isDeadFinished; // 死亡演出全完了フラグ
 	int m_postureUiHandle[6]; // 体幹UI画像ハンドルを追加
 
 	//state管理・タイマー
@@ -99,6 +105,9 @@ private:
 	int m_hitStopFrame = 0;       // ヒットストップ中フレーム
 	int m_damageEffectFrame = 0;  // 斬撃エフェクトの表示フレーム
 	float m_knockbackVx = 0.0f;   // ノックバックの横方向移動速度
+
+	// 画面フェード用アルファ値
+	int m_fadeAlpha = 0;
 
 	int m_seAttack = -1; // 攻撃
 	int m_seGuard = -1; // ガード

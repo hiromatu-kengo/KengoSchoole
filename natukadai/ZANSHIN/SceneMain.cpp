@@ -9,6 +9,7 @@ namespace
 	constexpr int kScreenY = Game::kScreenHeight / 2;
 	// プレイヤーのアニメーションフレーム数
 	constexpr int kPlayerFrameCount = 10;
+	constexpr int kFadeSpeed = 8;
 }
 
 SceneMain::SceneMain() :
@@ -19,11 +20,21 @@ SceneMain::SceneMain() :
 	m_enemyRunHandle(-1),
 	m_enemyAttackHandle(-1),
 	m_postureUiHandle(-1),
+	m_bgmHandle(-1),
 	m_bg(),
 	m_player(),
 	m_enemy(),
-	m_playerHasHit(false)
+	m_playerHasHit(false),
+	m_fadeAlpha(255),
+	m_isFadingIn(true),
+	m_isFadingOut(false),
+	m_nextScene(SceneType::Main)
 {
+	for (int i = 0; i < 6; ++i)
+	{
+		m_postureUiHandle[i] = -1;
+		m_enemyPostureUiHandle[i] = -1;
+	}
 }
 
 SceneMain::~SceneMain()
@@ -59,6 +70,14 @@ void SceneMain::Init()
 	m_enemyIdleHandle = LoadGraph("image/enemy/Idle.png");
 	m_enemyRunHandle = LoadGraph("image/enemy/Walk.png");
 	m_enemyAttackHandle = LoadGraph("image/enemy/Atk.png");
+	m_enemyDeathHandle = LoadGraph("image/enemy/Death.png"); // Death.pngの読み込み
+
+	m_bgmHandle = LoadSoundMem("sound/bgm_b.mp3");
+	if (m_bgmHandle != -1)
+	{
+		ChangeVolumeSoundMem(0, m_bgmHandle);
+		PlaySoundMem(m_bgmHandle, DX_PLAYTYPE_LOOP); // バックグラウンドでループ再生
+	}
 
 	m_bg.Init();
 
@@ -73,6 +92,7 @@ void SceneMain::Init()
 	m_enemy.SetIdleGraph(m_enemyIdleHandle);
 	m_enemy.SetRunGraph(m_enemyRunHandle);
 	m_enemy.SetAttackGraph(m_enemyAttackHandle);
+	m_enemy.SetDeathGraph(m_enemyDeathHandle); // Enemyへ渡す
 	m_enemy.SetPostureUIHandle(m_enemyPostureUiHandle);
 
 	// 初期配置を設定
@@ -80,11 +100,21 @@ void SceneMain::Init()
 	m_enemy.Init();
 	m_playerHasHit = false;
 
-	// 画像読み込みチェック（デバッグ用）
+	m_fadeAlpha = 255;
+	m_isFadingIn = true;
+	m_isFadingOut = false;
+	m_nextScene = SceneType::Main;
 }
 
 void SceneMain::End()
 {
+	if (m_bgmHandle != -1)
+	{
+		StopSoundMem(m_bgmHandle);
+		DeleteSoundMem(m_bgmHandle);
+		m_bgmHandle = -1;
+	}
+
 	DeleteGraph(m_playerIdleHandle);
 	DeleteGraph(m_playerRunHandle);
 	DeleteGraph(m_playerAttackHandle);
@@ -93,31 +123,79 @@ void SceneMain::End()
 	DeleteGraph(m_enemyIdleHandle);
 	DeleteGraph(m_enemyRunHandle);
 	DeleteGraph(m_enemyAttackHandle);
+	DeleteGraph(m_enemyDeathHandle); // 破棄処理
 	for (int i = 0; i < 6; ++i){DeleteGraph(m_enemyPostureUiHandle[i]);}
 	m_bg.End();
 }
 
 SceneType SceneMain::Update()
 {
+	// フェードイン処理（暗転解除）
+	if (m_isFadingIn)
+	{
+		m_fadeAlpha -= kFadeSpeed;
+		if (m_fadeAlpha <= 0)
+		{
+			m_fadeAlpha = 0;
+			m_isFadingIn = false;
+		}
+		// 画面の透明度に合わせて音量を上げる (255 - alpha)
+		if (m_bgmHandle != -1)
+		{
+			ChangeVolumeSoundMem(255 - m_fadeAlpha, m_bgmHandle);
+		}
+	}
+
+	// フェードアウト処理（暗転してシーン切り替え）
+	if (m_isFadingOut)
+	{
+		m_fadeAlpha += kFadeSpeed;
+		if (m_fadeAlpha >= 255)
+		{
+			m_fadeAlpha = 255;
+			return m_nextScene; // 画面が真っ黒になったら新しいシーンへ遷移
+		}
+		// 画面の暗さに合わせて音量を下げる (255 - alpha)
+		if (m_bgmHandle != -1)
+		{
+			ChangeVolumeSoundMem(255 - m_fadeAlpha, m_bgmHandle);
+		}
+		return SceneType::Main; // フェードアウト中もメインシーンを維持
+	}
+
 	// プレイヤー更新
 	m_player.Update();
+
+	// 敵撃破時：そのままシーン遷移せずフェードアウトを開始する
+	if (m_enemy.IsDeadFinished())
+	{
+		if (!m_isFadingOut)
+		{
+			m_isFadingOut = true;
+			m_nextScene = SceneType::Result;
+		}
+	}
+
 	// プレイヤーがヒットストップ中（時が止まっている状態）は敵の動作更新を止める
 	if (!m_player.IsHitStopped())
 	{
 		m_enemy.Update(m_player.GetX(), m_player.GetY(), 80.0f, m_player.IsAttacking());
 	}
 
-	// =========================================================
-	// 1. プレイヤーの攻撃 -> 敵へのヒット判定（ヒットストップ演出付き）
-	// =========================================================
-	if (!m_playerHasHit && IsOverlap(m_player.GetAttackHitbox(), m_enemy.GetHitbox()))
+	// 敵撃破判定 -> リザルト画面へ遷移
+	if (m_enemy.IsDeadFinished())
+	{
+		return SceneType::Result;
+	}
+
+	// プレイヤーの攻撃 -> 敵へのヒット判定（ヒットストップ演出付き）
+	if (!m_enemy.IsDead() && !m_playerHasHit && IsOverlap(m_player.GetAttackHitbox(), m_enemy.GetHitbox()))
 	{
 		float hitX = static_cast<float>(m_enemy.GetX());
 		float hitY = static_cast<float>(m_enemy.GetY() - 20.0f);
 
 		// ヒットストップ＆斬撃エフェクト呼び出し
 		m_player.OnHitSuccess(hitX, hitY);
-
 		m_enemy.OnDamage(10, 20);
 		m_playerHasHit = true;
 	}
@@ -127,9 +205,7 @@ SceneType SceneMain::Update()
 		m_playerHasHit = false;
 	}
 
-	// =========================================================
-	// 2. 敵の攻撃 -> プレイヤーへのヒット判定（パリィ・ガード・被弾）
-	// =========================================================
+	// 敵の攻撃 -> プレイヤーへのヒット判定（パリィ・ガード・被弾）
 	Hitbox enemyAtkBox = m_enemy.GetAttackHitbox();
 
 	if (enemyAtkBox.isActive)
@@ -169,10 +245,15 @@ SceneType SceneMain::Update()
 		}
 	}
 
-	if (CheckHitKey(KEY_INPUT_X))// Xキーでリザルトシーンに遷移(仮)
+	if (CheckHitKey(KEY_INPUT_X))
 	{
-		return SceneType::Result;
+		if (!m_isFadingOut)
+		{
+			m_isFadingOut = true;
+			m_nextScene = SceneType::Result;
+		}
 	}
+
 	return SceneType::Main;//通常時は自分のシーンを維持
 }
 
@@ -182,7 +263,13 @@ void SceneMain::Draw()
 	m_player.Draw();
 	m_enemy.Draw();
 
-
+	// フェード用の黒い四角形を全画面にかぶせて描画
+	if (m_fadeAlpha > 0)
+	{
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, m_fadeAlpha);
+		DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, GetColor(0, 0, 0), TRUE);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	}
 }
 
 void SceneMain::Release()

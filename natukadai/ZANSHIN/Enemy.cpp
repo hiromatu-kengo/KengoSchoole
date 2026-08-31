@@ -13,6 +13,7 @@ namespace
 	constexpr int kIdleAnimNum = 6;	                                    //待機アニメーションのコマ数
 	constexpr int kRunAnimNum = 8;	                                        //走るアニメーションのコマ数
 	constexpr int kAttackAnimNum = 24;	                                    //攻撃アニメーションのコマ数
+	constexpr int kDeathAnimNum = 7;										// 死亡アニメーション（7コマ）
 	constexpr int kSingleAnimFrame = 4;	                                    //アニメ1コマに書けるフレーム数
 
 	//アニメーション1ループにかかるフレーム数
@@ -80,6 +81,8 @@ void Enemy::Init()
 	m_height = kHeight * kScale;
 	m_hp = 100;
 	m_isDead = false;
+	m_isDeadFinished = false; // 完了フラグクリア
+	m_fadeAlpha = 0;          // フェードアルファクリア
 
 	m_state = EnemyState::Idle;
 	m_stateFrame = 0;
@@ -90,10 +93,10 @@ void Enemy::Init()
 	m_hitbox.isActive = true;
 
 	// SEの読み込み
-	m_seAttack = LoadSoundMem("sound/at.wav");
-	m_seGuard = LoadSoundMem("sound/gd.wav");
-	m_seParry = LoadSoundMem("sound/pl.wav");
-	m_seNinsatsu = LoadSoundMem("sound/ns.wav");
+	m_seAttack = LoadSoundMem("sound/at.mp3");
+	m_seGuard = LoadSoundMem("sound/gd.mp3");
+	m_seParry = LoadSoundMem("sound/pl.mp3");
+	m_seNinsatsu = LoadSoundMem("sound/ns.mp3");
 }
 
 void Enemy::End()
@@ -109,8 +112,7 @@ void Enemy::End()
 
 void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlayerAttacking)
 {
-	if (m_isDead)return;
-
+	
 	// ヒットストップ中は敵の動きやアニメーションを静止させる
 	if (m_hitStopFrame > 0)
 	{
@@ -121,6 +123,24 @@ void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlaye
 	//アニメーションを進める
 	m_animFrame++;
 	m_stateFrame++;
+
+	// 死亡ステート演出（アニメーション再生 ＋ フェードアウト）
+	if (m_state == EnemyState::Dead)
+	{
+		// 死亡アニメーション（7コマ）が最後のコマに達したら画面暗転を開始
+		int deathFrame = m_stateFrame / 6; // 6フレームにつき1コマ進む（ゆっくり倒れる）
+		if (deathFrame >= kDeathAnimNum - 1)
+		{
+			m_fadeAlpha += 4; // フェード速度
+			if (m_fadeAlpha >= 255)
+			{
+				m_fadeAlpha = 255;
+				m_isDeadFinished = true; // 暗転完了！シーン遷移許可
+			}
+		}
+		return;
+	}
+
 	m_isMoving = false; // 移動中かどうかのフラグをリセット
 	m_attackHitbox.isActive = false; //攻撃判定を初期化
 
@@ -217,13 +237,11 @@ void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlaye
 			{
 				PlaySoundMem(m_seAttack, DX_PLAYTYPE_BACK); // ★敵の攻撃音
 			}
-			break;
 		}
 		else
 		{
 			m_attackHitbox.isActive = false;
 		}
-		break;
 
 		//１回分の攻撃っモーション終了
 		if (m_stateFrame >= kAttackAnimTotalFrame)
@@ -317,6 +335,7 @@ void Enemy::OnDamage(int damage, int postureDamage)
 		{
 			m_isDead = true;
 			m_state = EnemyState::Dead;
+			m_stateFrame = 0;
 			m_hitbox.isActive = false;
 			m_attackHitbox.isActive = false;
 		}
@@ -362,7 +381,34 @@ void Enemy::OnParried()
 
 void Enemy::Draw()
 {
-	if (m_isDead)return;//死亡時は描画しない
+	// 死亡時の描画
+	if (m_state == EnemyState::Dead)
+	{
+		if (m_deathGraph != -1)
+		{
+			// 6フレームに1コマ進め、最後の倒れた状態（6コマ目）で保持する
+			int animNo = m_stateFrame / 6;
+			if (animNo >= kDeathAnimNum) animNo = kDeathAnimNum - 1;
+
+			DrawRectRotaGraph(
+				static_cast<int>(m_x), static_cast<int>(m_y),
+				animNo * kWidth, 0,
+				kWidth, kHeight,
+				double(kScale), 0.0,
+				m_deathGraph, true,
+				m_isFlip
+			);
+		}
+
+		// シーン切り替え時の自然な黒フェードアウト膜を描画
+		if (m_fadeAlpha > 0)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, m_fadeAlpha);
+			DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, GetColor(0, 0, 0), TRUE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
+		return;
+	}
 
 	//移動中かどうかでアニメーションを変更する
 	int tempTotalFrame = kIdleAnimTotalFrame;

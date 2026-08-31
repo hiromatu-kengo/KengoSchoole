@@ -24,9 +24,18 @@ private:
 	int m_enemyIdleHandle;
 	int m_enemyRunHandle;
 	int m_enemyAttackHandle;
+	int m_enemyDeathHandle; // 敵の死亡アニメーション画像ハンドル
 
 	int m_postureUiHandle[6];
 	int m_enemyPostureUiHandle[6];
+
+	// BGM用ハンドル
+	int m_bgmHandle;
+
+	int m_fadeAlpha;      // フェード用の不透明度 (0: 透明 ~ 255: 真っ黒)
+	bool m_isFadingIn;    // フェードイン中かフラグ
+	bool m_isFadingOut;   // フェードアウト中かフラグ
+	SceneType m_nextScene;// フェードアウト後に遷移する次のシーン
 
 	Bg m_bg;
 	

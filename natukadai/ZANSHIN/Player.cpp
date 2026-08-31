@@ -82,10 +82,10 @@ void Player::Init()
 	m_slashEffectFrame = 0;
 
 	// SEの読み込み
-	m_seAttack = LoadSoundMem("sound/at.wav");
-	m_seGuard = LoadSoundMem("sound/gd.wav");
-	m_seParry = LoadSoundMem("sound/pl.wav");
-	m_seDead = LoadSoundMem("sound/ns.wav");
+	m_seAttack = LoadSoundMem("sound/at.mp3");
+	m_seGuard = LoadSoundMem("sound/gd.mp3");
+	m_seParry = LoadSoundMem("sound/pl.mp3");
+	m_seDead = LoadSoundMem("sound/ns.mp3");
 }
 
 void Player::End()
@@ -249,7 +249,7 @@ void Player::Update()
 			// 攻撃判定を有効にする
 			m_attackHitbox.isActive = true;
 			// 攻撃判定のサイズ
-			float atkW = 50.0f;
+			float atkW = 80.0f;
 			float atkH = 60.0f;
 			// 表示サイズから垂直オフセット（中心より下）を計算。m_height が未設定の場合は推定値を使う
 			float displayHeight = (m_height > 0) ? static_cast<float>(m_height) : static_cast<float>(kHeight * 4);
@@ -284,7 +284,7 @@ void Player::Update()
 		{
 			m_state = PlayerState::Attack;
 			m_attackFrame = 0;
-			PlaySoundMem(m_seAttack, DX_PLAYTYPE_BACK); // ★攻撃音
+			PlaySoundMem(m_seAttack, DX_PLAYTYPE_BACK); // 攻撃音
 		}
 		else
 		{
@@ -384,9 +384,7 @@ void Player::Draw()
 		tempHanndle, true,
 		m_isFlip);
 
-	// =========================================================
 	// ガード / パリィ 状態の視覚的フィードバック（位置の低く調整）
-	// =========================================================
 	if (m_state == PlayerState::Parry)
 	{
 		// 【パリィ受付中】：プレイヤーの前方に強い黄色の閃光オーラを表示
@@ -421,15 +419,67 @@ void Player::Draw()
 
 	if (m_state == PlayerState::Stun)
 	{
-		// 頭上に赤い警告を表示
-		DrawString(drawX - 35, drawY - 100, "STUNNED!!", GetColor(255, 50, 50));
-
-		// プレイヤーを赤く明滅させる演出
-		if ((m_animFrame / 4) % 2 == 0)
+	// 強化版：スタン（姿勢崩れ）演出
+		if (m_state == PlayerState::Stun)
 		{
-			SetDrawBlendMode(DX_BLENDMODE_ADD, 100);
-			DrawCircle(drawX, drawY, 40, GetColor(255, 0, 0), TRUE);
+			
+			// 頭上をぐるぐる回る星/火花エフェクト（ピヨピヨ演出）
+			SetDrawBlendMode(DX_BLENDMODE_ADD, 220);
+			int starCenterY = drawY - 90; // 頭上のY座標
+			float angleBase = static_cast<float>(m_animFrame) * 0.15f; // 回転速度
+
+			for (int i = 0; i < 3; ++i)
+			{
+				// 120度ずつずらして3つの星（丸）を回す
+				float angle = angleBase + (i * (3.14159265f * 2.0f / 3.0f));
+				int starX = drawX + static_cast<int>(cos(angle) * 35.0f); // 横幅35pxで楕円回転
+				int starY = starCenterY + static_cast<int>(sin(angle) * 12.0f); // 縦幅12px
+
+				// 黄色と橙のグラデーション発光
+				DrawCircle(starX, starY, 6, GetColor(255, 230, 80), TRUE);
+				DrawCircle(starX, starY, 10, GetColor(255, 100, 0), FALSE);
+			}
+
+			// プレイヤー本体の赤黒明滅＆電気ショックオーラ
+			if ((m_animFrame / 3) % 2 == 0)
+			{
+				// 赤い警告オーラ
+				DrawCircle(drawX, drawY + 20, 50, GetColor(255, 30, 30), TRUE);
+				// 稲妻のようなクラックライン
+				int rx1 = (rand() % 60) - 30;
+				int ry1 = (rand() % 80) - 40;
+				int rx2 = (rand() % 60) - 30;
+				int ry2 = (rand() % 80) - 40;
+				DxLib::DrawLine(drawX + rx1, drawY + ry1, drawX + rx2, drawY + ry2, GetColor(255, 255, 100), 2);
+			}
 			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+			// 画面中央上部の「体幹崩れ！」巨大警告アラートUI
+			int alertY = 120;
+			int alertWidth = 320;
+			int alertHeight = 40;
+			int alertLeft = (Game::kScreenWidth - alertWidth) / 2;
+
+			// 赤黒い帯背景
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, 180);
+			DrawBox(alertLeft, alertY, alertLeft + alertWidth, alertY + alertHeight, GetColor(150, 0, 0), TRUE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+			// 黄色い枠線
+			DrawBox(alertLeft, alertY, alertLeft + alertWidth, alertY + alertHeight, GetColor(255, 200, 0), FALSE);
+
+			// 点滅する文字
+			if ((m_animFrame / 6) % 2 == 0)
+			{
+				DrawString(alertLeft + 85, alertY + 12, "!! POSTURE BROKEN !!", GetColor(255, 255, 255));
+			}
+			else
+			{
+				DrawString(alertLeft + 85, alertY + 12, "!! POSTURE BROKEN !!", GetColor(255, 50, 50));
+			}
+
+			// 頭上のデバッグテキストも強調
+			DrawString(drawX - 45, drawY - 120, "STUNNED!!", GetColor(255, 50, 50));
 		}
 	}
 
@@ -458,7 +508,7 @@ void Player::Draw()
 			int ex = m_parryEffectX + static_cast<int>(cos(angle) * endDist);
 			int ey = m_parryEffectY + static_cast<int>(sin(angle) * endDist);
 
-			DrawLine(sx, sy, ex, ey, GetColor(255, 230, 100), 3);
+			DxLib::DrawLine(sx, sy, ex, ey, GetColor(255, 230, 100), 3);
 		}
 	}
 
@@ -466,8 +516,8 @@ void Player::Draw()
 	if (m_slashEffectFrame > 0)
 	{
 		SetDrawBlendMode(DX_BLENDMODE_ADD, 220);
-		DrawLine(m_slashEffectX - 25, m_slashEffectY - 25, m_slashEffectX + 25, m_slashEffectY + 25, GetColor(255, 50, 50), 5);
-		DrawLine(m_slashEffectX - 15, m_slashEffectY - 15, m_slashEffectX + 15, m_slashEffectY + 15, GetColor(255, 255, 200), 3);
+		DxLib::DrawLine(m_slashEffectX - 25, m_slashEffectY - 25, m_slashEffectX + 25, m_slashEffectY + 25, GetColor(255, 50, 50), 5);
+		DxLib::DrawLine(m_slashEffectX - 15, m_slashEffectY - 15, m_slashEffectX + 15, m_slashEffectY + 15, GetColor(255, 255, 200), 3);
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 
