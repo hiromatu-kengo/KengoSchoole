@@ -57,6 +57,7 @@ Enemy::Enemy() :
 	m_maxPosture(kMaxPostureValue),
 	m_stock(2),
 	m_isDead(false),
+	m_postureUiHandle(-1),
 	m_state(EnemyState::Idle),
 	m_stateFrame(0),
 	m_comboCount(0),
@@ -87,6 +88,12 @@ void Enemy::Init()
 	m_hitbox.width = 80.0f;
 	m_hitbox.height = 120.0f;
 	m_hitbox.isActive = true;
+
+	// SEの読み込み
+	m_seAttack = LoadSoundMem("sound/at.wav");
+	m_seGuard = LoadSoundMem("sound/gd.wav");
+	m_seParry = LoadSoundMem("sound/pl.wav");
+	m_seNinsatsu = LoadSoundMem("sound/ns.wav");
 }
 
 void Enemy::End()
@@ -94,6 +101,10 @@ void Enemy::End()
 	DeleteGraph(m_idleGraph);
 	DeleteGraph(m_runGraph);
 	DeleteGraph(m_attackGraph);
+	DeleteSoundMem(m_seAttack);
+	DeleteSoundMem(m_seGuard);
+	DeleteSoundMem(m_seParry);
+	DeleteSoundMem(m_seNinsatsu);
 }
 
 void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlayerAttacking)
@@ -202,11 +213,17 @@ void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlaye
 			float direction = m_isFlip ? -1.0f : 1.0f;
 			m_attackHitbox.x = m_x + (100.0f * direction);
 			m_attackHitbox.y = m_y - 20.0f;
+			if (m_stateFrame == 20)
+			{
+				PlaySoundMem(m_seAttack, DX_PLAYTYPE_BACK); // ★敵の攻撃音
+			}
+			break;
 		}
 		else
 		{
 			m_attackHitbox.isActive = false;
 		}
+		break;
 
 		//１回分の攻撃っモーション終了
 		if (m_stateFrame >= kAttackAnimTotalFrame)
@@ -294,6 +311,8 @@ void Enemy::OnDamage(int damage, int postureDamage)
 		m_stock--;
 		m_posture = 0;
 
+		PlaySoundMem(m_seNinsatsu, DX_PLAYTYPE_BACK); // ★忍殺音
+
 		if (m_stock <= 0)
 		{
 			m_isDead = true;
@@ -331,6 +350,7 @@ void Enemy::OnParried()
 	m_attackHitbox.isActive = false; // 弾かれたら即座に判定消滅
 	m_state = EnemyState::AttackWait;//攻撃強制中断
 	m_stateFrame = -30;//通常より長い隙をつくる
+	PlaySoundMem(m_seParry, DX_PLAYTYPE_BACK); // ★パリィされた音（弾かれ音）
 
 	if (m_posture >= m_maxPosture)
 	{
@@ -449,11 +469,29 @@ void Enemy::Draw()
 	// デバッグ描画：残機と体幹ゲージ
 	DrawFormatString((int)m_x - 30, (int)m_y - 80, GetColor(255, 255, 255), "Stock: %d", m_stock);
 
-	// 体幹ゲージ（赤色バー）
-	int barWidth = 80;
-	int currentBarWidth = (int)((float)m_posture / m_maxPosture * barWidth);
-	DrawBox((int)m_x - 40, (int)m_y - 65, (int)m_x + 40, (int)m_y - 55, GetColor(100, 100, 100), TRUE);
-	DrawBox((int)m_x - 40, (int)m_y - 65, (int)m_x - 40 + currentBarWidth, (int)m_y - 55, GetColor(255, 50, 50), TRUE);
+	// 画面上部に敵の体幹ゲージUIを描画
+	if (m_postureUiHandle[0] != -1)
+	{
+		// 体幹割合（0.0f ～ 1.0f）
+		float rate = static_cast<float>(m_posture) / static_cast<float>(m_maxPosture);
+
+		// 画像順序：[0]満タン ～ [5]空
+		// 体幹が増えるほどゲージが伸びる計算
+		int uiIndex = 5 - static_cast<int>(rate * 5.0f);
+		if (uiIndex < 0) uiIndex = 0;
+		if (uiIndex > 5) uiIndex = 5;
+
+		// 画面中央上に配置（座標はゲームの画面解像度に合わせて微調整してください）
+		int uiX = Game::kScreenWidth / 100;
+		int uiY = 40;
+
+		// 横幅だけ大きく伸ばす設定
+		double xScale = 35.0; // 横方向の拡大率
+		double yScale = 4.0; // 縦方向の拡大率
+
+		// 横と縦の拡大率を個別に指定して描画
+		DrawRotaGraph3(uiX, uiY, 0, 0, xScale, yScale, 0.0, m_postureUiHandle[uiIndex], TRUE);
+	}
 
 	//デバッグ描画：敵の暗い判定を赤枠で表示
 	if (m_hitbox.isActive)

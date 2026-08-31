@@ -87,6 +87,11 @@ private:
 
 	bool m_isLeftClickPrev = false; // 毎フレームのひっだりクリック状態
 
+	int m_seAttack = -1; // 攻撃
+	int m_seGuard = -1; // ガード
+	int m_seParry = -1; // パリィ
+	int m_seDead = -1; // 被撃破
+
 	Hitbox m_attackHitbox; // 攻撃判定用のヒットボックス
 	
 	PlayerState m_state;// プレイヤーの状態

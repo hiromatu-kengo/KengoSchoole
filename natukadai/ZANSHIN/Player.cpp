@@ -80,6 +80,12 @@ void Player::Init()
 	m_parryEffectFrame = 0;
 	m_hitStopFrame = 0;
 	m_slashEffectFrame = 0;
+
+	// SEの読み込み
+	m_seAttack = LoadSoundMem("sound/at.wav");
+	m_seGuard = LoadSoundMem("sound/gd.wav");
+	m_seParry = LoadSoundMem("sound/pl.wav");
+	m_seDead = LoadSoundMem("sound/ns.wav");
 }
 
 void Player::End()
@@ -87,6 +93,12 @@ void Player::End()
 	DeleteGraph(m_idleGraph);
 	DeleteGraph(m_runGraph);
 	DeleteGraph(m_attackGraph);
+
+	// SEのメモリ解放
+	DeleteSoundMem(m_seAttack);
+	DeleteSoundMem(m_seGuard);
+	DeleteSoundMem(m_seParry);
+	DeleteSoundMem(m_seDead);
 }
 
 void Player::OnDamage(int damage, int postureDamage)
@@ -99,12 +111,18 @@ void Player::OnDamage(int damage, int postureDamage)
 		m_shakeFrame = 5;
 		m_shakeIntensity = 4;
 		m_x += m_isFlip ? 10 : -10; // 後ろへ押し戻される
+
+		PlaySoundMem(m_seGuard, DX_PLAYTYPE_BACK); // ★ガード音
 	}
 	else
 	{
 		m_hp -= damage;
 		m_posture += postureDamage / 3;
-		if (m_hp < 0) m_hp = 0;
+		if (m_hp <= 0)
+		{
+			m_hp = 0;
+			PlaySoundMem(m_seDead, DX_PLAYTYPE_BACK); // ★やられた音
+		}
 
 		// 被弾時の強い手応え演出
 		m_shakeFrame = 12;
@@ -143,6 +161,8 @@ void Player::OnParrySuccess(float hitX, float hitY)
 
 	// 4. プレイヤーのノックバック（パリィの反動でわずかに距離が空く）
 	m_x += m_isFlip ? 15 : -15;
+
+	PlaySoundMem(m_seParry, DX_PLAYTYPE_BACK); // ★パリィ成功音
 }
 
 // 攻撃ヒット時の演出処理
@@ -260,10 +280,11 @@ void Player::Update()
 	else// パリィ・ガード・通常状態の処理
 	{
 		// 左クリックが「押された瞬間」のみ攻撃へ遷移
-		if (isLeftClickTrigger)
+		if (isLeftClickTrigger && m_state != PlayerState::Attack)
 		{
 			m_state = PlayerState::Attack;
 			m_attackFrame = 0;
+			PlaySoundMem(m_seAttack, DX_PLAYTYPE_BACK); // ★攻撃音
 		}
 		else
 		{
@@ -469,11 +490,11 @@ void Player::Draw()
 		if (uiIndex > 5) uiIndex = 5;
 
 		// 画面下部の中央付近に拡大表示（scale: 3.0倍）
-		int uiX = Game::kScreenWidth / 4;
+		int uiX = Game::kScreenWidth / 1000 - 30;
 		int uiY = Game::kScreenHeight - 50; // 画面下部の表示位置
 
 		// 横倍率と縦倍率を個別指定
-		double xScale = 20.0; // 横方向の拡大倍率（数値を大きくすると横に伸びます）
+		double xScale = 35.0; // 横方向の拡大倍率（数値を大きくすると横に伸びます）
 		double yScale = 4.0;  // 縦方向の拡大倍率
 
 		// DrawRotaGraph3(x, y, cx, cy, ExtX, ExtY, Angle, GrHandle, TransFlag)

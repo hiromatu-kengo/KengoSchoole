@@ -18,6 +18,7 @@ SceneMain::SceneMain() :
 	m_enemyIdleHandle(-1),
 	m_enemyRunHandle(-1),
 	m_enemyAttackHandle(-1),
+	m_postureUiHandle(-1),
 	m_bg(),
 	m_player(),
 	m_enemy(),
@@ -41,7 +42,13 @@ void SceneMain::Init()
 	int singleH = imgH / 6; // 6段分割
 	LoadDivGraph("image/ui/ph.png", 6, 1, 6, imgW, singleH, m_postureUiHandle);
 
-	
+	int enemyImgW = 0, enemyImgH = 0;
+	int tempEnemyGraph = LoadGraph("image/UI/eh.png");
+	GetGraphSize(tempEnemyGraph, &enemyImgW, &enemyImgH);
+	DeleteGraph(tempEnemyGraph);
+
+	int singleEnemyH = enemyImgH / 6; // 6段分割
+	LoadDivGraph("image/UI/eh.png", 6, 1, 6, enemyImgW, singleEnemyH, m_enemyPostureUiHandle);
 
 	//シーン内で使用するリソースのロード
 	// 戻り値を使わず配列の中身をチェックする
@@ -66,6 +73,7 @@ void SceneMain::Init()
 	m_enemy.SetIdleGraph(m_enemyIdleHandle);
 	m_enemy.SetRunGraph(m_enemyRunHandle);
 	m_enemy.SetAttackGraph(m_enemyAttackHandle);
+	m_enemy.SetPostureUIHandle(m_enemyPostureUiHandle);
 
 	// 初期配置を設定
 	m_player.Init();
@@ -80,14 +88,12 @@ void SceneMain::End()
 	DeleteGraph(m_playerIdleHandle);
 	DeleteGraph(m_playerRunHandle);
 	DeleteGraph(m_playerAttackHandle);
-	for (int i = 0; i < 6; ++i)
-	{
-		DeleteGraph(m_postureUiHandle[i]);
-	}
+	for (int i = 0; i < 6; ++i){DeleteGraph(m_postureUiHandle[i]);}
 
 	DeleteGraph(m_enemyIdleHandle);
 	DeleteGraph(m_enemyRunHandle);
 	DeleteGraph(m_enemyAttackHandle);
+	for (int i = 0; i < 6; ++i){DeleteGraph(m_enemyPostureUiHandle[i]);}
 	m_bg.End();
 }
 
@@ -95,7 +101,7 @@ SceneType SceneMain::Update()
 {
 	// プレイヤー更新
 	m_player.Update();
-	// ★ プレイヤーがヒットストップ中（時が止まっている状態）は敵の動作更新を止める
+	// プレイヤーがヒットストップ中（時が止まっている状態）は敵の動作更新を止める
 	if (!m_player.IsHitStopped())
 	{
 		m_enemy.Update(m_player.GetX(), m_player.GetY(), 80.0f, m_player.IsAttacking());
@@ -109,7 +115,7 @@ SceneType SceneMain::Update()
 		float hitX = static_cast<float>(m_enemy.GetX());
 		float hitY = static_cast<float>(m_enemy.GetY() - 20.0f);
 
-		// ★ ヒットストップ＆斬撃エフェクト呼び出し
+		// ヒットストップ＆斬撃エフェクト呼び出し
 		m_player.OnHitSuccess(hitX, hitY);
 
 		m_enemy.OnDamage(10, 20);
@@ -143,7 +149,7 @@ SceneType SceneMain::Update()
 				float hitX = (m_player.GetX() + enemyAtkBox.x) / 2.0f;
 				float hitY = (m_player.GetY() + enemyAtkBox.y) / 2.0f;
 
-				// ★ パリィ時の画面揺れ＋ヒットストップ＋光彩エフェクト発動
+				// パリィ時の画面揺れ＋ヒットストップ＋光彩エフェクト発動
 				m_player.OnParrySuccess(hitX, hitY);
 				m_enemy.OnParried();
 			}
