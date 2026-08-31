@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:SceneResult.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Bg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:Bg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:SceneResult.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -45,18 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Bg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:Bg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Bg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:Bg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:SceneResult.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:SceneResult.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,63 +66,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SceneMain.cpp",
-              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.cpp",
-              "RelativeDocumentMoniker": "SceneMain.cpp",
-              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.cpp*",
-              "RelativeToolTip": "SceneMain.cpp*",
-              "ViewState": "AgIAAPsAAAAAAAAAAAAUwKgAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-03T02:25:58.661Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SceneMain.h",
-              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.h",
-              "RelativeDocumentMoniker": "SceneMain.h",
-              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.h*",
-              "RelativeToolTip": "SceneMain.h*",
-              "ViewState": "AgIAABUAAAAAAAAAAAAUwCUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-08-30T08:57:47.582Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\main.cpp",
-              "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\main.cpp",
-              "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAUwFEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-03T02:15:56.074Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Player.cpp",
-              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
-              "RelativeDocumentMoniker": "Player.cpp",
-              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
-              "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAAHQBAAAAAAAAAAAUwAUCAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-03T02:31:43.919Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Enemy.cpp",
               "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Enemy.cpp",
               "RelativeDocumentMoniker": "Enemy.cpp",
@@ -130,12 +78,99 @@
               "RelativeToolTip": "Enemy.cpp",
               "ViewState": "AgIAAHgAAAAAAAAAAAAUwHIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-17T03:59:58.649Z",
+              "WhenOpened": "2026-08-17T03:59:58.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SceneResult.h",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.h",
+              "RelativeDocumentMoniker": "SceneResult.h",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.h",
+              "RelativeToolTip": "SceneResult.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-08-13T08:46:14.792Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SceneResult.cpp",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.cpp",
+              "RelativeDocumentMoniker": "SceneResult.cpp",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.cpp",
+              "RelativeToolTip": "SceneResult.cpp",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAAAMYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-13T08:49:27.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Bg.h",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Bg.h",
+              "RelativeDocumentMoniker": "Bg.h",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Bg.h",
+              "RelativeToolTip": "Bg.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-08-27T02:17:02.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SceneMain.cpp",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.cpp",
+              "RelativeDocumentMoniker": "SceneMain.cpp",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.cpp",
+              "RelativeToolTip": "SceneMain.cpp",
+              "ViewState": "AgIAAMgAAAAAAAAAAAAUwKgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-03T02:25:58.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
+              "RelativeDocumentMoniker": "Player.cpp",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
+              "RelativeToolTip": "Player.cpp",
+              "ViewState": "AgIAAHQBAAAAAAAAAAAUwAUCAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-03T02:31:43.919Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAUwFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-03T02:15:56.074Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SceneMain.h",
+              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.h",
+              "RelativeDocumentMoniker": "SceneMain.h",
+              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.h",
+              "RelativeToolTip": "SceneMain.h",
+              "ViewState": "AgIAABUAAAAAAAAAAAAUwCUAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-08-30T08:57:47.582Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Enemy.h",
               "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Enemy.h",
               "RelativeDocumentMoniker": "Enemy.h",
@@ -143,12 +178,11 @@
               "RelativeToolTip": "Enemy.h",
               "ViewState": "AgIAAFgAAAAAAAAAAAAUwG4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-08-17T03:57:32.432Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-17T03:57:32.432Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "SceneTitle.cpp",
               "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneTitle.cpp",
               "RelativeDocumentMoniker": "SceneTitle.cpp",
@@ -156,12 +190,11 @@
               "RelativeToolTip": "SceneTitle.cpp",
               "ViewState": "AgIAAGAAAAAAAAAAAAAUwIMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-13T08:41:33.879Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-13T08:41:33.879Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Game.h",
               "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Game.h",
               "RelativeDocumentMoniker": "Game.h",
@@ -169,12 +202,11 @@
               "RelativeToolTip": "Game.h",
               "ViewState": "AgIAAAEAAAAAAAAAAAAUwBQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-08-12T08:46:58.122Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-12T08:46:58.122Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "SceneTitle.h",
               "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneTitle.h",
               "RelativeDocumentMoniker": "SceneTitle.h",
@@ -182,12 +214,11 @@
               "RelativeToolTip": "SceneTitle.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-08-13T08:33:46.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-13T08:33:46.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Bg.cpp",
               "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Bg.cpp",
               "RelativeDocumentMoniker": "Bg.cpp",
@@ -199,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
@@ -208,42 +239,6 @@
               "ViewState": "AgIAAEgAAAAAAAAAAAAAAFkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-08-28T07:52:24.342Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Bg.h",
-              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Bg.h",
-              "RelativeDocumentMoniker": "Bg.h",
-              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Bg.h",
-              "RelativeToolTip": "Bg.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-08-27T02:17:02.504Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SceneResult.h",
-              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.h",
-              "RelativeDocumentMoniker": "SceneResult.h",
-              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.h",
-              "RelativeToolTip": "SceneResult.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-08-13T08:46:14.792Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SceneResult.cpp",
-              "DocumentMoniker": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.cpp",
-              "RelativeDocumentMoniker": "SceneResult.cpp",
-              "ToolTip": "C:\\Users\\PC_User\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneResult.cpp",
-              "RelativeToolTip": "SceneResult.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-13T08:49:27.478Z"
             }
           ]
         }
