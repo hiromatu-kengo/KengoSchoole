@@ -401,9 +401,6 @@ void Player::Draw()
 	}
 	if (m_state == PlayerState::Dead)
 	{
-		SetDrawBlendMode(DX_BLENDMODE_ADD, 180);
-	}
-	{
 		// 死亡状態の描画（赤黒く点滅）
 		if ((m_animFrame / 6) % 2 == 0)
 		{
