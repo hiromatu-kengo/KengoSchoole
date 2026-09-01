@@ -66,21 +66,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Player.cpp",
-              "DocumentMoniker": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
-              "RelativeDocumentMoniker": "Player.cpp",
-              "ToolTip": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
-              "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAowIMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-03T02:31:43.919Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
@@ -125,11 +112,24 @@
               "Title": "SceneTitle.cpp",
               "DocumentMoniker": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneTitle.cpp",
               "RelativeDocumentMoniker": "SceneTitle.cpp",
-              "ToolTip": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneTitle.cpp*",
-              "RelativeToolTip": "SceneTitle.cpp*",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAUwH8AAAAEAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneTitle.cpp",
+              "RelativeToolTip": "SceneTitle.cpp",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAUwIYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-08-13T08:41:33.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
+              "RelativeDocumentMoniker": "Player.cpp",
+              "ToolTip": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
+              "RelativeToolTip": "Player.cpp",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAowIMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-03T02:31:43.919Z",
               "EditorCaption": ""
             },
             {

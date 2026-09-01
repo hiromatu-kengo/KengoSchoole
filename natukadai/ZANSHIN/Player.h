@@ -57,6 +57,8 @@ public:
 
 	// ヒットストップ中か判定
 	bool IsHitStopped() const { return m_hitStopFrame > 0; }
+
+	bool IsDeadFinished() const { return m_isDeadFinished; }
 private:
 	//使用するグラフィックハンドル
 	int m_playerGHandle[10];
@@ -115,12 +117,16 @@ private:
 	int m_parryEffectX = 0;
 	int m_parryEffectY = 0;
 
-	// 追加：ヒットストップ関連
+	// ヒットストップ関連
 	int m_hitStopFrame = 0;
 
-	// 追加：斬撃ヒットエフェクト
+	// 斬撃ヒットエフェクト
 	int m_slashEffectFrame = 0;
 	int m_slashEffectX = 0;
 	int m_slashEffectY = 0;
+
+	// 死亡演出関連
+	int m_deadTimer = 0;			// 死亡後のタイマー
+	bool m_isDeadFinished = false;	// 死亡後の演出が完了したかどうかのフラグ
 };
 

@@ -125,7 +125,7 @@ void SceneTitle::Draw()
 
 		// アルファ描画を適用して文字を表示
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
-		//DrawString(textX, textY, msg, GetColor(255, 230, 150));
+		DrawString(textX, textY, msg, GetColor(255, 230, 150));
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 

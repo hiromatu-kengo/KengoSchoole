@@ -86,6 +86,9 @@ void Player::Init()
 	m_seGuard = LoadSoundMem("sound/gd.mp3");
 	m_seParry = LoadSoundMem("sound/pl.mp3");
 	m_seDead = LoadSoundMem("sound/ns.mp3");
+
+	m_deadTimer = 0;
+	m_isDeadFinished = false;
 }
 
 void Player::End()
@@ -136,6 +139,7 @@ void Player::OnDamage(int damage, int postureDamage)
 			m_state = PlayerState::Dead; // 死亡状態に遷移
 			m_shakeFrame = 25;			 //	死亡時の強い画面揺れ
 			m_shakeIntensity = 18;
+			m_deadTimer = 0;			 // 死亡演出タイマーをリセット
 			PlaySoundMem(m_seDead, DX_PLAYTYPE_BACK); // やられた音
 		}
 	}
@@ -216,6 +220,16 @@ void Player::Update()
 
 	if (m_parryEffectFrame > 0) m_parryEffectFrame--;
 	if (m_slashEffectFrame > 0) m_slashEffectFrame--;
+
+	if (m_state == PlayerState::Dead)
+	{
+		m_deadTimer++;
+		if (m_deadTimer >= 180) // 3秒間の死亡演出後にフラグを立てる
+		{
+			m_isDeadFinished = true;
+		}
+		return;
+	}
 
 	// 姿勢崩れ（Stun）状態の処理
 	if (m_state == PlayerState::Stun)
@@ -384,6 +398,19 @@ void Player::Draw()
 	{
 		tempTotalFrame = kRunAnimTotalFrame;
 		tempHanndle = m_runGraph;
+	}
+	if (m_state == PlayerState::Dead)
+	{
+		SetDrawBlendMode(DX_BLENDMODE_ADD, 180);
+	}
+	{
+		// 死亡状態の描画（赤黒く点滅）
+		if ((m_animFrame / 6) % 2 == 0)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ADD, 200);
+			DrawCircle(drawX, drawY + 20, 50, GetColor(255, 30, 30), TRUE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
 	}
 
 	int animNo = (currentFrame % tempTotalFrame) / kSingleAnimFrame;

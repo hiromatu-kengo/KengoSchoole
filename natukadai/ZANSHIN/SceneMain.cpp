@@ -166,6 +166,15 @@ SceneType SceneMain::Update()
 	// プレイヤー更新
 	m_player.Update();
 
+	if (m_player.IsDeadFinished())
+	{
+		if (!m_isFadingOut)
+		{
+			m_isFadingOut = true;
+			m_nextScene = SceneType::Title;// プレイヤー死亡時はタイトル画面へ遷移
+		}
+	}
+
 	// 敵撃破時：そのままシーン遷移せずフェードアウトを開始する
 	if (m_enemy.IsDeadFinished())
 	{
