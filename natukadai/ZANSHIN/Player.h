@@ -7,7 +7,8 @@ enum class PlayerState
 	Parry,	// パリィ
 	Guard,	// ガード
 	Attack,	// 攻撃
-	Stun	// 姿勢崩れ
+	Stun,	// 姿勢崩れ
+	Dead	// 死亡
 };
 
 class Player

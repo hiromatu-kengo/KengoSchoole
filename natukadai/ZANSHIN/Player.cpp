@@ -128,6 +128,16 @@ void Player::OnDamage(int damage, int postureDamage)
 		m_shakeFrame = 12;
 		m_shakeIntensity = 10;
 		m_hitStopFrame = 3; // 被弾ヒットストップ
+		
+		//HPが0以下になった場合、死亡状態に遷移
+		if (m_hp <= 0)
+		{
+			m_hp = 0;
+			m_state = PlayerState::Dead; // 死亡状態に遷移
+			m_shakeFrame = 25;			 //	死亡時の強い画面揺れ
+			m_shakeIntensity = 18;
+			PlaySoundMem(m_seDead, DX_PLAYTYPE_BACK); // やられた音
+		}
 	}
 
 	// 体幹ゲージ上限到達時の姿勢崩れ処理（必要に応じて追加可能）

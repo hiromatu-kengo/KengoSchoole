@@ -1,6 +1,64 @@
-﻿  SceneResult.cpp
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneResult.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneResult.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneResult.cpp' をコンパイルしています)
+﻿  Enemy.cpp
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
   
-  ZANSHIN.vcxproj -> C:\Users\PC_User\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\x64\Debug\ZANSHIN.exe
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(91,19): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(92,20): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(230,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(231,28): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(234,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(235,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(310,15): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(311,19): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(435,25): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.cpp(435,20): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Player.cpp
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(269,27): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(280,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.cpp(281,28): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+  SceneMain.cpp
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.cpp(182,48): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.cpp(182,31): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.cpp(216,21): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.cpp(217,22): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+  SceneTitle.cpp
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneTitle.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneTitle.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneTitle.cpp' をコンパイルしています)
+  
+  main.cpp
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneTitle.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneMain.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Player.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\Enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\SceneResult.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+  コードを生成中...
+  ZANSHIN.vcxproj -> C:\Users\HiromatsuKengo\Documents\GitHub\KengoSchoole\natukadai\ZANSHIN\x64\Debug\ZANSHIN.exe
