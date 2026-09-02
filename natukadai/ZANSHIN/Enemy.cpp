@@ -87,6 +87,8 @@ void Enemy::Init()
 	m_state = EnemyState::Idle;
 	m_stateFrame = 0;
 
+	m_stock = 2; // 残機初期化
+
 	//ヒットボックスの初期化（敵の表示サイズに合わせる）
 	m_hitbox.width = 80.0f;
 	m_hitbox.height = 120.0f;
@@ -235,7 +237,7 @@ void Enemy::Update(float playerX, float playerY, float playerWidth, bool isPlaye
 			m_attackHitbox.y = m_y - 20.0f;
 			if (m_stateFrame == 20)
 			{
-				PlaySoundMem(m_seAttack, DX_PLAYTYPE_BACK); // ★敵の攻撃音
+				PlaySoundMem(m_seAttack, DX_PLAYTYPE_BACK); //敵の攻撃音
 			}
 		}
 		else
@@ -369,7 +371,7 @@ void Enemy::OnParried()
 	m_attackHitbox.isActive = false; // 弾かれたら即座に判定消滅
 	m_state = EnemyState::AttackWait;//攻撃強制中断
 	m_stateFrame = -30;//通常より長い隙をつくる
-	PlaySoundMem(m_seParry, DX_PLAYTYPE_BACK); // ★パリィされた音（弾かれ音）
+	PlaySoundMem(m_seParry, DX_PLAYTYPE_BACK); // パリィされた音（弾かれ音）
 
 	if (m_posture >= m_maxPosture)
 	{
@@ -510,10 +512,10 @@ void Enemy::Draw()
 	if (m_state == EnemyState::AttackWait) stateStr = "AttackWait";
 	if (m_state == EnemyState::Guard) stateStr = "Guard";
 	if (m_state == EnemyState::Stun) stateStr = "STUN!";
-	DrawString((int)m_x - 20, (int)m_y - 100, stateStr, GetColor(255, 255, 0));
+	//DrawString((int)m_x - 20, (int)m_y - 100, stateStr, GetColor(255, 255, 0));
 
-	// デバッグ描画：残機と体幹ゲージ
-	DrawFormatString((int)m_x - 30, (int)m_y - 80, GetColor(255, 255, 255), "Stock: %d", m_stock);
+	// 残機
+	DrawFormatString( 50, 90, GetColor(255, 255, 255), "Stock: %d", m_stock);
 
 	// 画面上部に敵の体幹ゲージUIを描画
 	if (m_postureUiHandle[0] != -1)
