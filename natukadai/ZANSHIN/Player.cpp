@@ -595,7 +595,7 @@ void Player::Draw()
 		int top = static_cast<int>(m_attackHitbox.y - m_attackHitbox.height / 2);
 		int right = static_cast<int>(m_attackHitbox.x + m_attackHitbox.width / 2);
 		int bottom = static_cast<int>(m_attackHitbox.y + m_attackHitbox.height / 2);
-		DxLib::DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE);
+		//DxLib::DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE);
 	}
 }
 

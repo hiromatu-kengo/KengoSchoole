@@ -501,7 +501,7 @@ void Enemy::Draw()
 		int right = static_cast<int>(m_attackHitbox.x + m_attackHitbox.width / 2);
 		int bottom = static_cast<int>(m_attackHitbox.y + m_attackHitbox.height / 2);
 
-		DrawBox(left, top, right, bottom, GetColor(255, 255, 0), FALSE);
+		//DrawBox(left, top, right, bottom, GetColor(255, 255, 0), FALSE);
 	}
 
 	// デバッグ描画：状態テキスト表示
@@ -541,7 +541,7 @@ void Enemy::Draw()
 		DrawRotaGraph3(uiX, uiY, 0, 0, xScale, yScale, 0.0, m_postureUiHandle[uiIndex], TRUE);
 	}
 
-	//デバッグ描画：敵の暗い判定を赤枠で表示
+	//敵の暗い判定を赤枠で表示
 	if (m_hitbox.isActive)
 	{
 		int left = (int)(m_hitbox.x - m_hitbox.width / 2);
@@ -549,6 +549,6 @@ void Enemy::Draw()
 		int right = (int)(m_hitbox.x + m_hitbox.width / 2);
 		int bottom = (int)(m_hitbox.y + m_hitbox.height / 2);
 
-		DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE);
+		//DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE);
 	}
 }

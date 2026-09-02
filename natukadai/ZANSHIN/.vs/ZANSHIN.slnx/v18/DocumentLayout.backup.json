@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44243026-F6D2-4AE8-AB7A-ED1B2E814FC0}|ZANSHIN.vcxproj|C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -66,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -82,13 +82,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
               "ToolTip": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAAI0BAAAAAAAAAAAAAJEBAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAEcCAAAAAAAAAAAAAFUCAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-08-03T02:31:43.919Z",
               "EditorCaption": ""
@@ -107,13 +107,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Enemy.cpp",
               "DocumentMoniker": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Enemy.cpp",
               "RelativeDocumentMoniker": "Enemy.cpp",
-              "ToolTip": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Enemy.cpp*",
-              "RelativeToolTip": "Enemy.cpp*",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAFkAAAAWAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\HiromatsuKengo\\Documents\\GitHub\\KengoSchoole\\natukadai\\ZANSHIN\\Enemy.cpp",
+              "RelativeToolTip": "Enemy.cpp",
+              "ViewState": "AgIAABUCAAAAAAAAAAAAAB8CAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-08-17T03:59:58.649Z",
               "EditorCaption": ""
