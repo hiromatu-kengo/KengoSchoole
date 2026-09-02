@@ -150,9 +150,35 @@ void SceneResult::Draw()
 	{
 		// 枠線つきのリザルトプレート
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 160);
-		DrawBox(centerX - 350, 180, centerX + 350, 390, GetColor(20, 25, 40), TRUE);
+		DrawBox(centerX - 350, 140, centerX + 350, 390, GetColor(20, 25, 40), TRUE);
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-		DrawBox(centerX - 350, 180, centerX + 350, 390, GetColor(180, 150, 80), FALSE);
+		DrawBox(centerX - 350, 140, centerX + 350, 390, GetColor(180, 150, 80), FALSE);
+
+		// タイム表示
+		SetFontSize(24);
+		int minutes = s_clearTimeSeconds / 60;
+		int seconds = s_clearTimeSeconds % 60;
+		DrawFormatString(centerX - 100, 160, GetColor(220, 220, 220), "CLEAR TIME : %02d:%02d", minutes, seconds);
+
+		// タイムに応じたランク判定＆色設定
+		const char* rankStr = "C";
+		unsigned int rankColor = GetColor(150, 150, 150); // 通常のグレー
+
+		if (s_clearTimeSeconds <= 30)
+		{
+			rankStr = "S";
+			rankColor = GetColor(255, 60, 90); // 豪華な赤/ピンク
+		}
+		else if (s_clearTimeSeconds <= 40)
+		{
+			rankStr = "A";
+			rankColor = GetColor(255, 200, 50); // 金/オレンジ
+		}
+		else if (s_clearTimeSeconds <= 50)
+		{
+			rankStr = "B";
+			rankColor = GetColor(100, 220, 100); // 緑
+		}
 
 		// 評価ランク
 		SetFontSize(36);

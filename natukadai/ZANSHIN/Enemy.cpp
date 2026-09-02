@@ -46,6 +46,7 @@ Enemy::Enemy() :
 	m_idleGraph(-1),
 	m_runGraph(-1),
 	m_attackGraph(-1),
+	m_stockUiGraph(-1),
 	m_x(0),
 	m_y(0),
 	m_width(0),
@@ -88,6 +89,7 @@ void Enemy::Init()
 	m_stateFrame = 0;
 
 	m_stock = 2; // 残機初期化
+	int tempHandles[6];
 
 	//ヒットボックスの初期化（敵の表示サイズに合わせる）
 	m_hitbox.width = 80.0f;
@@ -99,6 +101,14 @@ void Enemy::Init()
 	m_seGuard = LoadSoundMem("sound/gd.mp3");
 	m_seParry = LoadSoundMem("sound/pl.mp3");
 	m_seNinsatsu = LoadSoundMem("sound/ns.mp3");
+
+	LoadDivGraph("image/UI/es.png", 6, 6, 1, 16, 16, tempHandles);
+	m_stockUiGraph = tempHandles[0]; // 残機表示用のUI画像ハンドルを設定
+
+	for (int i = 1; i < 6; ++i)
+	{
+		DeleteGraph(tempHandles[i]);
+	}
 }
 
 void Enemy::End()
@@ -106,6 +116,7 @@ void Enemy::End()
 	DeleteGraph(m_idleGraph);
 	DeleteGraph(m_runGraph);
 	DeleteGraph(m_attackGraph);
+	DeleteGraph(m_stockUiGraph);
 	DeleteSoundMem(m_seAttack);
 	DeleteSoundMem(m_seGuard);
 	DeleteSoundMem(m_seParry);
@@ -515,7 +526,17 @@ void Enemy::Draw()
 	//DrawString((int)m_x - 20, (int)m_y - 100, stateStr, GetColor(255, 255, 0));
 
 	// 残機
-	DrawFormatString( 50, 90, GetColor(255, 255, 255), "Stock: %d", m_stock);
+	if (m_stockUiGraph != -1)
+	{
+		int startX = 80; // 画面左上のX座標
+		int startY = 120; // 画面左上のY座標
+		int spacing = 70; // 残機アイコン間のスペース
+
+		for (int i = 0; i < m_stock; ++i)
+		{
+			DrawRotaGraph(startX + (i * spacing), startY, 4, 0.0, m_stockUiGraph, TRUE);
+		}
+	}
 
 	// 画面上部に敵の体幹ゲージUIを描画
 	if (m_postureUiHandle[0] != -1)

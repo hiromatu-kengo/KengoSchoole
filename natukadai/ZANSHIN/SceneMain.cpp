@@ -1,6 +1,7 @@
 #include "SceneMain.h"
 #include"DxLib.h"
 #include "Windows.h"
+#include"SceneResult.h"
 #include "Game.h"
 
 namespace
@@ -104,6 +105,8 @@ void SceneMain::Init()
 	m_isFadingIn = true;
 	m_isFadingOut = false;
 	m_nextScene = SceneType::Main;
+
+	m_clearTimer = 0; // クリア演出用タイマーをリセット
 }
 
 void SceneMain::End()
@@ -130,6 +133,11 @@ void SceneMain::End()
 
 SceneType SceneMain::Update()
 {
+	// フェードイン・フェードアウト中以外（ゲームプレイ中）にタイマーを加算
+	if (!m_isFadingIn && !m_isFadingOut)
+	{
+		m_clearTimer++;
+	}
 	// フェードイン処理（暗転解除）
 	if (m_isFadingIn)
 	{
@@ -182,6 +190,8 @@ SceneType SceneMain::Update()
 		{
 			m_isFadingOut = true;
 			m_nextScene = SceneType::Result;
+
+			SceneResult::SetClearTime(m_clearTimer / 60); // 秒数に変換してセット
 		}
 	}
 
@@ -189,12 +199,6 @@ SceneType SceneMain::Update()
 	if (!m_player.IsHitStopped())
 	{
 		m_enemy.Update(m_player.GetX(), m_player.GetY(), 80.0f, m_player.IsAttacking());
-	}
-
-	// 敵撃破判定 -> リザルト画面へ遷移
-	if (m_enemy.IsDeadFinished())
-	{
-		return SceneType::Result;
 	}
 
 	// プレイヤーの攻撃 -> 敵へのヒット判定（ヒットストップ演出付き）

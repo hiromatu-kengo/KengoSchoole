@@ -70,6 +70,8 @@ private:
 	int m_runGraph;
 	int m_attackGraph;
 	int m_deathGraph; // 死亡用画像ハンドル
+	int m_stockUiGraph; // UI残機表示用画像ハンドル
+	int m_postureUiHandle[6]; // 体幹UI画像ハンドルを追加
 
 	//座標・移動
 	float m_x;
@@ -86,7 +88,6 @@ private:
 	int m_stock;	// 残機
 	bool m_isDead;
 	bool m_isDeadFinished; // 死亡演出全完了フラグ
-	int m_postureUiHandle[6]; // 体幹UI画像ハンドルを追加
 
 	//state管理・タイマー
 	EnemyState m_state;

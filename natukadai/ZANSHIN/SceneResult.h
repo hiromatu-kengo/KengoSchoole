@@ -20,6 +20,9 @@ public:
 	SceneType Update();
 	void Draw();
 
+	// クリアタイムを設定する静的メソッド
+	static void SetClearTime(int seconds) { s_clearTimeSeconds = seconds; }
+
 private:
 	int m_bgmHandle;      // BGMハンドル
 	int m_fadeAlpha;      // フェード用アルファ値
@@ -29,6 +32,8 @@ private:
 
 	// 豪華な光のパーティクル（30個）
 	static constexpr int kParticleCount = 30;
+
+	static inline int s_clearTimeSeconds = 0; // クリアタイム（秒）を保持する静的変数
 	ResultParticle m_particles[kParticleCount];
 };
 

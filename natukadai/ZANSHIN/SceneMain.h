@@ -44,5 +44,7 @@ private:
 
 	//1回の振りで1度だけヒットさせるためのフラグ
 	bool m_playerHasHit;
+
+	int m_clearTimer = 0; // クリア演出用タイマー
 };
 

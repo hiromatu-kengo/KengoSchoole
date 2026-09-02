@@ -106,6 +106,10 @@ void Player::End()
 
 void Player::OnDamage(int damage, int postureDamage)
 {
+	if (m_state == PlayerState::Dead)
+	{
+		return;
+	}
 	// ガード時は体幹ダメージのみ受け流す
 	if (m_state == PlayerState::Guard)
 	{
@@ -121,11 +125,6 @@ void Player::OnDamage(int damage, int postureDamage)
 	{
 		m_hp -= damage;
 		m_posture += postureDamage / 3;
-		if (m_hp <= 0)
-		{
-			m_hp = 0;
-			PlaySoundMem(m_seDead, DX_PLAYTYPE_BACK); // ★やられた音
-		}
 
 		// 被弾時の強い手応え演出
 		m_shakeFrame = 12;
@@ -145,7 +144,7 @@ void Player::OnDamage(int damage, int postureDamage)
 	}
 
 	// 体幹ゲージ上限到達時の姿勢崩れ処理（必要に応じて追加可能）
-	if (m_posture >= m_maxPosture)
+	if (m_state != PlayerState::Dead && m_posture >= m_maxPosture)
 	{
 		m_posture = m_maxPosture;
 		m_state = PlayerState::Stun;
@@ -330,7 +329,7 @@ void Player::Update()
 			{
 				m_state = PlayerState::Guard;       // ガード状態に遷移
 			}
-			else
+			else if (m_state != PlayerState::Dead && m_state != PlayerState::Stun)
 			{
 				m_state = PlayerState::Normal;      // 通常状態に戻す
 			}
@@ -354,12 +353,14 @@ void Player::Update()
 			m_isFlip = true;                    // 左向き 
 			m_isMoving = true;                  // 移動中フラグをセット
 		}
+		/*
 		// ジャンプ開始（地面にいるときスペースでジャンプ）
 		if (CheckHitKey(KEY_INPUT_SPACE) && m_isOnGround)
 		{
 			m_vy = -kJumpPower;             // 初速（上方向に負）
 			m_isOnGround = false;
 		}
+		*/
 	}
 
 	// 重力と垂直移動の適用
@@ -379,6 +380,10 @@ void Player::Update()
 
 void Player::Draw()
 {
+	if (m_state == PlayerState::Dead)
+	{
+		return;
+	}
 
 	// カメラシェイク適用位置
 	int drawX = m_x + m_shakeOffsetX;
@@ -408,6 +413,8 @@ void Player::Draw()
 			DrawCircle(drawX, drawY + 20, 50, GetColor(255, 30, 30), TRUE);
 			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 		}
+
+		return; // 死亡状態では通常の描画をスキップ
 	}
 
 	int animNo = (currentFrame % tempTotalFrame) / kSingleAnimFrame;
