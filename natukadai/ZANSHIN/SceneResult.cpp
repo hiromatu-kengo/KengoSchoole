@@ -105,8 +105,18 @@ SceneType SceneResult::Update()
 		return SceneType::Result;
 	}
 
+	// 入力判定（キーボード[R] / マウス左クリック / PS5決定ボタン）
+	int mouseInput = GetMouseInput();
+	int padInput = GetJoypadInputState(DX_INPUT_PAD1);
+
+	// PAD_INPUT_1 (✕ボタン) または PAD_INPUT_2 (〇ボタン) のどちらでも反応するように設定
+	bool isDecidePressed = (CheckHitKey(KEY_INPUT_R) != 0) ||
+		((mouseInput & MOUSE_INPUT_LEFT) != 0) ||
+		((padInput & PAD_INPUT_1) != 0) ||
+		((padInput & PAD_INPUT_2) != 0);
+
 	// タイトルに戻る
-	if (CheckHitKey(KEY_INPUT_R))
+	if (isDecidePressed)
 	{
 		if (!m_isFadingOut)
 		{
@@ -211,14 +221,14 @@ void SceneResult::Draw()
 		if ((m_timer / 30) % 2 == 0)
 		{
 			SetFontSize(22);
-			const char* guideR = "[ R ] : RETURN TO TITLE";
+			const char* guideR = "[ LEFT CLICK / X Button ] : RETURN TO TITLE";
 			const char* guideESC = "[ ESC ] : QUIT GAME";
 
 			int rW = GetDrawStringWidth(guideR, static_cast<int>(strlen(guideR)));
 			int escW = GetDrawStringWidth(guideESC, static_cast<int>(strlen(guideESC)));
 
 			DrawString(centerX - rW / 2, 530, guideR, GetColor(120, 220, 255));
-			DrawString(centerX - escW / 2, 570, guideESC, GetColor(180, 180, 200));
+			//DrawString(centerX - escW / 2, 570, guideESC, GetColor(180, 180, 200));
 		}
 	}
 

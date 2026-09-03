@@ -254,13 +254,15 @@ void Player::Update()
 
 	// --- マウス入力を取得 ---
 	int mouseInput = GetMouseInput();
-	bool isLeftClickCurrent = (mouseInput & MOUSE_INPUT_LEFT) != 0;
+	int padInput = GetJoypadInputState(DX_INPUT_PAD1);// ジョイパッド入力も取得
+	// 攻撃入力の判定（左クリックまたはジョイパッドのボタン6）
+	bool isAttackPressed = ((mouseInput & MOUSE_INPUT_LEFT) != 0) || ((padInput & PAD_INPUT_6) != 0);
 
-	// 「今押された瞬間」かどうかを判定 (トリガー検出)
-	bool isLeftClickTrigger = isLeftClickCurrent && !m_isLeftClickPrev;
+	bool isAttackTrigger = isAttackPressed && !m_isLeftClickPrev; // トリガー検出
+	m_isLeftClickPrev = isAttackPressed;						  // 次フレーム用に状態を保存
 
-	// 前フレームの状態を更新
-	m_isLeftClickPrev = isLeftClickCurrent;
+	// ガード入力の判定（右クリックまたはジョイパッドのボタン5）
+	bool isGuardPressed = ((mouseInput & MOUSE_INPUT_RIGHT) != 0) || ((padInput & PAD_INPUT_5) != 0);
 
 	// 攻撃状態の処理
 	if (m_state == PlayerState::Attack)
@@ -302,8 +304,8 @@ void Player::Update()
 	}
 	else// パリィ・ガード・通常状態の処理
 	{
-		// 左クリックが「押された瞬間」のみ攻撃へ遷移
-		if (isLeftClickTrigger && m_state != PlayerState::Attack)
+		// 攻撃入力があった場合、攻撃状態に遷移
+		if (isAttackTrigger && m_state != PlayerState::Attack)
 		{
 			m_state = PlayerState::Attack;
 			m_attackFrame = 0;
@@ -311,7 +313,7 @@ void Player::Update()
 		}
 		else
 		{
-			if (GetMouseInput() & MOUSE_INPUT_RIGHT)
+			if (isGuardPressed)
 			{
 				m_rightClickFrame++;                // 右クリックが押されている場合、フレーム数をカウント
 			}
@@ -341,13 +343,15 @@ void Player::Update()
 	// 左右移動の処理（通常状態のみ）
 	if (m_state == PlayerState::Normal)
 	{
-		if (CheckHitKey(KEY_INPUT_D))
+		// Dキー または 十字キー右(PAD_INPUT_RIGHT)
+		if (CheckHitKey(KEY_INPUT_D) || (padInput & PAD_INPUT_RIGHT))
 		{
 			m_x += kMoveSpeed;                  // 右移動
 			m_isFlip = false;                   // 右向き
 			m_isMoving = true;                  // 移動中フラグをセット
 		}
-		if (CheckHitKey(KEY_INPUT_A))
+		// Aキー または 十字キー左(PAD_INPUT_LEFT)
+		if (CheckHitKey(KEY_INPUT_A) || (padInput & PAD_INPUT_LEFT))
 		{
 			m_x -= kMoveSpeed;                  // 左移動
 			m_isFlip = true;                    // 左向き 
@@ -441,7 +445,7 @@ void Player::Draw()
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 		// 「PARRY READY」文字表示の位置も少し下げる (drawY - 110 -> drawY - 90)
-		DrawString(drawX - 40, drawY - 90, "PARRY READY", GetColor(255, 220, 0));
+		DrawString(drawX - 40, drawY - 90, "PARRY", GetColor(255, 220, 0));
 	}
 	else if (m_state == PlayerState::Guard)
 	{
@@ -592,9 +596,6 @@ void Player::Draw()
 		// cx=0, cy=0 で画像の中心を回転・拡大軸に指定
 		DrawRotaGraph3(uiX, uiY, 0, 0, xScale, yScale, 0.0, m_postureUiGraph[uiIndex], TRUE);
 	}
-
-	// デバッグ表示
-	if (m_state == PlayerState::Parry) DrawString(drawX, drawY - 100, "Parry!", GetColor(255, 255, 0));
 
 	if (m_attackHitbox.isActive)
 	{

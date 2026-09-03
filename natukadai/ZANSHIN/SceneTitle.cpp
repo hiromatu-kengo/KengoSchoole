@@ -55,13 +55,23 @@ SceneType SceneTitle::Update()
 	// 点滅用タイマーを毎フレーム加算
 	m_blinkTimer++;
 
-	// 1. Zキーが押されたらフェードアウトを開始する
-	if (CheckHitKey(KEY_INPUT_Z) && !m_isFadingOut)
+	// 入力判定（キーボード[Z] / マウス左クリック / PS5決定ボタン）
+	int mouseInput = GetMouseInput();
+	int padInput = GetJoypadInputState(DX_INPUT_PAD1);
+
+	// PAD_INPUT_1 (✕ボタン) または PAD_INPUT_2 (〇ボタン) のどちらでも反応するように設定
+	bool isDecidePressed = (CheckHitKey(KEY_INPUT_Z) != 0) ||
+		((mouseInput & MOUSE_INPUT_LEFT) != 0) ||
+		((padInput & PAD_INPUT_1) != 0) ||
+		((padInput & PAD_INPUT_2) != 0);
+
+	// ボタン:キーが押されたらフェードアウトを開始する
+	if (isDecidePressed && !m_isFadingOut)
 	{
 		m_isFadingOut = true;
 	}
 
-	// 2. フェードアウト処理
+	// フェードアウト処理
 	if (m_isFadingOut)
 	{
 		m_bgmVolume -= m_fadeSpeed; // 音量を減算
@@ -119,7 +129,7 @@ void SceneTitle::Draw()
 		int alpha = static_cast<int>(157.5f + 97.5f * std::sin(m_blinkTimer * 0.06f));
 
 		// 文字幅を自動計算して完全に画面中央へ配置
-		const char* msg = "- PRESS Z KEY TO START -";
+		const char* msg = "[ LEFT CLICK / X Button ] : START";
 		int textWidth = GetDrawStringWidth(msg, -1);
 		int textX = Game::kScreenWidth / 2 - textWidth / 2;
 
